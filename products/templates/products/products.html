@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+
+<div class="heading">
+  <h3>
+    <span class="logo-style">Store</span>
+    <span class="logo-colour">.</span>
+  </h3>
+  <hr class="heading-underline" />
+</div>
+
+<div class="dropdown">
+  <button
+    class="btn dropdown-toggle category-button"
+    type="button"
+    id="dropdownMenuButton"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    Category
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {% for cat in categories %}
+    <a class="dropdown-item" href="{% url 'products' %}?category={{ cat.name }}"
+      >{{ cat.name }}</a
+    >
+    {% endfor %}
+  </div>
+</div>
+
+<div class="gallery-content">
+  {% for product in products %}
+  <div class="card">
+    <img
+      src="{{ product.image.url }}"
+      class="card-img"
+      alt="{{ product.name }}"
+    />
+    <div class="card-img-overlay">
+      <div class="image-text">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">
+          {{ product.description|truncatewords:30 }}
+        </p>
+        <div class="buy-section">
+          <p class="price">€{{ product.price | display_price }}</p>
+          <a class="btn buy-now-btn" href="{% url 'product_detail' product.id %}">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% include 'pagination.html' with page=products %} {% endblock %}

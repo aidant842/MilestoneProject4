@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+  <h1>Product Page</h1>
+  <hr class="heading-underline" />
+</div>
+
+<div class="productContent">
+  <div class="product-info">
+    <p>{{ product.name }}</p>
+    <p>{{ product.description }}</p>
+  </div>
+  <div class="productImage">
+    <a href="#exampleModal" data-toggle="modal"
+      ><img src="{{ product.image.url }}" alt="{{ product.name }}"
+    /></a>
+  </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="productSelects">
+    <form method="POST" action="">
+      {% csrf_token %}
+      <p><strong>Price: €{{ product.price | display_price }}</strong></p>
+      <div class="form-group">
+        <label for="size">Size</label>
+        <select class="form-control" id="size" name="size" required>
+          <option value="" disabled selected></option>
+          {% for size in sizes %}
+          <option value="{{ size.value }}">{{ size.value }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {% if product.has_colour %}
+      <div class="form-group">
+        <label for="colour">Colour</label>
+        <select class="form-control" id="colour" name="colour" required>
+        <option value="" disabled selected></option>
+          {% for colour in colours %}
+          <option value="{{ colour.name }}">{{ colour.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {% endif %}
+      <div class="form-group">
+        <label for="material">Material</label>
+        <select class="form-control" id="material" name="material" required>
+        <option value="" disabled selected></option>
+          {% for material in materials %}
+          <option value="{{ material.value }}">{{ material.value }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="quantityLabel" for="id_qty_{{ product.id }}"
+          >Quantity</label
+        >
+        <input
+          type="number"
+          name="quantity"
+          value="1"
+          min="1"
+          max="99"
+          data-item_id="{{ product.id }}"
+          id="id_qty_{{ product.id }}"
+        />
+      </div>
+      <input class="btn buy-now-btn" type="submit" value="Add to Bag" />
+      <input type="hidden" name="redirect_url" value="{{ request.path }}" />
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<nav aria-label="Page Navigation">
+    <ul class="pagination">
+        <li class="page-item">
+            {% if page.has_previous %}
+                {% if selected_category %}
+                    <a class="page-link" href="?page={{ page.previous_page_number }}&category={{ selected_category }}">Previous</a>
+                {% else %}
+                    <a class="page-link" href="?page={{ page.previous_page_number }}">Previous</a>
+                {% endif %}
+            {% endif %}
+        </li>
+    <li class="page-item">
+        <p class="page-link">Page {{ page.number }} of {{ page.paginator.num_pages }}</p>
+    </li>
+    <li class="page-item">
+            {% if page.has_next %}
+                {% if selected_category %}
+                    <a class="page-link" href="?page={{ page.next_page_number }}&category={{ selected_category }}">Next</a>
+                {% else %}
+                    <a class="page-link" href="?page={{ page.next_page_number }}">Next</a>
+                {% endif %}
+            {% endif %}
+        </li>
+  </ul>
+</nav>
