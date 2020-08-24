@@ -1,0 +1,60 @@
+.landing-section {
+    display: grid;
+}
+
+/* .carousel img {
+    height: 550px;
+} */
+
+.carousel-item {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    height: 550px;
+}
+
+.carousel-caption {
+    right: revert;
+    left: revert;
+    bottom: 0;
+    z-index: revert;
+    background: rgba($main-color, 0.7);
+    width: 100%;
+}
+
+.heading {
+    text-align: center;
+    padding-top: 0.5rem;
+    display: grid;
+    justify-self: center;
+}
+
+.heading h1 {
+    font-family: $main-font;
+    font-weight: bold;
+}
+
+.heading-underline {
+    width: 80vw;
+    background-color: $secondary-color;
+    justify-self: center;
+}
+
+.shop-section {
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.shop-now-btn {
+    @extend %button-style;
+    justify-self: center;
+}
+
+.buy-now-btn {
+    @extend %button-style;
+}
+
+.buy-now-btn:hover, .shop-now-btn:hover {
+    @extend %button-hover;
+}

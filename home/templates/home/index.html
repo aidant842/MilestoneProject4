@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="landing-section">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      {% for product in products %}
+      <div class="carousel-item {% if forloop.first %} active {% endif %}" style="background-image: url('{{ product.image.url }}');">
+        <div class="carousel-caption">
+          <h5>{{ product.name }}</h5>
+          <p>{{ product.description }}</p>
+          <div class="buy-section">
+            <p class="price">€{{ product.price | display_price }}</p>
+            <a class="btn buy-now-btn" href="{% url 'product_detail' product.id %}">Buy Now</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a
+      class="carousel-control-prev"
+      href="#carouselExampleCaptions"
+      role="button"
+      data-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next"
+      href="#carouselExampleCaptions"
+      role="button"
+      data-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="heading">
+    <h3>
+      <span class="logo-style">PG</span
+      ><span class="logo-colour">.</span> Photography
+    </h3>
+    <hr class="heading-underline" />
+  </div>
+  <div class="shop-section">
+    <a class="btn shop-now-btn" href="">All Products</a>
+  </div>
+  {% endblock %}
+</div>
