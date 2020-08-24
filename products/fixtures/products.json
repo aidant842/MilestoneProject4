@@ -1,0 +1,174 @@
+[
+    {
+        "pk": 1,
+        "model": "products.product",
+        "fields": {
+            "category": 2,
+            "name": "Sligo Caves",
+            "description": "Tread carefully as this piece guides your iminagtion into depths unknown.",
+            "price": "9999",
+            "sku": "",
+            "image": "1.jpg",
+            "has_colour": "True"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "Lushus Grass",
+            "description": "This lushus piece offers a subtle enmeshing of the big in the small, as the focal point is almost lost to the horizon.",
+            "price": "9999",
+            "sku": "",
+            "image": "12.jpg",
+            "has_colour": "True" 
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.product",
+        "fields": {
+            "category": 2,
+            "name": "Cave Exit",
+            "description": "From the darkness, emerge into vast potential.",
+            "price": "9999",
+            "sku": "",
+            "image": "2.jpg",
+            "has_colour": "True" 
+        }
+    },
+    {
+    
+        "pk": 4,
+        "model": "products.product",
+        "fields": {
+            "category": 2,
+            "name": "Nephin",
+            "description": "Nephin shadowed from the dawn.",
+            "price": "9999",
+            "sku": "",
+            "image": "3.jpg",
+            "has_colour": "True" 
+        } 
+    },
+    {
+        
+        "pk": 5,
+        "model": "products.product",
+        "fields": {
+            "category": 2,
+            "name": "Nephin Light",
+            "description": "Rushes draw your eye in the new born sunrise as Nephin looks on.",
+            "price": "9999",
+            "sku": "",
+            "image": "4.jpg",
+            "has_colour": "True" 
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.product",
+        "fields": {
+            "category": 2,
+            "name": "Fence",
+            "description": "Decay encroaches on a long gone farmers efforts.",
+            "price": "9999",
+            "sku": "",
+            "image": "5.jpg",
+            "has_colour": "True" 
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "Thistle",
+            "description": "Crisp details stands strong.",
+            "price": "9999",
+            "sku": "",
+            "image": "6.jpg",
+            "has_colour": "True" 
+        }
+    },
+    {
+        "pk": 8,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "Thistle Grey",
+            "description": "Shades of grey never said so much.",
+            "price": "9999",
+            "sku": "",
+            "image": "7.jpg",
+            "has_colour": "False" 
+        }   
+    },
+    {
+        "pk": 9,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "Thistle Colour",
+            "description": "Thistle.",
+            "price": "9999",
+            "sku": "",
+            "image": "8.jpg",
+            "has_colour": "False" 
+        }
+    },
+    {
+        "pk": 10,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "Thistle Cool",
+            "description": "Sunrise on lonely heights.",
+            "price": "9999",
+            "sku": "",
+            "image": "9.jpg",
+            "has_colour": "True" 
+        }
+    },
+    {
+        "pk": 11,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "Heathers",
+            "description": "Heathers depths painted by setting sun.",
+            "price": "9999",
+            "sku": "",
+            "image": "10.jpg",
+            "has_colour": "False" 
+        }
+    },
+    {
+        "pk": 12,
+        "model": "products.product",
+        "fields": {
+            "category": 1,
+            "name": "Flowers",
+            "description": "Remembrance.",
+            "price": "9999",
+            "sku": "",
+            "image": "11.jpg",
+            "has_colour": "True" 
+        }
+    },
+    {
+        "pk": 13,
+        "model": "products.product",
+        "fields": {
+            "category": 2,
+            "name": "Branch Exit",
+            "description": "Nature overgrowing a cave exit",
+            "price": "9999",
+            "sku": "",
+            "image": "13.jpg",
+            "has_colour": "True"
+        }   
+    }
+
+]

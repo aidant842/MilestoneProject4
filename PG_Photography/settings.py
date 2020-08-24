@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'customtools',
-    #'products',
+    'products',
     #'bag',
     #'templatetags',
 ]
@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request', #don't delete required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 #'bag.contexts.bag_contents',
             ],
         },
