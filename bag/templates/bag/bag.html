@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+  <h1>Shopping Bag</h1>
+  <hr class="heading-underline" />
+</div>
+
+{% if bag_items %}
+{% for item in bag_items %}
+<div class="bagContent">
+  <div class="bagImg">
+    <a href="{% url 'product_detail' item.product.id %}">
+        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
+    </a>
+  </div>
+  <div class="bagInfo">
+    <ul class="keys">
+      <li>Name:</li>
+      <li>Size:</li>
+      <li>Material:</li>
+      <li>Colour:</li>
+    </ul>
+    <ul class="values">
+      <li>{{ item.product.name }}</li>
+      <li>{{ item.size }}</li>
+      <li>{{ item.material }}</li>
+      <li>{{ item.colour }}</li>
+    </ul>
+  </div>
+  <div class="bagItemQuantity">
+    <ul class="bagItemPrice">
+      <li>Price</li>
+      <li>€{{ item.product.price | display_price }}</li>
+    </ul>
+
+    <input
+          type="number"
+          name="quantity"
+          value="{{ item.quantity }}"
+          min="1"
+          max="99"
+          data-item_id="{{ product.id }}"
+          id="id_qty_{{ product.id }}"
+        />
+    <ul class="bagItemTotal">
+      <li>Total</li>
+      <li>€{{ total | display_price }}</li>
+    </ul>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+    <p>Your bag is empty. Shop <a href="{% url 'products' %}">here</a></p>
+{% endif %}
+<div class="bagTotal">
+    <p><strong>Delivery:</strong> €{{ delivery }}</p>
+    <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
+    <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping</a>
+    <a class="btn checkoutBtn">Checkout</a>
+</div>
+{% endblock %}
