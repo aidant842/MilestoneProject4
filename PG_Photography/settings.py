@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'home',
     'customtools',
     'products',
-    #'bag',
+    'bag',
     #'templatetags',
 ]
 
