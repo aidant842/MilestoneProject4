@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from products.models import Product
+from django.shortcuts import render, redirect
 
 
 def view_bag(request):
@@ -17,31 +16,38 @@ def add_to_bag(request, item_id):
     size = request.POST.get('size', None)
     material = request.POST.get('material', None)
     colour = request.POST.get('colour', None)
-    # Check if products item_id is in the bag
-    if item_id in bag:
-        # Check if item has these attributes
-        if 'size' in bag[item_id].keys() and 'material' in bag[item_id].keys()\
-                and 'colour' in bag[item_id].keys():
-            # Check if they have equal values, if they do just update quantity
-            if size in bag[item_id]['size'] and material in\
-             bag[item_id]['material']\
-             and colour in bag[item_id]['colour']:
-                print('item exists....updating quantity')
-                bag[item_id]['quantity'] += quantity
-            else:
-                bag[item_id]['size'] = size
-                bag[item_id]['material'] = material
-                bag[item_id]['colour'] = colour
-                bag[item_id]['quantity'] = quantity
+
+    # Check to see if the product in already in the bag
+    if item_id in list(bag.keys()):
+        print('An item with this ID is already in the bag')
+        # Check to see if the product options are the same
+        # if so, increment quantity
+        if (size == bag[item_id]['item_data']['size'] and
+           material == bag[item_id]['item_data']['material'] and
+           colour == bag[item_id]['item_data']['colour']):
+            print('Product options are the same')
+            bag[item_id]['item_data']['quantity'] += quantity
+        else:
+            print('need logic to not overwrite current'
+                  f'item with this ID: { item_id }')
+
+            bag[item_id] = {'item_data': {'size': size,
+                                          'material': material,
+                                          'colour': colour,
+                                          'quantity': quantity
+                                          }
+                            }
+
+    # if bag is empty, or product with a new ID, add it to the bag
     else:
-        print('creating new item')
-        bag[item_id] = {}
-        bag[item_id]['size'] = size
-        bag[item_id]['material'] = material
-        bag[item_id]['colour'] = colour
-        bag[item_id]['quantity'] = quantity
+        bag[item_id] = {'item_data': {'size': size,
+                                      'material': material,
+                                      'colour': colour,
+                                      'quantity': quantity
+                                      }
+                        }
 
-
+    print(bag)
     request.session['bag'] = bag
 
     return redirect(redirect_url)

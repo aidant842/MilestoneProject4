@@ -9,24 +9,21 @@ def bag_contents(request):
     delivery = total * .10
     bag = request.session.get('bag', {})
 
-    for item_id, value in bag.items():
-        quantity = value['quantity']
-        material = value['material']
-        colour = value['colour']
-        size = value['size']
+    for item_id in list(bag.keys()):
         product = get_object_or_404(Product, pk=item_id)
+        quantity = bag[item_id]['item_data']['quantity']
+        size = bag[item_id]['item_data']['size']
+        material = bag[item_id]['item_data']['material']
+        colour = bag[item_id]['item_data']['colour']
 
         bag_items.append({
-            'item_id': item_id,
+            'product': product,
             'quantity': quantity,
             'size': size,
             'material': material,
-            'colour': colour,
-            'product': product,
+            'colour': colour
         })
 
-        total += quantity * product.price
-    print(bag)
     grand_total = total + delivery
 
     context = {
