@@ -21,9 +21,9 @@
     </ul>
     <ul class="values">
       <li>{{ item.product.name }}</li>
-      <li>{{ item.size }}</li>
-      <li>{{ item.material }}</li>
-      <li>{{ item.colour }}</li>
+      <li>{{ item.item_size }}</li>
+      <li>{{ item.item_material }}</li>
+      <li>{{ item.item_colour }}</li>
     </ul>
   </div>
   <div class="bagItemQuantity">
@@ -38,12 +38,12 @@
           value="{{ item.quantity }}"
           min="1"
           max="99"
-          data-item_id="{{ product.id }}"
-          id="id_qty_{{ product.id }}"
+          data-item_id="{{ item.product.id }}"
+          id="id_qty_{{ item.product.id }}"
         />
     <ul class="bagItemTotal">
       <li>Total</li>
-      <li>€{{ total | display_price }}</li>
+      <li>€{{ item.total | display_price }}</li>
     </ul>
   </div>
 </div>
@@ -52,7 +52,7 @@
     <p>Your bag is empty. Shop <a href="{% url 'products' %}">here</a></p>
 {% endif %}
 <div class="bagTotal">
-    <p><strong>Delivery:</strong> €{{ delivery }}</p>
+    <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
     <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
     <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping</a>
     <a class="btn checkoutBtn">Checkout</a>
