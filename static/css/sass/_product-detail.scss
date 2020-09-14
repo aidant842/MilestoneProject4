@@ -1,3 +1,9 @@
+.store-link {
+    color: $font-color;
+    position: relative;
+    left: 7%;
+}
+
 .productContent {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -22,7 +28,7 @@
     display: block;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1250px) {
 
     .productContent {
             display: grid;

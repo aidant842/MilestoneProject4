@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse, HttpResponse
 
 
 def view_bag(request):
@@ -36,7 +36,58 @@ def add_to_bag(request, item_id):
             "quantity": quantity
         })
 
-    print(bag)
     request.session['bag'] = bag
 
     return redirect(redirect_url)
+
+
+def adjust_bag(request, item_id):
+    """ Adjust a specific item in the bag """
+
+    quantity = int(request.POST.get('quantity', 0))
+    bag = request.session.get('bag', [])
+    size = request.POST.get('product_size', None)
+    material = request.POST.get('product_material', None)
+    colour = request.POST.get('product_colour', None)
+
+    for item in bag:
+        if (item["item_id"] == item_id and item["item_size"] == size
+           and item["item_material"] == material
+           and item["item_colour"] == colour):
+            product = item
+
+            if quantity > 0:
+                product['quantity'] = quantity
+
+            else:
+                bag.remove(product)
+
+    request.session['bag'] = bag
+
+    return redirect(reverse('view_bag'))
+
+
+def remove_from_bag(request, item_id):
+    """ A view to remove a product from the bag """
+
+    try:
+        bag = request.session.get('bag', [])
+        size = request.POST.get('size', None)
+        material = request.POST.get('material', None)
+        colour = request.POST.get('colour', None)
+        print(size, material, colour)
+
+        for item in bag:
+            if (item["item_id"] == item_id and item["item_size"] == size
+               and item["item_material"] == material
+               and item["item_colour"] == colour):
+                product = item
+
+                bag.remove(product)
+
+        request.session['bag'] = bag
+        return HttpResponse(status=200)
+    except Exception as e:
+        print(e)
+        return HttpResponse(status=500)
+

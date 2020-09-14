@@ -28,21 +28,36 @@
   </div>
   <div class="bagItemQuantity">
     <ul class="bagItemPrice">
-      <li>Price</li>
+      <li><b>Price:</b></li>
       <li>€{{ item.product.price | display_price }}</li>
     </ul>
 
-    <input
-          type="number"
-          name="quantity"
-          value="{{ item.quantity }}"
-          min="1"
-          max="99"
-          data-item_id="{{ item.product.id }}"
-          id="id_qty_{{ item.product.id }}"
-        />
+    <form class="update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="quantity"><b>Quantity:</b></label>
+                <input
+                    type="number"
+                    name="quantity"
+                    value="{{ item.quantity }}"
+                    min="1"
+                    max="99"
+                    data-item_id="{{ item.product.id }}"
+                    id="id_qty_{{ item.product.id }}"
+                />
+
+            <input type="hidden" name="product_size" value="{{ item.item_size }}">
+            <input type="hidden" name="product_colour" value="{{ item.item_colour }}">
+            <input type="hidden" name="product_material" value="{{ item.item_material }}">
+
+
+        </div>
+    </form>
+    <a class="update-link">Update</a>
+    <a class="remove-link" id="remove_{{ item.product.id }}" data-size="{{ item.item_size }}" data-colour="{{ item.item_colour }}" data-material="{{ item.item_material }}">Remove</a>
+
     <ul class="bagItemTotal">
-      <li>Total</li>
+      <li><b>Total:</b></li>
       <li>€{{ item.total | display_price }}</li>
     </ul>
   </div>
@@ -57,4 +72,34 @@
     <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping</a>
     <a class="btn checkoutBtn">Checkout</a>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        //Update quantity on click
+        $('.update-link').click(function(e){
+            var form = $(this).prev('.update-form');
+            form.submit();
+        })
+
+        //Remove item and reload on click
+        $('.remove-link').click(function(e){
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var size = $(this).data('size');
+            var colour = $(this).data('colour');
+            var material = $(this).data('material');
+            var url = `/bag/remove/${itemId}/`;
+            var data = {'csrfmiddlewaretoken': csrfToken, 'size': size, 'colour': colour, 'material': material};
+
+            $.post(url, data)
+                .done(function() {
+                location.reload();
+         });
+
+        })
+
+    </script>
+
 {% endblock %}

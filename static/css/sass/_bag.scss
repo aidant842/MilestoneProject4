@@ -37,8 +37,24 @@
     justify-self: left;
 }
 
-.bagContent .bagItemTotal {
+.bagContent {
     justify-self: end;
+}
+
+.bagItemTotal {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: center;
+}
+
+.update-link {
+    grid-column: 2;
+    font-weight: bold;
+}
+
+.remove-link {
+    grid-column: 3;
+    font-weight: bold;
 }
 
 .bagTotal {
@@ -79,6 +95,20 @@
 
     .bagItemQuantity {
         grid-column: 1/3;
+    }
+
+    .bagItemTotal {
+        justify-self: center;
+    }
+
+    .update-link {
+        grid-column: 1;
+        justify-self: center;
+    }
+
+    .remove-link {
+        grid-column: 3;
+        justify-self: center;
     }
 }
 

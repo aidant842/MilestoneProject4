@@ -21,6 +21,5 @@ def bag_contents(request):
         'delivery': delivery,
         'grand_total': grand_total,
     }
-    print("context", context)
 
     return context
