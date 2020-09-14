@@ -4,21 +4,21 @@
   <hr class="heading-underline" />
 </div>
 
-<a class="store-link" href="{% url 'products' %}"><i class="fas fa-chevron-left"></i>Store</a>
+<a class="store-link" href="{% url 'products' %}"><i class="store-link-arrow fas fa-store"></i><b>Store</b></a>
 <div class="productContent">
   <div class="product-info">
     <p>{{ product.name }}</p>
     <p>{{ product.description }}</p>
   </div>
   <div class="productImage">
-    <a href="#exampleModal" data-toggle="modal"
+    <a href="#imageModal" data-toggle="modal"
       ><img src="{{ product.image.url }}" alt="{{ product.name }}"
     /></a>
   </div>
   <!-- Modal -->
   <div
     class="modal fade"
-    id="exampleModal"
+    id="imageModal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"

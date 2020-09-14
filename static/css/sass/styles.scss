@@ -146,6 +146,12 @@ input {
     border: none;
 }
 
+.bag-divider {
+    background-color: rgba($secondary-color, 0.3);
+    width: 85vw;
+    margin: 1rem auto;
+}
+
 @media only screen and (max-width: 600px) {
     .bg {
         left: 0;

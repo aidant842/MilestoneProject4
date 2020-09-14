@@ -50,16 +50,31 @@
 .update-link {
     grid-column: 2;
     font-weight: bold;
+    color: $font-color;
 }
 
 .remove-link {
     grid-column: 3;
     font-weight: bold;
+    color: $font-color;
 }
 
 .bagTotal {
     text-align: right;
-    padding-right: 50px;
+    padding: 20px 50px 20px 0px;
+}
+
+.bag-empty-text {
+    text-align: center;
+}
+
+.bag-empty-link {
+    color: $font-color;
+    font-weight: bold;
+}
+
+.modal-content {
+    background-color: $main-color;
 }
 
 .keepShoppingBtn, .checkoutBtn {

@@ -4,12 +4,11 @@
   <hr class="heading-underline" />
 </div>
 
-{% if bag_items %}
-{% for item in bag_items %}
+{% if bag_items %} {% for item in bag_items %}
 <div class="bagContent">
   <div class="bagImg">
     <a href="{% url 'product_detail' item.product.id %}">
-        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
+      <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
     </a>
   </div>
   <div class="bagInfo">
@@ -32,29 +31,67 @@
       <li>€{{ item.product.price | display_price }}</li>
     </ul>
 
-    <form class="update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="quantity"><b>Quantity:</b></label>
-                <input
-                    type="number"
-                    name="quantity"
-                    value="{{ item.quantity }}"
-                    min="1"
-                    max="99"
-                    data-item_id="{{ item.product.id }}"
-                    id="id_qty_{{ item.product.id }}"
-                />
+    <form
+      class="update-form"
+      method="POST"
+      action="{% url 'adjust_bag' item.item_id %}"
+    >
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="quantity"><b>Quantity:</b></label>
+        <input
+          type="number"
+          name="quantity"
+          value="{{ item.quantity }}"
+          min="1"
+          max="99"
+          data-item_id="{{ item.product.id }}"
+          id="id_qty_{{ item.product.id }}"
+        />
 
-            <input type="hidden" name="product_size" value="{{ item.item_size }}">
-            <input type="hidden" name="product_colour" value="{{ item.item_colour }}">
-            <input type="hidden" name="product_material" value="{{ item.item_material }}">
-
-
-        </div>
+        <input type="hidden" name="product_size" value="{{ item.item_size }}" />
+        <input
+          type="hidden"
+          name="product_colour"
+          value="{{ item.item_colour }}"
+        />
+        <input
+          type="hidden"
+          name="product_material"
+          value="{{ item.item_material }}"
+        />
+      </div>
     </form>
     <a class="update-link">Update</a>
-    <a class="remove-link" id="remove_{{ item.product.id }}" data-size="{{ item.item_size }}" data-colour="{{ item.item_colour }}" data-material="{{ item.item_material }}">Remove</a>
+    <a href="#removeModal" data-toggle="modal" class="remove-link">Remove</a>
+
+    <div class="modal" tabindex="-1" id="removeModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to remove this item from your bag?</p>
+          </div>
+          <div class="modal-footer">    
+            <a href="#!" class="modal-close modal-cancel btn-flat">Cancel</a>
+            <a
+            id="remove_{{ item.product.id }}" data-size="{{ item.item_size }}" data-colour="{{ item.item_colour }}" data-material="{{ item.item_material }}"
+            >
+            Yes
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <ul class="bagItemTotal">
       <li><b>Total:</b></li>
@@ -62,44 +99,52 @@
     </ul>
   </div>
 </div>
+<hr class="bag-divider" />
 {% endfor %}
-{% else %}
-    <p>Your bag is empty. Shop <a href="{% url 'products' %}">here</a></p>
-{% endif %}
 <div class="bagTotal">
-    <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
-    <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
-    <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping</a>
-    <a class="btn checkoutBtn">Checkout</a>
+  <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
+  <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
+  <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping</a>
+  <a class="btn checkoutBtn">Checkout</a>
 </div>
-{% endblock %}
 
-{% block postloadjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        //Update quantity on click
-        $('.update-link').click(function(e){
-            var form = $(this).prev('.update-form');
-            form.submit();
-        })
+{% else %}
+<div class="bag-empty-text">
+  <p>
+    Your bag is empty.<br /><a
+      href="{% url 'products' %}"
+      class="bag-empty-link"
+      >Shop Now</a
+    >
+  </p>
+</div>
+{% endif %} {% endblock %} {% block postloadjs %} {{ block.super }}
+<script type="text/javascript">
+  //Update quantity on click
+  $(".update-link").click(function (e) {
+    var form = $(this).prev(".update-form");
+    form.submit();
+  });
 
-        //Remove item and reload on click
-        $('.remove-link').click(function(e){
-            var csrfToken = "{{ csrf_token }}";
-            var itemId = $(this).attr('id').split('remove_')[1];
-            var size = $(this).data('size');
-            var colour = $(this).data('colour');
-            var material = $(this).data('material');
-            var url = `/bag/remove/${itemId}/`;
-            var data = {'csrfmiddlewaretoken': csrfToken, 'size': size, 'colour': colour, 'material': material};
+  //Remove item and reload on click
+  $(".remove-link").click(function (e) {
+    var csrfToken = "{{ csrf_token }}";
+    var itemId = $(this).attr("id").split("remove_")[1];
+    var size = $(this).data("size");
+    var colour = $(this).data("colour");
+    var material = $(this).data("material");
+    var url = `/bag/remove/${itemId}/`;
+    var data = {
+      csrfmiddlewaretoken: csrfToken,
+      size: size,
+      colour: colour,
+      material: material,
+    };
 
-            $.post(url, data)
-                .done(function() {
-                location.reload();
-         });
-
-        })
-
-    </script>
+    $.post(url, data).done(function () {
+      location.reload();
+    });
+  });
+</script>
 
 {% endblock %}
