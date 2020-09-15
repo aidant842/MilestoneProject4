@@ -20,9 +20,9 @@
     </ul>
     <ul class="values">
       <li>{{ item.product.name }}</li>
-      <li>{{ item.item_size }}</li>
-      <li>{{ item.item_material }}</li>
-      <li>{{ item.item_colour }}</li>
+      <li>{{ item.size }}</li>
+      <li>{{ item.material }}</li>
+      <li>{{ item.colour }}</li>
     </ul>
   </div>
   <div class="bagItemQuantity">
@@ -63,7 +63,7 @@
       </div>
     </form>
     <a class="update-link">Update</a>
-    <a href="#removeModal" data-toggle="modal" class="remove-link">Remove</a>
+    <a href="#removeModal" data-toggle="modal">Remove</a>
 
     <div class="modal" tabindex="-1" id="removeModal">
       <div class="modal-dialog">
@@ -84,6 +84,7 @@
           <div class="modal-footer">    
             <a href="#!" class="modal-close modal-cancel btn-flat">Cancel</a>
             <a
+            class="remove-link"
             id="remove_{{ item.product.id }}" data-size="{{ item.item_size }}" data-colour="{{ item.item_colour }}" data-material="{{ item.item_material }}"
             >
             Yes

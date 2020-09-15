@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.contrib import messages
+
+from products.models import Product
 
 
 def view_bag(request):
@@ -9,8 +12,8 @@ def view_bag(request):
 
 def add_to_bag(request, item_id):
     """ Add a quantity of an item to the bag """
-
-    quantity = int(request.POST.get('quantity', 0))
+    product = Product.objects.get(pk=item_id)
+    quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', [])
     size = request.POST.get('size', None)
@@ -21,10 +24,11 @@ def add_to_bag(request, item_id):
     for item in bag:
 
         if (item["item_id"] == item_id and item["item_size"] == size
-           and item["item_material"] == material
-           and item["item_colour"] == colour):
+            and item["item_material"] == material
+                and item["item_colour"] == colour):
             item["quantity"] += quantity
             new_item = False
+            messages.success(request, f'Updated the quantity of { product.name } in you\'re bag')
             break
 
     if new_item:
@@ -35,15 +39,16 @@ def add_to_bag(request, item_id):
             "item_colour": colour,
             "quantity": quantity
         })
+        messages.success(request, f'Added { quantity } of { product.name } to the bag')
 
     request.session['bag'] = bag
-
     return redirect(redirect_url)
 
 
 def adjust_bag(request, item_id):
     """ Adjust a specific item in the bag """
 
+    product_item = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity', 0))
     bag = request.session.get('bag', [])
     size = request.POST.get('product_size', None)
@@ -52,12 +57,14 @@ def adjust_bag(request, item_id):
 
     for item in bag:
         if (item["item_id"] == item_id and item["item_size"] == size
-           and item["item_material"] == material
-           and item["item_colour"] == colour):
+            and item["item_material"] == material
+                and item["item_colour"] == colour):
             product = item
 
             if quantity > 0:
                 product['quantity'] = quantity
+                messages.success(
+                    request, f'Quantity of { product_item.name } updated')
 
             else:
                 bag.remove(product)
@@ -79,8 +86,8 @@ def remove_from_bag(request, item_id):
 
         for item in bag:
             if (item["item_id"] == item_id and item["item_size"] == size
-               and item["item_material"] == material
-               and item["item_colour"] == colour):
+                and item["item_material"] == material
+                    and item["item_colour"] == colour):
                 product = item
 
                 bag.remove(product)
@@ -90,4 +97,3 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         print(e)
         return HttpResponse(status=500)
-
