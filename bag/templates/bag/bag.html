@@ -49,21 +49,19 @@
           id="id_qty_{{ item.product.id }}"
         />
 
-        <input type="hidden" name="product_size" value="{{ item.item_size }}" />
-        <input
-          type="hidden"
-          name="product_colour"
-          value="{{ item.item_colour }}"
-        />
+        <input type="hidden" name="product_size" value="{{ item.size }}" />
+        <input type="hidden" name="product_colour" value="{{ item.colour }}" />
         <input
           type="hidden"
           name="product_material"
-          value="{{ item.item_material }}"
+          value="{{ item.material }}"
         />
       </div>
     </form>
     <a class="update-link">Update</a>
     <a href="#removeModal" data-toggle="modal">Remove</a>
+
+    <!-- Modal, Failsafe for remove from bag option -->
 
     <div class="modal" tabindex="-1" id="removeModal">
       <div class="modal-dialog">
@@ -81,13 +79,16 @@
           <div class="modal-body">
             <p>Are you sure you want to remove this item from your bag?</p>
           </div>
-          <div class="modal-footer">    
-            <a href="#!" class="modal-close modal-cancel btn-flat">Cancel</a>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close modal-cancel btn checkoutBtn">Cancel</a>
             <a
-            class="remove-link"
-            id="remove_{{ item.product.id }}" data-size="{{ item.item_size }}" data-colour="{{ item.item_colour }}" data-material="{{ item.item_material }}"
+              class="remove-link btn checkoutBtn"
+              id="remove_{{ item.product.id }}"
+              data-size="{{ item.size }}"
+              data-colour="{{ item.colour }}"
+              data-material="{{ item.material }}"
             >
-            Yes
+              Yes
             </a>
           </div>
         </div>

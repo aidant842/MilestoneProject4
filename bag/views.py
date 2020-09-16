@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import (render, redirect, reverse,
+                              HttpResponse, get_object_or_404)
 from django.contrib import messages
 
 from products.models import Product
@@ -28,7 +29,8 @@ def add_to_bag(request, item_id):
                 and item["item_colour"] == colour):
             item["quantity"] += quantity
             new_item = False
-            messages.success(request, f'Updated the quantity of { product.name } in you\'re bag')
+            messages.success(request, f'Updated the quantity\
+                             of {product.name} in you\'re bag')
             break
 
     if new_item:
@@ -39,7 +41,8 @@ def add_to_bag(request, item_id):
             "item_colour": colour,
             "quantity": quantity
         })
-        messages.success(request, f'Added { quantity } of { product.name } to the bag')
+        messages.success(request, f'Added { quantity }\
+                         of { product.name } to the bag')
 
     request.session['bag'] = bag
     return redirect(redirect_url)
@@ -48,7 +51,8 @@ def add_to_bag(request, item_id):
 def adjust_bag(request, item_id):
     """ Adjust a specific item in the bag """
 
-    product_item = get_object_or_404(Product, pk=item_id)
+    bag_item = get_object_or_404(Product, pk=item_id)
+    print(bag_item)
     quantity = int(request.POST.get('quantity', 0))
     bag = request.session.get('bag', [])
     size = request.POST.get('product_size', None)
@@ -64,10 +68,13 @@ def adjust_bag(request, item_id):
             if quantity > 0:
                 product['quantity'] = quantity
                 messages.success(
-                    request, f'Quantity of { product_item.name } updated')
+                    request, f'Quantity of { bag_item.name }\
+                    updated to { item["quantity"] }')
 
             else:
                 bag.remove(product)
+                messages.success(
+                    request, f'{ bag_item.name } was removed from you\'re bag')
 
     request.session['bag'] = bag
 
@@ -79,10 +86,11 @@ def remove_from_bag(request, item_id):
 
     try:
         bag = request.session.get('bag', [])
+        bag_item = get_object_or_404(Product, pk=item_id)
         size = request.POST.get('size', None)
         material = request.POST.get('material', None)
         colour = request.POST.get('colour', None)
-        print(size, material, colour)
+        print(request.POST, 'hello')
 
         for item in bag:
             if (item["item_id"] == item_id and item["item_size"] == size
@@ -91,6 +99,8 @@ def remove_from_bag(request, item_id):
                 product = item
 
                 bag.remove(product)
+                messages.success(
+                    request, f'{ bag_item.name } was removed from you\'re bag')
 
         request.session['bag'] = bag
         return HttpResponse(status=200)

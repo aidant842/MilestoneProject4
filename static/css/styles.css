@@ -520,10 +520,6 @@ a.user-link, a.bag-link {
   font-weight: bold;
 }
 
-.modal-content {
-  background-color: #191716;
-}
-
 .keepShoppingBtn {
   margin-right: 5px;
 }
@@ -717,9 +713,28 @@ input {
 
 .message-container {
   position: fixed;
-  top: 72px;
+  top: 10px;
   right: 15px;
   z-index: 9999999999999;
+}
+
+.toast {
+  background-color: #6a7fdb;
+}
+
+.modal-content {
+  background-color: transparent;
+  border: none;
+}
+
+.modal-header {
+  background-color: #eaeaea;
+  border: none;
+}
+
+.modal-body, .modal-footer {
+  background-color: rgba(106, 127, 219, 0.8);
+  border: none;
 }
 
 @media only screen and (max-width: 600px) {

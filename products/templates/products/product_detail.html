@@ -4,10 +4,10 @@
   <hr class="heading-underline" />
 </div>
 
-<a class="store-link" href="{% url 'products' %}"><i class="store-link-arrow fas fa-store"></i><b>Store</b></a>
+<a class="store-link" href="{% url 'products' %}"><small><i class="store-link-arrow fas fa-angle-left"></i>Back to store</small></a>
 <div class="productContent">
   <div class="product-info">
-    <p>{{ product.name }}</p>
+    <p><b>{{ product.name }}</b></p>
     <p>{{ product.description }}</p>
   </div>
   <div class="productImage">
@@ -15,7 +15,8 @@
       ><img src="{{ product.image.url }}" alt="{{ product.name }}"
     /></a>
   </div>
-  <!-- Modal -->
+
+  <!-- Modal for image -->
   <div
     class="modal fade"
     id="imageModal"
@@ -34,7 +35,7 @@
   <div class="productSelects">
     <form method="POST" action="{% url 'add_to_bag' product.id %}">
       {% csrf_token %}
-      <p><strong>Price: €{{ product.price | display_price }}</strong></p>
+      <p><small>Price</small>: <b style="color: #6a7fdb">€{{ product.price | display_price }}</b></p>
       <div class="form-group">
         <label for="size">Size</label>
         <select class="form-control" id="size" name="size">
