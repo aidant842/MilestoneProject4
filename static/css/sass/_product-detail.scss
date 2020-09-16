@@ -1,7 +1,6 @@
 .store-link {
     color: $font-color;
-    position: relative;
-    left: 6%;
+    margin-left: 6.7%
 }
 
 .store-link-arrow {
@@ -32,20 +31,34 @@
     display: block;
 }
 
+#imageModal .modal-body {
+    background-color: transparent !important;
+    border: 1px solid $secondary-color;
+    box-shadow: 0px 0px 10px 8px rgba($secondary-color ,0.55);
+    position: fixed;
+    left: 20%;
+    top: 20%;
+    width: 60%;
+    height: 60%;
+    background-position: center;
+    background-size: cover;
+}
+
 @media only screen and (max-width: 1250px) {
 
     .productContent {
-            display: grid;
-            grid-template-columns: none;
-            grid-template-rows: 1fr;
-            width: 90%;
-            margin: auto;
-            grid-gap: 0px;
-            grid-row-gap: 10px;
-            height: 80%;
-            padding-bottom: 20px;
-            justify-content: center;
-            align-content: center;
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: 1fr;
+        width: 90%;
+        margin: auto;
+        grid-gap: 0px;
+        grid-row-gap: 10px;
+        height: 80%;
+        padding-bottom: 20px;
+        justify-content: center;
+        align-content: center;
+        margin-top: 15px;
     }
 
     .productContent img {
@@ -64,5 +77,29 @@
 
     .quantityLabel {
         display: block;
+    }
+
+    #imageModal .modal-body {
+        left: 10%;
+        top: 15%;
+        width: 85%;
+        height: 70%;
+    }
+
+    .store-link {
+    color: $font-color;
+    margin-left: 3.8%;
 }
+}
+
+@media only screen and (max-width: 600px) {
+    #imageModal .modal-body {
+        left: 5%;
+        width: 90%;
+        height: 50%;;
+    }
+
+    .store-link {
+        margin-left: 2.5%;
+    }
 }

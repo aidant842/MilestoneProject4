@@ -59,7 +59,7 @@
       </div>
     </form>
     <a class="update-link">Update</a>
-    <a href="#removeModal" data-toggle="modal">Remove</a>
+    <a href="#removeModal" class="remove-link" data-toggle="modal">Remove</a>
 
     <!-- Modal, Failsafe for remove from bag option -->
 
@@ -82,7 +82,7 @@
           <div class="modal-footer">
             <a href="#!" class="modal-close modal-cancel btn checkoutBtn">Cancel</a>
             <a
-              class="remove-link btn checkoutBtn"
+              class="btn checkoutBtn confirm-remove-link"
               id="remove_{{ item.product.id }}"
               data-size="{{ item.size }}"
               data-colour="{{ item.colour }}"
@@ -129,7 +129,7 @@
   });
 
   //Remove item and reload on click
-  $(".remove-link").click(function (e) {
+  $(".confirm-remove-link").click(function (e) {
     var csrfToken = "{{ csrf_token }}";
     var itemId = $(this).attr("id").split("remove_")[1];
     var size = $(this).data("size");
