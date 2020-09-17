@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'customtools',
     'products',
     'bag',
+    'checkout',
 ]
 
 MIDDLEWARE = [
