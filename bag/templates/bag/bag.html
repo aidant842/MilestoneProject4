@@ -107,7 +107,7 @@
   <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
   <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
   <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping</a>
-  <a class="btn checkoutBtn">Checkout</a>
+  <a href="{% url 'checkout' %}" class="btn checkoutBtn">Checkout</a>
 </div>
 
 {% else %}

@@ -3,7 +3,7 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 
-from products.models import Product
+from products.models import Product, Material, Size, Colour
 
 
 class Order(models.Model):
@@ -54,9 +54,12 @@ class OrderLineItem(models.Model):
              on_delete=models.CASCADE, related_name='lineitem'))
     product = (models.ForeignKey(Product, null=False,
                blank=False, on_delete=models.CASCADE))
-    product_size = models.CharField(max_length=2, null=True, blank=True)
-    product_material = models.CharField(max_length=20, null=True, blank=True)
-    product_colour = models.CharField(max_length=20, null=True, blank=True)
+    product_size = models.ForeignKey(Size, null=False, blank=False,
+                                     on_delete=models.CASCADE, default='')
+    product_material = models.ForeignKey(Material, null=False, blank=False,
+                                         on_delete=models.CASCADE, default='')
+    product_colour = models.ForeignKey(Colour, null=False, blank=False,
+                                       on_delete=models.CASCADE, default='')
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = (models.IntegerField(null=False,
                       blank=False, editable=False))

@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+  <h1>Checkout</h1>
+  <hr class="heading-underline" />
+</div>
+<small>Please fill out the form to complete your order.</small>
+<div class="checkout-form">
+    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+        {% csrf_token %}
+
+        <fieldset>
+            <legend class="fieldset-label small">Details</legend>
+            {{ order_form.full_name | as_crispy_field }}
+            {{ order_form.email | as_crispy_field }}
+        </fieldset>
+
+        <fieldset>
+            <legend class="fieldset-label small">Delivery</legend>
+            {{ order_form.phone_number | as_crispy_field }}
+            {{ order_form.street_address1 | as_crispy_field }}
+            {{ order_form.street_address2 | as_crispy_field }}
+            {{ order_form.town_or_city| as_crispy_field }}
+            {{ order_form.county | as_crispy_field }}
+            {{ order_form.postcode | as_crispy_field }}
+            {{ order_form.country | as_crispy_field }}
+        </fieldset>
+        {% if user.is_authenticated %}
+            <label for="id-save-info">Save this delivery information to my profile</label>
+            <input type="checkbox" id="id-save-info" name="save-info" checked></input>
+        {% else %}
+            <label for="id-save-info">
+                <a href="{% url 'account_signup' %}">Create an account</a> or
+                <a href="{% url 'account_login' %}">Login</a> to save this information
+            </label>
+        {% endif %}
+
+        <fieldset>
+            <legend class="fieldset-label small">Payment</legend>
+            <div id="card-element"></div>
+            <div id="card-errors" role="alert">
+                <a href="{% url 'view_bag' %}" class="btn keepShoppingBtn">Adjust Bag</a>
+                <a class="btn checkoutBtn" id="submit-button">Complete Order</a>
+                <p>
+                    <span class="icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </span>
+                    <span>
+                        Your card will be charged <strong>€ {{ grand_total | display_price }}</strong>
+                    </span>
+                </p>
+            </div>
+        </fieldset>
+
+    </form>
+</div>
+
+ {% endblock %}
