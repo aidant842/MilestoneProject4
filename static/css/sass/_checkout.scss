@@ -1,0 +1,46 @@
+.checkout-form {
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+    grid-template-rows: 5% 95%;
+    margin: 50px 10%;
+}
+
+.payment-form {
+    grid-column: 1;
+}
+
+.checkout-products {
+    display: grid;
+    grid-column: 3;
+    grid-row: 2;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.divider {
+    height: 80vh;
+    background-color: $secondary-color;
+    width: 1px;
+    grid-column: 2;
+    justify-self: center;
+}
+
+.checkout-image {
+    width: 150px;
+    height: auto;
+    grid-column: 1;
+}
+
+.item-details {
+    grid-column: 2;
+}
+
+.headings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.fill-form {
+    grid-row: 1;
+}

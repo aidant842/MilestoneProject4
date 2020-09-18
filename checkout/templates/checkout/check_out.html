@@ -3,9 +3,9 @@
   <h1>Checkout</h1>
   <hr class="heading-underline" />
 </div>
-<small>Please fill out the form to complete your order.</small>
 <div class="checkout-form">
-    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+<small class="fill-form">Please fill out the form to complete your order.</small>
+    <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="payment-form">
         {% csrf_token %}
 
         <fieldset>
@@ -52,6 +52,31 @@
         </fieldset>
 
     </form>
+
+    <div class="divider"></div>
+
+    <div class="headings">
+        <span>Order Summary</span>
+        <span>Details</span>
+        <span>Subtotal</span>
+    </div>
+
+    <div class="checkout-products">
+            {% for item in bag_items %}
+                <a href="{% url 'product_detail' item.product.id %}">
+                    <img class="checkout-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                </a>
+            <div class="item-details">
+
+                <small>{{ item.product.name }}</small><br>
+                <small>Size: {{ item.size }}</small><br>
+                <small>Colour: {{ item.colour }}</small><br>
+                <small>Material: {{ item.material }}</small>
+
+        </div>
+                <small>€ {{ item.total | display_price }}</small>
+            {% endfor %}
+    </div>
 </div>
 
  {% endblock %}

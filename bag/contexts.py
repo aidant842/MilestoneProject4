@@ -20,14 +20,13 @@ def bag_contents(request):
             'size': item["item_size"],
             'total': total,
         })
-
     delivery = int(total * .1)
     grand_total = total + delivery
 
     context = {
         'bag_items': bag_items,
         'delivery': delivery,
-        'total': total,
+        'total': int(total),
         'grand_total': grand_total,
     }
 
