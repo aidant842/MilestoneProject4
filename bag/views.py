@@ -28,6 +28,7 @@ def add_to_bag(request, item_id):
             and item["item_material"] == material
                 and item["item_colour"] == colour):
             item["quantity"] += quantity
+            item["total"] = product.price * item["quantity"]
             new_item = False
             messages.success(request, f'Updated the quantity\
                              of {product.name} in you\'re bag')
@@ -39,7 +40,8 @@ def add_to_bag(request, item_id):
             "item_size": size,
             "item_material": material,
             "item_colour": colour,
-            "quantity": quantity
+            "quantity": quantity,
+            "total": product.price * quantity
         })
         messages.success(request, f'Added { quantity }\
                          of { product.name } to the bag')
@@ -67,6 +69,7 @@ def adjust_bag(request, item_id):
 
             if quantity > 0:
                 product['quantity'] = quantity
+                product["total"] = bag_item.price * quantity
                 messages.success(
                     request, f'Quantity of { bag_item.name }\
                     updated to { item["quantity"] }')

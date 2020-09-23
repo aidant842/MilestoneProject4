@@ -18,7 +18,7 @@ def bag_contents(request):
             'material': item["item_material"],
             'colour': item["item_colour"],
             'size': item["item_size"],
-            'total': total,
+            'total': item["total"],
         })
     delivery = int(total * .1)
     grand_total = total + delivery
