@@ -44,6 +44,7 @@ card.addEventListener('change', function(event){
 var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
+    console.log('button clicked')
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
@@ -63,7 +64,6 @@ form.addEventListener('submit', function(ev) {
             card.update({ 'disabled': false});
             $('#submit-button').attr('disabled', false);
         } else {
-            console.log(result.paymentIntent.status)
             if (result.paymentIntent.status === 'succeeded') {
                 form.submit();
             }

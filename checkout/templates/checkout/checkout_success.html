@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+  <h1>Thank You!</h1>
+  <hr class="heading-underline" />
+</div>
+<div>
+
+<span>Your order has been recieved. A confirmation email will be sent to 
+{{ order.email }}</span>
+
+</div>
+
+ {% endblock %}

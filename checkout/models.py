@@ -25,7 +25,7 @@ class Order(models.Model):
     def _generate_order_number(self):
         """ Generate a random, unique order number using UUID """
 
-        return uuid.uuid4().hexh.upper()
+        return uuid.uuid4().hex.upper()
 
     def update_total(self):
         """ Update grand total each time an item is added to the order,
@@ -51,7 +51,7 @@ class Order(models.Model):
 
 class OrderLineItem(models.Model):
     order = (models.ForeignKey(Order, null=False, blank=False,
-             on_delete=models.CASCADE, related_name='lineitem'))
+             on_delete=models.CASCADE, related_name='lineitems'))
     product = (models.ForeignKey(Product, null=False,
                blank=False, on_delete=models.CASCADE))
     product_size = models.ForeignKey(Size, null=False, blank=False,
