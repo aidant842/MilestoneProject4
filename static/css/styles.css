@@ -128,14 +128,6 @@
   text-decoration: none;
 }
 
-.logo-colour {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 42px;
-  color: #6a7fdb;
-}
-
 .logo:hover {
   color: #eaeaea !important;
 }
@@ -698,6 +690,90 @@ a.user-link, a.bag-link {
   background-color: #fefde5 !important;
 }
 
+#loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(106, 127, 219, 0.4);
+  z-index: 9999;
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
+
+.loader-bg {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background: #191716;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-container {
+  position: fixed;
+  display: grid;
+  text-align: center;
+  font-size: 5rem;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: 1fr 1fr;
+}
+
+.loading-text {
+  align-self: end;
+}
+
+.loading-bubble {
+  align-self: start;
+  color: #6a7fdb;
+}
+
+.logo-colour-loader {
+  font-style: normal;
+  font-weight: bold;
+  line-height: 42px;
+  color: #6a7fdb;
+}
+
+.loading-bubble > div {
+  width: 18px;
+  height: 18px;
+  background-color: #6a7fdb;
+  border-radius: 100%;
+  display: inline-block;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.loading-bubble .bubble-1 {
+  animation-delay: -1.28s;
+}
+
+.loading-bubble .bubble-2 {
+  animation-delay: -0.64s;
+}
+
+.loading-bubble .bubble-3 {
+  animation-delay: -0.32s;
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -723,6 +799,14 @@ h1 {
 
 .logo-style {
   font-weight: bold;
+}
+
+.logo-colour {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 42px;
+  color: #6a7fdb;
 }
 
 ::-webkit-scrollbar {

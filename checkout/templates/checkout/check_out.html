@@ -3,6 +3,7 @@
   <h1>Checkout</h1>
   <hr class="heading-underline" />
 </div>
+
 <div class="checkout-form">
 <small class="fill-form">Please fill out the form to complete your order.</small>
     <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="payment-form">
@@ -78,6 +79,15 @@
     </div>
 </div>
 
+<!-- Loader -->
+
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <i class="fas fa-spinner fa-pulse"></i>
+        </span>
+    </h1>
+</div>
  {% endblock %}
 
  {% block postloadjs %}

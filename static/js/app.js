@@ -83,3 +83,7 @@ links.forEach(link => {
         mouseCursor.classList.remove('link-grow');
     });
 });
+
+document.body.onload = function () {
+  document.querySelector(".loader-bg").classList.add("hidden");
+};

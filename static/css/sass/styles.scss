@@ -35,6 +35,8 @@ $heading-size-mobile: 2rem;
 
 @import 'checkout';
 
+@import 'loader';
+
 *{
     margin: 0;
     padding: 0;
@@ -60,6 +62,14 @@ h1 {
 
 .logo-style {
     font-weight: bold;
+}
+
+.logo-colour {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: $secondary-color;
 }
 
 ::-webkit-scrollbar {
