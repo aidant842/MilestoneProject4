@@ -1,0 +1,23 @@
+.block-inner-content {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.block-inner-content button {
+    @extend %button-style;
+    display: block;
+    margin: 10px 0;
+}
+
+.block-inner-content button:hover {
+    @extend %button-hover;
+}
+
+.form-check {
+    padding: 0 !important;
+}
+
+.form-check-input {
+    margin-left: -12rem;
+    margin-top: -0.35rem;
+}

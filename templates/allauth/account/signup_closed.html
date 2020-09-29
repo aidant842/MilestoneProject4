@@ -2,10 +2,14 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+{% block head_title %}
+<div class="heading">
+  <h1>Signup Closed</h1>
+  <hr class="heading-underline" />
+</div>
+{% endblock %}
 
-{% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
-
+{% block inner_content %}
 <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+{% endblock %}
 {% endblock %}

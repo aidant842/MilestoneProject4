@@ -1,15 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap");
-.keepShoppingBtn, .checkoutBtn, .category-button, .buy-now-btn, .shop-now-btn {
+.block-inner-content button, .keepShoppingBtn, .checkoutBtn, .category-button, .buy-now-btn, .shop-now-btn {
   background: transparent;
   min-width: 120px;
   height: 40px;
   color: #eaeaea;
   border: 1px solid #6a7fdb;
+  border-radius: 0.25rem;
 }
 
-.keepShoppingBtn:hover, .checkoutBtn:hover, .category-button:hover, .buy-now-btn:hover, .shop-now-btn:hover {
+.block-inner-content button:hover, .keepShoppingBtn:hover, .checkoutBtn:hover, .category-button:hover, .buy-now-btn:hover, .shop-now-btn:hover {
   color: #6a7fdb;
   background: rgba(234, 234, 234, 0.9);
+  transition: ease-in-out 0.3s;
 }
 
 .primary-navigation {
@@ -779,6 +781,25 @@ select option[value=""] {
     transform: scale(1);
   }
 }
+.block-inner-content {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.block-inner-content button {
+  display: block;
+  margin: 10px 0;
+}
+
+.form-check {
+  padding: 0 !important;
+}
+
+.form-check-input {
+  margin-left: -12rem;
+  margin-top: -0.35rem;
+}
+
 * {
   margin: 0;
   padding: 0;

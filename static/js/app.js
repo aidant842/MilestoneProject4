@@ -65,7 +65,7 @@ cardFade();
 /* Cursor */
 
 let mouseCursor = document.querySelector(".cursor");
-let links = document.querySelectorAll('a');
+let links = document.querySelectorAll('a, button');
 
 window.addEventListener('mousemove', cursor);
 

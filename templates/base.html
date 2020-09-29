@@ -61,15 +61,6 @@
             <span class="logo-style">PG</span><span class="logo-colour-loader">.</span> Photography
         </div>
             <div class="loading-bubble">
-                <!-- <div class="spinner-grow bubble-1" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-grow bubble-2" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-grow bubble-3" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div> -->
                 <div class="bubble-1"></div>
                 <div class="bubble-2"></div>
                 <div class="bubble-3"></div>
@@ -107,16 +98,16 @@
                         <a href="#">Contact</a>
                     </li>
                     <li class="link">
-                        <a href="#">Login</a>
+                        <a href="{% url 'account_login' %}">Login</a>
                     </li>
                     <li class="link">
-                        <a href="#">Signup</a>
+                        <a href="{% url 'account_signup' %}">Signup</a>
                     </li>
                 </ul>
 
                 <ul class="misc-links">
                     <li class="user-link">
-                        <a href="#"><i class="far fa-user"></i></a>
+                        <a href="{% url 'profile' %}"><i class="far fa-user"></i></a>
                     </li>
 
                     <li class="bag-link">
