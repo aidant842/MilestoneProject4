@@ -70,7 +70,12 @@
 
 
 .StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+  background-color: $background-color !important;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #6c757d !important;
 }
 
 #loading-overlay {

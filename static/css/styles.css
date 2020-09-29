@@ -687,7 +687,12 @@ a.user-link, a.bag-link {
 }
 
 .StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+  background-color: rgba(25, 23, 22, 0.9) !important;
+}
+
+select:invalid,
+select option[value=""] {
+  color: #6c757d !important;
 }
 
 #loading-overlay {
