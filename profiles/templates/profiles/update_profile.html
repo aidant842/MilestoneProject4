@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+  <h1>My Profile</h1>
+  <hr class="heading-underline" />
+</div>
+
+<div class="update-user-delivery-info">
+    <p>Default Delivery Information</p>
+    <form action="{% url 'update_profile' %}" method="POST" id="profile-update-form">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class="btn" id="submit-button">Update Information</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+    let countrySelected = $('#id_default_country').val();
+    console.log(Boolean(countrySelected));
+    if (!countrySelected) {
+        $('#id_default_country').css('color', '#6c757d');
+    }
+    $('#id_default_country').change(function(){
+        countrySelected = $(this).val();
+        console.log(Boolean(countrySelected));
+        if(!countrySelected){
+            $(this).css('color', '#6c757d');
+        } else {
+            $(this).css('color', '#eaeaea');
+        }
+    });
+    </script>
+ {% endblock %}

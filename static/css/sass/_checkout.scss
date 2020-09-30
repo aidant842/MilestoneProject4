@@ -73,8 +73,13 @@
   background-color: $background-color !important;
 }
 
+select,
+select option {
+    color: $font-color;
+}
+
 select:invalid,
-select option[value=""] {
+select option:first-child {
     color: #6c757d !important;
 }
 

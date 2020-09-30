@@ -25,22 +25,6 @@ $heading-size-mobile: 2rem;
     transition: ease-in-out 0.3s;
 }
 
-@import 'nav';
-
-@import 'landing';
-
-@import 'products';
-
-@import 'product-detail';
-
-@import 'bag';
-
-@import 'checkout';
-
-@import 'loader';
-
-@import 'allauth';
-
 *{
     margin: 0;
     padding: 0;
@@ -125,8 +109,11 @@ a:hover {
     min-height: 100vh;
 }
 
+.form-style {
+    color: $font-color;
+}
+
 .form-control {
-    color: $font-color !important;
     background-color: transparent !important;
     border: 1px solid $secondary-color !important;
 }
@@ -142,7 +129,7 @@ a:hover {
 
 input {
     background: rgba(49, 46, 45, 0.9);
-    color: $font-color;
+    color: $font-color !important;
     border: 1px solid $secondary-color;
     border-radius: 4px;
     width: 100%;
@@ -202,3 +189,21 @@ input {
         margin-top: 64px;
     }
 }
+
+@import 'nav';
+
+@import 'landing';
+
+@import 'products';
+
+@import 'product-detail';
+
+@import 'bag';
+
+@import 'checkout';
+
+@import 'loader';
+
+@import 'allauth';
+
+@import 'profile';

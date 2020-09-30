@@ -1,9 +1,23 @@
-{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+{% extends "base.html" %} {% load static %} {% load tools %}  {% block content %}
 <div class="heading">
   <h1>My Profile</h1>
   <hr class="heading-underline" />
 </div>
-{{ user }}
-{{ user.email }}
-{{ user.password }}
+
+<div class="user-delivery-info">
+    Phone number: {{ profile.default_phone_number }} <br>
+    Street Address 1: {{ profile.default_street_address1 }} <br>
+    Street Address 2: {{ profile.default_street_address2 }} <br>
+    town: {{ profile.default_town_or_city }} <br>
+    county: {{ profile.default_county }} <br>
+    postcode: {{ profile.default_postcode }} <br>
+    country: {{ profile.default_country.name }} <br>
+    <a href="{% url 'update_profile' %}" class="btn" id="submit-button">Update Information</a>
+</div>
+
+<div class="order-history">
+    <p>Order History</p>
+    {{ orders }}
+</div>
  {% endblock %}
+

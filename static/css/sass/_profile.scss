@@ -1,0 +1,8 @@
+#id_default_country option:not(:first-child) {
+    color: $font-color;
+}
+
+#id_default_country option:first-child {
+    color: #6c757d;
+}
+
