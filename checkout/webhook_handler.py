@@ -4,6 +4,7 @@ from django.http import HttpResponse
 
 from .models import Order, OrderLineItem
 from products.models import Product, Material, Colour, Size
+from profiles.models import UserProfile
 
 import json
 import time
@@ -37,6 +38,8 @@ class StripeWH_Handler:
         for field, value in shipping_details.items():
             if value == "":
                 shipping_details.address[field] = None
+
+        # Update profile information if save_info was checked
 
         order_exists = False
         attempt = 1

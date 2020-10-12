@@ -38,7 +38,7 @@
       <p><small>Price</small>: <b style="color: #6a7fdb">€{{ product.price | display_price }}</b></p>
       <div class="form-group">
         <label for="size">Size</label>
-        <select class="form-control" id="size" name="size">
+        <select class="form-control" id="size" name="size" required>
           <option value="" disabled selected></option>
           {% for size in sizes %}
           <option value="{{ size.value }}">{{ size.value }}</option>
@@ -48,7 +48,7 @@
       {% if product.has_colour %}
       <div class="form-group">
         <label for="colour">Colour</label>
-        <select class="form-control" id="colour" name="colour">
+        <select class="form-control" id="colour" name="colour" required>
         <option value="" disabled selected></option>
           {% for colour in colours %}
           <option value="{{ colour.name }}">{{ colour.name }}</option>
@@ -58,7 +58,7 @@
       {% endif %}
       <div class="form-group">
         <label for="material">Material</label>
-        <select class="form-control" id="material" name="material">
+        <select class="form-control" id="material" name="material" required>
         <option value="" disabled selected></option>
           {% for material in materials %}
           <option value="{{ material.value }}">{{ material.value }}</option>

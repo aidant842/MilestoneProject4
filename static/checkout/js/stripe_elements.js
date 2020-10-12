@@ -50,7 +50,9 @@ form.addEventListener('submit', function(ev) {
     $('.checkout-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
 
-    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+
+    var saveInfo = Boolean($('#id-save-info').prop('checked'));
+    console.log(saveInfo);
     var csrfToken = $('input[name=csrfmiddlewaretoken').val();
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
@@ -58,7 +60,7 @@ form.addEventListener('submit', function(ev) {
         'save_info': saveInfo,
     };
 
-    var url = 'cache_checkout_data/';
+    var url = '/checkout/cache_checkout_data/';
 
     $.post(url, postData).done(function(){
         stripe.confirmCardPayment(clientSecret, {

@@ -5,6 +5,9 @@
 </div>
 
 <div class="user-delivery-info">
+    First Name: {{ profile.user.first_name }} <br>
+    Last Name: {{ profile.user.last_name }} <br>
+    Email Address: {{ profile.user.email }} <br>
     Phone number: {{ profile.default_phone_number }} <br>
     Street Address 1: {{ profile.default_street_address1 }} <br>
     Street Address 2: {{ profile.default_street_address2 }} <br>
@@ -17,7 +20,21 @@
 
 <div class="order-history">
     <p>Order History</p>
-    {{ orders }}
+    {% for order in orders %}
+        {% for item in order.lineitems.all %}
+            Product: {{ item.product.name }}
+            Size: {{ item.product_size }}
+            Material: {{ item.product_material }}
+            Colour: {{ item.product_colour }}
+            Quantity: {{ item.quantity }}
+            Total: €{{ item.lineitem_total| display_price }}
+        {% endfor %}
+    {{ order.date }}
+    <a href="{% url 'order_history' order.order_number %}"
+    title="{{ order.order_number}}">
+        {{ order.order_number|truncatechars:6 }}<br>
+    </a>
+    {% endfor %}
 </div>
  {% endblock %}
 

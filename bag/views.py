@@ -54,7 +54,6 @@ def adjust_bag(request, item_id):
     """ Adjust a specific item in the bag """
 
     bag_item = get_object_or_404(Product, pk=item_id)
-    print(bag_item)
     quantity = int(request.POST.get('quantity', 0))
     bag = request.session.get('bag', [])
     size = request.POST.get('product_size', None)
@@ -90,10 +89,9 @@ def remove_from_bag(request, item_id):
     try:
         bag = request.session.get('bag', [])
         bag_item = get_object_or_404(Product, pk=item_id)
-        size = request.POST.get('size', None)
-        material = request.POST.get('material', None)
-        colour = request.POST.get('colour', None)
-        print(request.POST, 'hello')
+        size = request.POST['size']
+        material = request.POST['material']
+        colour = request.POST['colour']
 
         for item in bag:
             if (item["item_id"] == item_id and item["item_size"] == size

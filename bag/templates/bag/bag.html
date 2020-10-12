@@ -4,7 +4,8 @@
   <hr class="heading-underline" />
 </div>
 
-{% if bag_items %} {% for item in bag_items %}
+{% if bag_items %} 
+{% for item in bag_items %}
 <div class="bagContent">
   <div class="bagImg">
     <a href="{% url 'product_detail' item.product.id %}">
@@ -51,15 +52,19 @@
 
         <input type="hidden" name="product_size" value="{{ item.size }}" />
         <input type="hidden" name="product_colour" value="{{ item.colour }}" />
-        <input
-          type="hidden"
-          name="product_material"
-          value="{{ item.material }}"
+        <input type="hidden" name="product_material" value="{{ item.material }}"
         />
       </div>
     </form>
     <a class="update-link">Update</a>
-    <a href="#removeModal" class="remove-link" data-toggle="modal">Remove</a>
+    <a  class="remove-link"
+        id="remove_{{ item.item_id }}"
+        data-product_size="{{ item.size }}"
+        data-product_colour="{{ item.colour }}"
+        data-product_material="{{ item.material }}">
+    Remove
+    </a>
+
 
     <!-- Modal, Failsafe for remove from bag option -->
 
@@ -81,15 +86,7 @@
           </div>
           <div class="modal-footer">
             <a href="#!" class="modal-close modal-cancel btn checkoutBtn">Cancel</a>
-            <a
-              class="btn checkoutBtn confirm-remove-link"
-              id="remove_{{ item.product.id }}"
-              data-size="{{ item.size }}"
-              data-colour="{{ item.colour }}"
-              data-material="{{ item.material }}"
-            >
-              Yes
-            </a>
+            <a class="btn checkoutBtn confirm-remove-link"> Yes </a>
           </div>
         </div>
       </div>
@@ -129,23 +126,27 @@
   });
 
   //Remove item and reload on click
-  $(".confirm-remove-link").click(function (e) {
+  $(".remove-link").click(function (e) {
     var csrfToken = "{{ csrf_token }}";
     var itemId = $(this).attr("id").split("remove_")[1];
-    var size = $(this).data("size");
-    var colour = $(this).data("colour");
-    var material = $(this).data("material");
+    var size = $(this).data("product_size");
+    var colour = $(this).data("product_colour");
+    var material = $(this).data("product_material");
     var url = `/bag/remove/${itemId}/`;
     var data = {
-      csrfmiddlewaretoken: csrfToken,
-      size: size,
-      colour: colour,
-      material: material,
+      'csrfmiddlewaretoken': csrfToken,
+      'size': size,
+      'colour': colour,
+      'material': material,
     };
 
-    $.post(url, data).done(function () {
-      location.reload();
-    });
+    $('#removeModal').modal('show');
+
+    if($(".confirm-remove-link").click(function(){
+        $.post(url, data).done(function () {
+            location.reload();
+        });
+    }));
   });
 </script>
 

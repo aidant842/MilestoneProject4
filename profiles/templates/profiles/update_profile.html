@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
 <div class="heading">
-  <h1>My Profile</h1>
+  <h1>Update Profile</h1>
   <hr class="heading-underline" />
 </div>
 
@@ -8,7 +8,8 @@
     <p>Default Delivery Information</p>
     <form action="{% url 'update_profile' %}" method="POST" id="profile-update-form">
     {% csrf_token %}
-    {{ form|crispy }}
+    {{ user_edit_form | crispy }}
+    {{ user_profile_form | crispy }}
     <button class="btn" id="submit-button">Update Information</button>
     </form>
 </div>
