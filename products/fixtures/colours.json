@@ -1,0 +1,17 @@
+[
+    {
+        "pk": 1,
+        "model": "products.colour",
+        "fields": {
+            "name": "Colour"
+        }
+    },
+
+    {
+        "pk": 2,
+        "model": "products.colour",
+        "fields": {
+            "name": "Black & White"
+        }
+    }
+]

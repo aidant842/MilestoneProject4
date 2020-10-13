@@ -1,0 +1,17 @@
+[
+    {
+        "pk": 1,
+        "model": "products.material",
+        "fields": {
+            "value": "Canvas"
+        }
+    },
+
+    {
+        "pk": 2,
+        "model": "products.material",
+        "fields": {
+            "value": "Photo Paper"
+        }
+    }
+]
