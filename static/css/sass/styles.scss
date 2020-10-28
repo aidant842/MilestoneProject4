@@ -48,6 +48,23 @@ h1 {
     font-weight: bold;
 }
 
+.heading {
+    text-align: center;
+    padding-top: 1rem;
+    display: grid;
+}
+
+.heading h1 {
+    font-family: $main-font;
+    font-weight: bold;
+}
+
+.heading-underline {
+    width: 80vw;
+    background-color: $secondary-color;
+    justify-self: center;
+}
+
 .logo-style {
     font-weight: bold;
 }
@@ -71,6 +88,10 @@ h1 {
 ::-webkit-scrollbar-thumb {
     background: rgba($main-color, 0.8);
     border-radius: 50px;
+}
+
+a {
+    color: $font-color;
 }
 
 a:hover {
@@ -188,6 +209,10 @@ input {
         width: 100%;
         margin-top: 64px;
     }
+
+    .heading h1 {
+        font-size: 1.75rem;
+    }
 }
 
 @import 'nav';
@@ -207,3 +232,5 @@ input {
 @import 'allauth';
 
 @import 'profile';
+
+@import 'login';

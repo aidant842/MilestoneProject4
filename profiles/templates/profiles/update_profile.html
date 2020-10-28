@@ -3,15 +3,16 @@
   <h1>Update Profile</h1>
   <hr class="heading-underline" />
 </div>
-
+<div class="update-profile-container">
 <div class="update-user-delivery-info">
     <p>Default Delivery Information</p>
     <form action="{% url 'update_profile' %}" method="POST" id="profile-update-form">
     {% csrf_token %}
     {{ user_edit_form | crispy }}
     {{ user_profile_form | crispy }}
-    <button class="btn" id="submit-button">Update Information</button>
+    <button class="btn profile-edit-button" id="submit-button">Save</button>
     </form>
+</div>
 </div>
 {% endblock %}
 

@@ -63,3 +63,9 @@
     transform: scale(1.0);
   }
 }
+
+@media only screen and (max-width: 650px) {
+    .loading-container {
+        font-size: 1.8rem;
+    }
+}

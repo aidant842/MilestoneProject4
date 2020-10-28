@@ -36,8 +36,8 @@ class UserProfileForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
+                self.fields[field].label = placeholders[field]
             self.fields[field].widget.attrs['class'] = 'form-style'
-            self.fields[field].label = False
 
 
 class UserEditForm(forms.ModelForm):

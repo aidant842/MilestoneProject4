@@ -26,8 +26,8 @@
             {{ order_form.country | as_crispy_field }}
         </fieldset>
         {% if user.is_authenticated %}
-            <label for="id-save-info">Save this delivery information to my profile</label>
-            <input type="checkbox" id="id-save-info" name="save-info">
+            <label for="id-save-info">Save Info</label>
+            <input type="checkbox" id="id-save-info" name="save-info" >
         {% else %}
             <label for="id-save-info">
                 <a href="{% url 'account_signup' %}">Create an account</a> or
@@ -42,8 +42,11 @@
             <input type="hidden" value="{{ client_secret }}" name="client_secret">
         </fieldset>
 
+        <div class="checkout-form-buttons">
             <a href="{% url 'view_bag' %}" class="btn keepShoppingBtn">Adjust Bag</a>
             <button class="btn checkoutBtn" id="submit-button">Complete Order</button>
+        </div>
+
             <p>
                 <span class="icon">
                     <i class="fas fa-exclamation-circle"></i>
@@ -56,28 +59,34 @@
 
     <div class="divider"></div>
 
-    <div class="headings">
-        <span>Order Summary</span>
-        <span>Details</span>
-        <span>Subtotal</span>
-    </div>
+<div class="checkout-products-container">
 
+    <div class="headings">
+        <span class="order-summary">Order Summary<br></span>
+        <span class="order-details">Details<br></span>
+        <span>Subtotal<br></span>
+    </div>
+    <hr class="checkout-hr">
+
+{% for item in bag_items %}
     <div class="checkout-products">
-            {% for item in bag_items %}
                 <a href="{% url 'product_detail' item.product.id %}">
                     <img class="checkout-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                 </a>
             <div class="item-details">
-
-                <small>{{ item.product.name }}</small><br>
+                <small><strong class="product-name">{{ item.product.name }}</strong></small><br>
                 <small>Size: {{ item.size }}</small><br>
                 <small>Colour: {{ item.colour }}</small><br>
                 <small>Material: {{ item.material }}</small>
-
-        </div>
-                <small>€ {{ item.total | display_price }}</small>
-            {% endfor %}
+            </div>
+            <div class="item-price">
+                <small><strong>€ {{ item.total | display_price }}</strong></small>
+            </div>
     </div>
+    <hr class="checkout-hr">
+    {% endfor %}
+</div>
+
 </div>
 
 <!-- Loader -->

@@ -5,9 +5,18 @@
 </div>
 <div>
 
-<span>Your order has been recieved. A confirmation email will be sent to 
+<span>Your order has been recieved. A confirmation email will be sent to:
 {{ order.email }}</span>
 
+order details:
+    {% for item in order.lineitems.all %}
+        Product: {{ item.product.name }}
+        Size: {{ item.product_size }}
+        Material: {{ item.product_material }}
+        Colour: {{ item.product_colour }}
+        Quantity: {{ item.quantity }}
+        Total: €{{ item.lineitem_total| display_price }}
+    {% endfor %}
 </div>
 
  {% endblock %}

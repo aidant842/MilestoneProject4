@@ -23,24 +23,6 @@
     width: 100%;
 }
 
-.heading {
-    text-align: center;
-    padding-top: 0.5rem;
-    display: grid;
-    justify-self: center;
-}
-
-.heading h1 {
-    font-family: $main-font;
-    font-weight: bold;
-}
-
-.heading-underline {
-    width: 80vw;
-    background-color: $secondary-color;
-    justify-self: center;
-}
-
 .shop-section {
     margin: 0 auto;
     padding-top: 2rem;

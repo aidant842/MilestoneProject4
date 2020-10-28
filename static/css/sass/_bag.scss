@@ -51,12 +51,14 @@
     grid-column: 1;
     font-weight: bold;
     color: $font-color;
+    height: 5%;
 }
 
 .remove-link {
     grid-column: 3;
     font-weight: bold;
     color: $font-color;
+    height: 5%;
 }
 
 .bagTotal {
@@ -125,7 +127,7 @@
 
 @media only screen and (max-width: 500px){
     .bagContent{
-        grid-template-columns: none;
+        grid-template-columns: 1fr;
         grid-template-rows: 1fr;
     }
 

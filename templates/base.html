@@ -87,22 +87,23 @@
                     <li class="link">
                         <a href="{% url 'home' %}">Home</a>
                     </li>
-                    <li class="link">
-                        <a href="#">About</a>
-                    </li>
+    
                     <li class="link">
                         <a href="{% url 'products' %}">Store</a>
-                        
                     </li>
+
                     <li class="link">
                         <a href="#">Contact</a>
                     </li>
+
                     <li class="link">
-                        <a href="{% url 'account_login' %}">Login</a>
+                        <a href="{% url 'account_login' %}">Login/Signup</a>
                     </li>
-                    <li class="link">
+
+                   <!--  <li class="link">
                         <a href="{% url 'account_signup' %}">Signup</a>
-                    </li>
+                    </li> -->
+                    
                 </ul>
 
                 <ul class="misc-links">
@@ -117,7 +118,7 @@
                     
                 </ul>
 
-                <a href="#" class="user-link"><i class="far fa-user"></i></a>
+                <a href="{% url 'profile' %}" class="user-link"><i class="far fa-user"></i></a>
                 <a href="{% url 'view_bag' %}" class="bag-link"><i class="fas fa-shopping-bag"></i></a>
                 
             </div>

@@ -1,6 +1,5 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load static %}
 {% block content %}
-
 {% block header %}
 {% endblock %}
 
@@ -11,4 +10,8 @@
     {% endblock %}
 </div>
 
+{% endblock %}
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'js/addIcons.js' %}"></script>
 {% endblock %}

@@ -1,40 +1,58 @@
-{% extends "base.html" %} {% load static %} {% load tools %}  {% block content %}
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
 <div class="heading">
-  <h1>My Profile</h1>
-  <hr class="heading-underline" />
+	<h1>{{ profile }}'s Profile</h1>
+	<hr class="heading-underline" />
 </div>
+<div class="profile-container">
 
-<div class="user-delivery-info">
-    First Name: {{ profile.user.first_name }} <br>
-    Last Name: {{ profile.user.last_name }} <br>
-    Email Address: {{ profile.user.email }} <br>
-    Phone number: {{ profile.default_phone_number }} <br>
-    Street Address 1: {{ profile.default_street_address1 }} <br>
-    Street Address 2: {{ profile.default_street_address2 }} <br>
-    town: {{ profile.default_town_or_city }} <br>
-    county: {{ profile.default_county }} <br>
-    postcode: {{ profile.default_postcode }} <br>
-    country: {{ profile.default_country.name }} <br>
-    <a href="{% url 'update_profile' %}" class="btn" id="submit-button">Update Information</a>
+	<div class="user-details-heading">
+		<h5>Delivery Details</h5>
+		<hr class="checkout-hr">
+	</div>
+	<div class="user-delivery-info">
+		<div class="profile-values">
+			<span>{{ profile.user.first_name }}</span>
+			<span>{{ profile.user.last_name }}</span>
+			<span>{{ profile.user.email }}</span>
+			<span>{{ profile.default_phone_number }}</span>
+			<span>{{ profile.default_street_address1 }}</span>
+			<span>{{ profile.default_street_address2 }}</span>
+			<span>{{ profile.default_town_or_city }}</span>
+			<span>{{ profile.default_county }}</span>
+			<span>{{ profile.default_postcode }}</span>
+			<span>{{ profile.default_country.name }}</span>
+		</div>
+		<a href="{% url 'update_profile' %}" class="btn profile-edit-button" id="submit-button">Update Information</a>
+	</div>
+	<div class="order-history-heading">
+		<h5>Order History</h5>
+		<hr class="checkout-hr">
+	</div>
+	<div class="order-history-container">
+		{% for order in orders %}
+		<div class="order-history">
+			{% for item in order.lineitems.all %}
+			<div class="order-keys">
+				<span>Product:</span>
+				<span>Quantity:</span>
+				<span>Total:</span>
+				<span>Order Date:</span>
+				<span>Order Number:</span>
+			</div>
+
+			<div class="order-values">
+				<span>{{ item.product.name }}</span>
+				<span>{{ item.quantity }}</span>
+				<span>€{{ item.lineitem_total| display_price }}</span>
+				{% endfor %}
+				<span>{{ order.date.date }}</span>
+				<a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number}}"><i class="fas fa-link"></i>
+					{{ order.order_number|truncatechars:10 }}<br>
+            </a>
+			</div>
+		</div>
+		<hr class="checkout-hr">
+		{% endfor %}
+	</div>
 </div>
-
-<div class="order-history">
-    <p>Order History</p>
-    {% for order in orders %}
-        {% for item in order.lineitems.all %}
-            Product: {{ item.product.name }}
-            Size: {{ item.product_size }}
-            Material: {{ item.product_material }}
-            Colour: {{ item.product_colour }}
-            Quantity: {{ item.quantity }}
-            Total: €{{ item.lineitem_total| display_price }}
-        {% endfor %}
-    {{ order.date }}
-    <a href="{% url 'order_history' order.order_number %}"
-    title="{{ order.order_number}}">
-        {{ order.order_number|truncatechars:6 }}<br>
-    </a>
-    {% endfor %}
-</div>
- {% endblock %}
-
+{% endblock %}
