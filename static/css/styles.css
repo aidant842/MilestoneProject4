@@ -3,13 +3,13 @@
   background: transparent;
   min-width: 120px;
   height: 40px;
-  color: #eaeaea;
+  color: #eaeaea !important;
   border: 1px solid #6a7fdb;
   border-radius: 0.25rem;
 }
 
 .profile-edit-button:hover, .block-inner-content button:hover, .keepShoppingBtn:hover, .checkoutBtn:hover, .category-button:hover, .buy-now-btn:hover, .shop-now-btn:hover {
-  color: #6a7fdb;
+  color: #6a7fdb !important;
   background: rgba(234, 234, 234, 0.9);
   transition: ease-in-out 0.3s;
 }
@@ -37,6 +37,10 @@ h1 {
   font-weight: bold;
 }
 
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(106, 127, 219, 0.25);
+}
+
 .heading {
   text-align: center;
   padding-top: 1rem;
@@ -44,8 +48,9 @@ h1 {
 }
 
 .heading h1 {
-  font-family: Montserrat;
+  /* font-family: $main-font; */
   font-weight: bold;
+  font-size: 1.75rem;
 }
 
 .heading-underline {
@@ -55,7 +60,8 @@ h1 {
 }
 
 .logo-style {
-  font-weight: bold;
+  font-family: Lato;
+  font-weight: normal;
 }
 
 .logo-colour {
@@ -203,6 +209,10 @@ input {
     font-size: 1.75rem;
   }
 }
+.bg {
+  transition: transform 0.5s ease-in;
+}
+
 .primary-navigation {
   position: fixed;
   display: grid;
@@ -295,6 +305,10 @@ input {
 
 .nav-active {
   transform: translateX(100%);
+}
+
+.body-active {
+  transform: translateX(90px);
 }
 
 .link {
@@ -394,6 +408,10 @@ a.user-link, a.bag-link {
     transform: translateX(0%) translateY(-100%);
   }
 
+  .body-active {
+    transform: translateX(0px) translateY(-64px);
+  }
+
   .logo {
     grid-column: 1;
     grid-row: 1;
@@ -486,9 +504,6 @@ a.user-link, a.bag-link {
   grid-gap: 30px;
   padding: 3rem 5rem;
   justify-content: center;
-  /* line-height: 0;
-  column-count: 5;
-  grid-gap: 10px; */
 }
 
 .card {
@@ -532,6 +547,7 @@ a.user-link, a.bag-link {
 
 .category-button {
   margin: 0 auto;
+  text-transform: capitalize;
 }
 
 @media only screen and (max-width: 600px) {
@@ -564,7 +580,7 @@ a.user-link, a.bag-link {
 }
 
 .productContent img {
-  width: 100%;
+  width: 90%;
   height: auto;
 }
 
@@ -576,15 +592,20 @@ a.user-link, a.bag-link {
   display: block;
 }
 
+.modal {
+  background: rgba(25, 23, 22, 0.95);
+}
+
 #imageModal .modal-body {
   background-color: transparent !important;
   border: 1px solid #6a7fdb;
   box-shadow: 0px 0px 10px 8px rgba(106, 127, 219, 0.55);
   position: fixed;
-  left: 20%;
-  top: 20%;
-  width: 60%;
-  height: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
   background-position: center;
   background-size: cover;
 }
@@ -624,8 +645,6 @@ a.user-link, a.bag-link {
   }
 
   #imageModal .modal-body {
-    left: 10%;
-    top: 15%;
     width: 85%;
     height: 70%;
   }
@@ -637,7 +656,6 @@ a.user-link, a.bag-link {
 }
 @media only screen and (max-width: 600px) {
   #imageModal .modal-body {
-    left: 5%;
     width: 90%;
     height: 50%;
   }
@@ -700,6 +718,7 @@ a.user-link, a.bag-link {
   font-weight: bold;
   color: #eaeaea;
   height: 5%;
+  cursor: pointer;
 }
 
 .remove-link {
@@ -707,6 +726,7 @@ a.user-link, a.bag-link {
   font-weight: bold;
   color: #eaeaea;
   height: 5%;
+  cursor: pointer;
 }
 
 .bagTotal {
@@ -844,6 +864,7 @@ a.user-link, a.bag-link {
 
 .product-name {
   color: #6a7fdb;
+  font-weight: bold;
 }
 
 .item-price {
@@ -895,7 +916,7 @@ a.user-link, a.bag-link {
 
 select,
 select option {
-  color: #eaeaea;
+  color: #eaeaea !important;
 }
 
 select:invalid,
@@ -945,6 +966,23 @@ select option:first-child {
   background-color: #6a7fdb;
 }
 
+/***********  Checkout Success Page  ************/
+.checkout-success-container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.success-order-details {
+  display: grid;
+  margin-top: 2rem;
+}
+
+.success-order-details h5 {
+  color: #6a7fdb;
+  font-weight: bold;
+}
+
+/**********  ************/
 @media only screen and (max-width: 1150px) {
   .checkout-form {
     display: grid;
@@ -1041,13 +1079,12 @@ select option:first-child {
   color: #6a7fdb;
 }
 
-.logo-colour-loader {
-  font-style: normal;
-  font-weight: bold;
-  line-height: 42px;
-  color: #6a7fdb;
-}
-
+/* .logo-colour-loader{
+    font-style: normal;
+    font-weight: bold;
+    line-height: 42px;
+    color: $secondary-color;
+} */
 .loading-bubble > div {
   width: 18px;
   height: 18px;
@@ -1120,8 +1157,14 @@ select option:first-child {
   margin-top: 2rem;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: 2rem 1fr;
+  /* grid-template-rows: 2rem 1fr; */
   grid-column-gap: 4rem;
+}
+
+.profile-container h5 {
+  color: #6a7fdb;
+  font-weight: bold;
+  display: block;
 }
 
 .user-delivery-info {
@@ -1138,12 +1181,11 @@ select option:first-child {
   grid-column: 1;
 }
 
-.user-details-heading h5,
+/* .user-details-heading h5,
 .order-history-heading h5 {
-  color: #6a7fdb;
-  font-weight: bold;
-}
-
+    color: $secondary-color;
+    font-weight: bold;
+} */
 .profile-values {
   text-transform: capitalize;
   display: grid;
@@ -1154,9 +1196,24 @@ select option:first-child {
   height: max-content;
 }
 
+.account-services-heading {
+  grid-row: 3;
+}
+
+.account-services {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.account-services a {
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
 .order-history-container {
   height: 60vh;
   overflow-y: scroll;
+  grid-row: 2/5;
 }
 
 .order-history-heading {
@@ -1191,14 +1248,28 @@ select option:first-child {
 @media only screen and (max-width: 675px) {
   .profile-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 2rem 1fr 2rem 1fr;
+    /* grid-template-rows: 2rem 1fr 2rem 1fr; */
     grid-column-gap: 0;
     grid-row-gap: 1rem;
+  }
+
+  .account-services-heading {
+    grid-row: 5;
+    height: max-content;
+  }
+
+  .account-services {
+    grid-row: 6;
+    height: max-content;
   }
 
   .order-history-heading {
     grid-row: 3;
     grid-column: 1;
+  }
+
+  .order-history-container {
+    grid-row: 4;
   }
 }
 .socialaccount_providers li {

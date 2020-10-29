@@ -24,6 +24,17 @@
 		</div>
 		<a href="{% url 'update_profile' %}" class="btn profile-edit-button" id="submit-button">Update Information</a>
 	</div>
+
+    <div class="account-services-heading">
+        <h5>Account services</h5>
+        <hr class="checkout-hr">
+    </div>
+    <div class="account-services">
+        <a href="{% url 'account_logout' %}" class="btn profile-edit-button">Logout</a>
+        <a href="{% url 'account_change_password' %}" class="btn profile-edit-button">Change Password</a>
+    </div>
+    
+
 	<div class="order-history-heading">
 		<h5>Order History</h5>
 		<hr class="checkout-hr">

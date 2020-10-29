@@ -3,20 +3,21 @@
   <h1>Thank You!</h1>
   <hr class="heading-underline" />
 </div>
-<div>
 
-<span>Your order has been recieved. A confirmation email will be sent to:
-{{ order.email }}</span>
+<div class="checkout-success-container">
+<span>Your order has been recieved.<br> A confirmation email will be sent to: <strong>{{ order.email }}</strong></span>
 
-order details:
+<div class="success-order-details">
+<h5>Order Details:</h5>
     {% for item in order.lineitems.all %}
-        Product: {{ item.product.name }}
-        Size: {{ item.product_size }}
-        Material: {{ item.product_material }}
-        Colour: {{ item.product_colour }}
-        Quantity: {{ item.quantity }}
-        Total: €{{ item.lineitem_total| display_price }}
+        <span>Product: {{ item.product.name }}</span>
+        <span>Size: {{ item.product_size }}</span>
+        <span>Material: {{ item.product_material }}</span>
+        <span>Colour: {{ item.product_colour }}</span>
+        <span>Quantity: {{ item.quantity }}</span>
+        <span>Total: €{{ item.lineitem_total| display_price }}</span>
     {% endfor %}
+</div>
 </div>
 
  {% endblock %}

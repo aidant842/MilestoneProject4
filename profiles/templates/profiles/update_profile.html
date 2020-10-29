@@ -5,11 +5,13 @@
 </div>
 <div class="update-profile-container">
 <div class="update-user-delivery-info">
+    <a href="{% url 'profile' %}"><small><i class="store-link-arrow fas fa-chevron-left"></i> Back</small></a><br><br>
     <p>Default Delivery Information</p>
     <form action="{% url 'update_profile' %}" method="POST" id="profile-update-form">
     {% csrf_token %}
     {{ user_edit_form | crispy }}
     {{ user_profile_form | crispy }}
+    <a href="{% url 'profile' %}" class="btn profile-edit-button">Cancel</a>
     <button class="btn profile-edit-button" id="submit-button">Save</button>
     </form>
 </div>

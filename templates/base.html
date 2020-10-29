@@ -58,7 +58,9 @@
     <div class="loader-bg">
       <div class="loading-container">
         <div class="loading-text">
-            <span class="logo-style">PG</span><span class="logo-colour-loader">.</span> Photography
+        <div class="heading">
+            <h1>PG<span class="logo-colour">.</span><span class="logo-style"> Photography</span></h1>
+        </div>
         </div>
             <div class="loading-bubble">
                 <div class="bubble-1"></div>
@@ -97,12 +99,12 @@
                     </li>
 
                     <li class="link">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'account_logout' %}">Logout</a>
+                    {% else %}
                         <a href="{% url 'account_login' %}">Login/Signup</a>
+                    {% endif %}
                     </li>
-
-                   <!--  <li class="link">
-                        <a href="{% url 'account_signup' %}">Signup</a>
-                    </li> -->
                     
                 </ul>
 

@@ -1,12 +1,14 @@
 {% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
 
 <div class="heading">
-  <h3>
-    <span class="logo-style">Store</span>
+  <h1>
+    Store
     <span class="logo-colour">.</span>
-  </h3>
+  </h1>
   <hr class="heading-underline" />
 </div>
+
+
 
 <div class="dropdown">
   <button
@@ -17,11 +19,11 @@
     aria-haspopup="true"
     aria-expanded="false"
   >
-    Category
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'products' %}">All</a>
     {% for cat in categories %}
-    <a class="dropdown-item" href="{% url 'products' %}?category={{ cat.name }}"
+    <a class="dropdown-item categories-selection" href="{% url 'products' %}?category={{ cat.name }}"
       >{{ cat.name }}</a
     >
     {% endfor %}

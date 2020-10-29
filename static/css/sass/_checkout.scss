@@ -47,6 +47,7 @@
 
 .product-name {
     color: $secondary-color;
+    font-weight: bold;
 }
 
 .item-price {
@@ -103,7 +104,7 @@
 
 select,
 select option {
-    color: $font-color;
+    color: $font-color !important;
 }
 
 select:invalid,
@@ -153,6 +154,25 @@ select option:first-child {
     background-color: $secondary-color;
 }
 
+
+/***********  Checkout Success Page  ************/
+
+.checkout-success-container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.success-order-details {
+    display: grid;
+    margin-top: 2rem;
+}
+
+.success-order-details h5 {
+    color: $secondary-color;
+    font-weight: bold;
+}
+
+/**********  ************/
 
 @media only screen and (max-width: 1150px) {
     .checkout-form {

@@ -1,13 +1,13 @@
 {% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
 <div class="heading">
-  <h1>Product Page</h1>
+  <h1>{{ product.name }}</h1>
   <hr class="heading-underline" />
 </div>
 
 <a class="store-link" href="{% url 'products' %}"><small><i class="store-link-arrow fas fa-angle-left"></i>Back to store</small></a>
 <div class="productContent">
   <div class="product-info">
-    <p><b>{{ product.name }}</b></p>
+    <!-- <p class="product-name">{{ product.name }}</p> -->
     <p>{{ product.description }}</p>
   </div>
   <div class="productImage">

@@ -14,13 +14,13 @@ $heading-size-mobile: 2rem;
     background: transparent;
     min-width: 120px;
     height: 40px;
-    color: $font-color;
+    color: $font-color !important;
     border: 1px solid $secondary-color;
     border-radius: 0.25rem;
 }
 
 %button-hover {
-    color: $secondary-color;
+    color: $secondary-color !important;
     background: rgba($font-color, 0.9);
     transition: ease-in-out 0.3s;
 }
@@ -48,6 +48,10 @@ h1 {
     font-weight: bold;
 }
 
+.btn:focus {
+    box-shadow: 0 0 0 .2rem rgba($secondary-color , .25);
+}
+
 .heading {
     text-align: center;
     padding-top: 1rem;
@@ -55,8 +59,9 @@ h1 {
 }
 
 .heading h1 {
-    font-family: $main-font;
+    /* font-family: $main-font; */
     font-weight: bold;
+    font-size: 1.75rem;
 }
 
 .heading-underline {
@@ -66,7 +71,8 @@ h1 {
 }
 
 .logo-style {
-    font-weight: bold;
+    font-family: $secondary-font;
+    font-weight: normal;
 }
 
 .logo-colour {

@@ -1,3 +1,7 @@
+.bg {
+    transition: transform 0.5s ease-in;
+}
+
 .primary-navigation {
     position: fixed;
     display: grid;
@@ -97,6 +101,10 @@
     transform: translateX(100%);
 }
 
+.body-active {
+    transform: translateX(90px);
+}
+
 .link {
     align-self: center;
     list-style: none;
@@ -193,6 +201,10 @@ a.user-link, a.bag-link {
     
     .nav-active {
         transform: translateX(0%) translateY(-100%);
+    }
+
+    .body-active {
+        transform: translateX(0px) translateY(-64px);
     }
 
     .logo {

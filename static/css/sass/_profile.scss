@@ -12,8 +12,14 @@
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 0.5fr 1fr;
-    grid-template-rows: 2rem 1fr;
+    /* grid-template-rows: 2rem 1fr; */
     grid-column-gap: 4rem;
+}
+
+.profile-container h5 {
+    color: $secondary-color;
+    font-weight: bold;
+    display: block;
 }
 
 .user-delivery-info {
@@ -30,11 +36,11 @@
     grid-column: 1;
 }
 
-.user-details-heading h5,
+/* .user-details-heading h5,
 .order-history-heading h5 {
     color: $secondary-color;
     font-weight: bold;
-}
+} */
 
 .profile-values {
     text-transform: capitalize;
@@ -51,9 +57,24 @@
     @extend %button-hover;
 }
 
+.account-services-heading {
+    grid-row: 3;
+}
+
+.account-services {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.account-services a {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
 .order-history-container {
     height: 60vh;
     overflow-y: scroll;
+    grid-row: 2/5;
 }
 
 .order-history-heading {
@@ -90,13 +111,27 @@
 @media only screen and (max-width: 675px) {
     .profile-container {
         grid-template-columns: 1fr;
-        grid-template-rows: 2rem 1fr 2rem 1fr;
+        /* grid-template-rows: 2rem 1fr 2rem 1fr; */
         grid-column-gap: 0;
         grid-row-gap: 1rem;
+    }
+
+    .account-services-heading {
+        grid-row: 5;
+        height: max-content;
+    }
+
+    .account-services {
+        grid-row: 6;
+        height: max-content;
     }
 
     .order-history-heading {
         grid-row: 3;
         grid-column: 1;
+    }
+
+    .order-history-container {
+        grid-row: 4;
     }
 }

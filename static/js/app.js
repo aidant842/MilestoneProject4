@@ -21,11 +21,13 @@ const navSlide = () => {
     const nav = document.querySelector('.primary-navigation');
     const navLinks = document.querySelector('.nav-links');
     const navLinksLi = document.querySelectorAll('.nav-links li');
+    const bg = document.querySelector('.bg');
 
     burger.addEventListener('click', () => {
         //Toggle Nav
         navLinks.classList.toggle('nav-link-active');
         nav.classList.toggle('nav-active');
+        bg.classList.toggle('body-active');
 
         //Animate Liks
         navLinksLi.forEach((link, index) => {
@@ -44,6 +46,7 @@ const navSlide = () => {
         //Toggle Nav
         navLinks.classList.toggle('nav-link-active');
         nav.classList.toggle('nav-active');
+        bg.classList.toggle('body-active');
 
         //Animate Liks
         navLinksLi.forEach((link, index) => {
@@ -87,3 +90,18 @@ links.forEach(link => {
 document.body.onload = function () {
   document.querySelector(".loader-bg").classList.add("hidden");
 };
+
+const displayCategory = () => {
+    let pathname = window.location.href;
+    if (pathname.includes("category")){
+        var splitUrl = pathname.split("category");
+        var selectedCategory = splitUrl[1].slice(1);
+        console.log(selectedCategory);
+        $('.category-button').html("Category: " + selectedCategory);
+    }
+    else {
+        $('.category-button').html("Category: All");
+    }
+}
+
+displayCategory();

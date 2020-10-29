@@ -14,9 +14,6 @@
     grid-gap: 30px;
     padding: 3rem 5rem;
     justify-content: center;
-    /* line-height: 0;
-    column-count: 5;
-    grid-gap: 10px; */
 }
 
 .card {
@@ -61,6 +58,7 @@
 .category-button {
     @extend %button-style;
     margin: 0 auto;
+    text-transform: capitalize;
 }
 
 .category-button:hover {
