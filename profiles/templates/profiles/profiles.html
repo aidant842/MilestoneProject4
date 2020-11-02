@@ -22,7 +22,7 @@
 			<span>{{ profile.default_postcode }}</span>
 			<span>{{ profile.default_country.name }}</span>
 		</div>
-		<a href="{% url 'update_profile' %}" class="btn profile-edit-button" id="submit-button">Update Information</a>
+		<a href="{% url 'update_profile' %}" class="btn profile-edit-button" id="submit-button">Update Information <i class="fas fa-user-edit"></i></a>
 	</div>
 
     <div class="account-services-heading">
@@ -30,8 +30,11 @@
         <hr class="checkout-hr">
     </div>
     <div class="account-services">
-        <a href="{% url 'account_logout' %}" class="btn profile-edit-button">Logout</a>
-        <a href="{% url 'account_change_password' %}" class="btn profile-edit-button">Change Password</a>
+        {% if user.is_superuser %}
+        <a href="{% url 'admin:index' %}" class="btn profile-edit-button">Admin Panel <i class="fas fa-tools"></i></a>
+        {% endif %}
+        <a href="{% url 'account_change_password' %}" class="btn profile-edit-button">Change Password <i class="fas fa-key"></i></a>
+        <a href="{% url 'account_logout' %}" class="btn profile-edit-button">Logout <i class="fas fa-sign-out-alt"></i></a>
     </div>
     
 

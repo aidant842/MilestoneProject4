@@ -1,19 +1,22 @@
 from django.contrib import admin
-from .models import Contact
+from .models import Messages
 
 
-class contactAdmin(admin.ModelAdmin):
-    readonly_fields = [
+class messagesAdmin(admin.ModelAdmin):
+    model = Messages
+    readonly_fields = (
         'name',
         'email',
+        'subject',
         'enquiry',
-    ]
+        'date_sent',
+    )
 
-    fields = [
-        'name',
+    list_display = (
+        'subject',
         'email',
-        'enquiry',
-    ]
+        'date_sent'
+    )
 
 
-admin.site.register(Contact)
+admin.site.register(Messages, messagesAdmin)

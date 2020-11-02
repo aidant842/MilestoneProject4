@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Contact
+from .models import Messages
 from profiles.models import UserProfile
 
 
@@ -11,12 +11,14 @@ def contact_page(request):
         profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
-        contact = Contact()
+        contact = Messages()
         name = request.POST.get('name')
         email = request.POST.get('email')
+        subject = request.POST.get('subject')
         enquiry = request.POST.get('enquiry')
         contact.name = name
         contact.email = email
+        contact.subject = subject
         contact.enquiry = enquiry
 
         contact.save()

@@ -37,7 +37,16 @@
       {% csrf_token %}
       <p><small>Price</small>: <b style="color: #6a7fdb">€{{ product.price | display_price }}</b></p>
       <div class="form-group">
-        <label for="size">Size</label>
+        <label for="size">Size <a class="tooltips" data-toggle="tooltip" data-placement="right" data-html="true" title="
+                                                                                                                        <h6>Size(in)</h6>
+                                                                                                                        <ul>
+                                                                                                                            <li>XS: 8x6</li>
+                                                                                                                            <li>S: 10x8</li>
+                                                                                                                            <li>M: 12x8</li>
+                                                                                                                            <li>L: 12x10</li>
+                                                                                                                            <li>XL: 15x10</li>
+                                                                                                                        </ul>">
+                                                                    <i class="fas fa-info-circle"></i></a></label>
         <select class="form-control" id="size" name="size" required>
           <option value="" disabled selected></option>
           {% for size in sizes %}

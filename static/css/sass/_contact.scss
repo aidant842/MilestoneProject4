@@ -1,6 +1,23 @@
 textarea {
     background-color: transparent;
-    resize: both;
+    resize: vertical;
     color: $font-color;
     border: 1px solid $secondary-color;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    min-height: 100px;
+    border-radius: 4px;
+}
+
+.contact-container {
+    width: 85%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+.contact-container p {
+    font-weight: bold;
+    color: $secondary-color;
+    margin: 1rem 0;
 }
