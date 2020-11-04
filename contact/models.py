@@ -6,7 +6,7 @@ from datetime import datetime
 
 class Messages(models.Model):
     """ A model for the contact form to send questions to the admin panel """
-    name = models.CharField(max_length=254, blank=False, null=False)
+    name = models.CharField(max_length=126, blank=False, null=False)
     email = models.EmailField(max_length=254, blank=False, null=False)
     subject = models.CharField(max_length=64, blank=False,
                                null=False, default="subject")
