@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+
+<div class="heading">
+  <h1>
+    Contact
+    <span class="logo-colour">.</span>
+  </h1>
+  <hr class="heading-underline" />
+</div>
+
+<div class="contact-container">
+    <form class="contact-form" method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="name" value="{{ profile.user.first_name }}" required />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" value="{{ profile.user.email }}" required />
+            <!-- <label for="enquiry">Enquiry</label>
+            <input id="enquiry" type="text" required /> -->
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required />
+            <label for="enquiry" class="textarea-label">Enquiry</label>
+            <textarea id="enquiry" name="enquiry" required></textarea>
+            <button class="btn checkoutBtn" type="submit">Send Message <i class="far fa-paper-plane"></i></button>
+        </fieldset>
+    </form>
+
+    <p>OR</p>
+
+    Send an Email to: <a href="mailto:pg-photography-email@gmail.com">pg-photography-email@gmail.com</a>
+
+</div>
+{% endblock %}
