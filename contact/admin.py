@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Messages
+from .models import Contact
 
 
-class messagesAdmin(admin.ModelAdmin):
-    model = Messages
+class contactAdmin(admin.ModelAdmin):
+    model = Contact
     readonly_fields = (
         'name',
         'email',
@@ -19,4 +19,4 @@ class messagesAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Messages, messagesAdmin)
+admin.site.register(Contact, contactAdmin)
