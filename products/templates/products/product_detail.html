@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
 <div class="heading">
-  <h1>{{ product.name }}</h1>
+  <h1>{{ product.name }} <span class="logo-colour">.</span></h1>
+  
   <hr class="heading-underline" />
 </div>
 
@@ -39,7 +40,7 @@
       <div class="form-group">
         <label for="size">Size <a class="tooltips" data-toggle="tooltip" data-placement="right" data-html="true" title="
                                                                                                                         <h6>Size(in)</h6>
-                                                                                                                        <ul>
+                                                                                                                        <ul class='size-list'>
                                                                                                                             <li>XS: 8x6</li>
                                                                                                                             <li>S: 10x8</li>
                                                                                                                             <li>M: 12x8</li>

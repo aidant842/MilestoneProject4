@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap");
 .socialaccount_providers a, .profile-edit-button, .block-inner-content button, .keepShoppingBtn, .checkoutBtn, .category-button, .buy-now-btn, .shop-now-btn {
   background: transparent;
@@ -195,6 +196,77 @@ input {
 .modal-body, .modal-footer {
   background-color: rgba(106, 127, 219, 0.8);
   border: none;
+}
+
+/*************** Custom checbox from csstricks ******************/
+/* Base for label styling */
+[type=checkbox]:not(:checked),
+[type=checkbox]:checked {
+  position: absolute;
+  left: -9999px;
+}
+
+[type=checkbox]:not(:checked) + label,
+[type=checkbox]:checked + label {
+  position: relative;
+  padding-left: 1.95em;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type=checkbox]:not(:checked) + label:before,
+[type=checkbox]:checked + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* checked mark aspect */
+[type=checkbox]:not(:checked) + label:after,
+[type=checkbox]:checked + label:after {
+  content: "✔ ";
+  position: absolute;
+  top: 0.15em;
+  left: 0.1em;
+  font-size: 1.3em;
+  line-height: 0.8;
+  color: #6a7fdb;
+  transition: all 0.2s;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", Arial;
+}
+
+/* checked mark aspect changes */
+[type=checkbox]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+[type=checkbox]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 2px solid #6a7fdb !important;
+  transition: all 0.2s;
+}
+
+.tooltip-inner {
+  background-color: rgba(106, 127, 219, 0.85) !important;
+  min-width: 100px;
+  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+}
+
+.tooltip .arrow {
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
@@ -609,6 +681,10 @@ a.user-link, a.bag-link {
   height: 80%;
   background-position: center;
   background-size: cover;
+}
+
+.size-list {
+  list-style: none;
 }
 
 @media only screen and (max-width: 1250px) {

@@ -1,6 +1,8 @@
 {% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
 <div class="heading">
-  <h1>Checkout</h1>
+  <h1>Checkout
+    <span class="logo-colour">.</span>
+  </h1>
   <hr class="heading-underline" />
 </div>
 
@@ -26,8 +28,8 @@
             {{ order_form.country | as_crispy_field }}
         </fieldset>
         {% if user.is_authenticated %}
+            <input type="checkbox" id="id-save-info" name="save-info" checked="checked">
             <label for="id-save-info">Save Info</label>
-            <input type="checkbox" id="id-save-info" name="save-info" >
         {% else %}
             <label for="id-save-info">
                 <a href="{% url 'account_signup' %}">Create an account</a> or
