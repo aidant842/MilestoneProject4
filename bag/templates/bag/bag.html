@@ -112,11 +112,8 @@
 {% else %}
 <div class="bag-empty-text">
   <p>
-    Your bag is empty.<br /><a
-      href="{% url 'products' %}"
-      class="bag-empty-link"
-      >Shop Now</a
-    >
+    Your bag is empty.<br /><br />
+    <a href="{% url 'products' %}" class="btn shop-now-btn bag-empty-link">Shop Now</a>
   </p>
 </div>
 {% endif %} {% endblock %} {% block postloadjs %} {{ block.super }}

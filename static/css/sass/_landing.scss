@@ -6,12 +6,18 @@
     height: 550px;
 } */
 
+.carousel-inner {
+    box-shadow:  0px 0px 15px 5px rgba($main-color, 0.9);
+}
+
 .carousel-item {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
-    height: 550px;
+    /* height: 550px; */
+    height: calc(100vh - 205px);
+    box-shadow: inset 0px 0px 38px 12px rgba($main-color, 0.7);
 }
 
 .carousel-caption {
@@ -26,6 +32,7 @@
 .shop-section {
     margin: 0 auto;
     padding-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .shop-now-btn {
@@ -39,4 +46,10 @@
 
 .buy-now-btn:hover, .shop-now-btn:hover {
     @extend %button-hover;
+}
+
+@media only screen and (max-width: 650px) {
+    .carousel-item {
+        height: 400px;
+    }
 }

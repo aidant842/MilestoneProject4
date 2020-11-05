@@ -174,11 +174,12 @@ select option:first-child {
 
 /**********  ************/
 
+
 @media only screen and (max-width: 1150px) {
     .checkout-form {
         display: grid;
         grid-template-columns: none;
-        grid-template-rows: 0.1fr 1fr 1fr;
+        /* grid-template-rows: 0.1fr 1fr 1fr; */
         margin: 50px 10% 0 10%;
         grid-row-gap: 0px;
     }
@@ -200,7 +201,7 @@ select option:first-child {
         grid-row: 2;
         grid-template-columns: 1fr 2fr 1fr;
         /* grid-template-rows: 0.1fr auto; */
-        height: max-content;
+        /* height: max-content; */
     }
 
     .divider {

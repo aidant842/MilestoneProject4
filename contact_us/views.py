@@ -7,8 +7,11 @@ from profiles.models import UserProfile
 def contact_page(request):
     """ A view to return the index page """
 
+    profile = ''
+
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
+
 
     if request.method == 'POST':
         contact = Inbox()
