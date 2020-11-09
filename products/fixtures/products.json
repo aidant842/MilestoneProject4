@@ -8,8 +8,7 @@
             "description": "Tread carefully as this piece guides your iminagtion into depths unknown.",
             "price": "9999",
             "sku": "",
-            "image": "1.jpg",
-            "has_colour": "True"
+            "image": "1.jpg"
         }
     },
     {
@@ -21,8 +20,7 @@
             "description": "This lushus piece offers a subtle enmeshing of the big in the small, as the focal point is almost lost to the horizon.",
             "price": "9999",
             "sku": "",
-            "image": "12.jpg",
-            "has_colour": "True" 
+            "image": "12.jpg"
         }
     },
     {
@@ -34,8 +32,7 @@
             "description": "From the darkness, emerge into vast potential.",
             "price": "9999",
             "sku": "",
-            "image": "2.jpg",
-            "has_colour": "True" 
+            "image": "2.jpg"
         }
     },
     {
@@ -48,8 +45,7 @@
             "description": "Nephin shadowed from the dawn.",
             "price": "9999",
             "sku": "",
-            "image": "3.jpg",
-            "has_colour": "True" 
+            "image": "3.jpg"
         } 
     },
     {
@@ -62,8 +58,7 @@
             "description": "Rushes draw your eye in the new born sunrise as Nephin looks on.",
             "price": "9999",
             "sku": "",
-            "image": "4.jpg",
-            "has_colour": "True" 
+            "image": "4.jpg"
         }
     },
     {
@@ -75,8 +70,7 @@
             "description": "Decay encroaches on a long gone farmers efforts.",
             "price": "9999",
             "sku": "",
-            "image": "5.jpg",
-            "has_colour": "True" 
+            "image": "5.jpg"
         }
     },
     {
@@ -88,8 +82,7 @@
             "description": "Crisp details stands strong.",
             "price": "9999",
             "sku": "",
-            "image": "6.jpg",
-            "has_colour": "True" 
+            "image": "6.jpg"
         }
     },
     {
@@ -101,8 +94,7 @@
             "description": "Shades of grey never said so much.",
             "price": "9999",
             "sku": "",
-            "image": "7.jpg",
-            "has_colour": "False" 
+            "image": "7.jpg"
         }   
     },
     {
@@ -114,8 +106,7 @@
             "description": "Thistle.",
             "price": "9999",
             "sku": "",
-            "image": "8.jpg",
-            "has_colour": "False" 
+            "image": "8.jpg"
         }
     },
     {
@@ -127,8 +118,7 @@
             "description": "Sunrise on lonely heights.",
             "price": "9999",
             "sku": "",
-            "image": "9.jpg",
-            "has_colour": "True" 
+            "image": "9.jpg"
         }
     },
     {
@@ -140,8 +130,7 @@
             "description": "Heathers depths painted by setting sun.",
             "price": "9999",
             "sku": "",
-            "image": "10.jpg",
-            "has_colour": "False" 
+            "image": "10.jpg"
         }
     },
     {
@@ -153,8 +142,7 @@
             "description": "Remembrance.",
             "price": "9999",
             "sku": "",
-            "image": "11.jpg",
-            "has_colour": "True" 
+            "image": "11.jpg"
         }
     },
     {
@@ -166,8 +154,7 @@
             "description": "Nature overgrowing a cave exit",
             "price": "9999",
             "sku": "",
-            "image": "13.jpg",
-            "has_colour": "True"
+            "image": "13.jpg"
         }   
     }
 

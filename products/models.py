@@ -23,7 +23,6 @@ class Product(models.Model):
     sku = models.CharField(max_length=254, null=True, blank=True)
     image = models.ImageField(default='https://image.flatico\
                               n.com/icons/svg/38/38645.svg')
-    has_colour = models.BooleanField()
 
     def __str__(self):
         return self.name
