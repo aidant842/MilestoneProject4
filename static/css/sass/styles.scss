@@ -16,7 +16,7 @@ $heading-size-mobile: 2rem;
     height: 40px;
     color: $font-color !important;
     border: 1px solid $secondary-color;
-    border-radius: 0.25rem;
+    border-radius: 0.25rem !important;
 }
 
 %button-hover {

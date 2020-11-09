@@ -75,23 +75,45 @@
           {% endfor %}
         </select>
       </div>
+
       <div class="form-group">
-        <label class="quantityLabel" for="id_qty_{{ product.id }}"
-          >Quantity</label
-        >
-        <input
-          type="number"
-          name="quantity"
-          value="1"
-          min="1"
-          max="99"
-          data-item_id="{{ product.id }}"
-          id="id_qty_{{ product.id }}"
-        />
+        <div class="input-group">
+            <p class="quantityLabel" for="id_qty_{{ product.id }}">Quantity</p><br/>
+
+            <div class="input-group-prepend">
+                <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>  
+
+                <input
+                class="qty-input"
+                type="number"
+                name="quantity"
+                value="1"
+                min="1"
+                max="99"
+                data-item_id="{{ product.id }}"
+                id="id_qty_{{ product.id }}"
+                />
+
+            <div class="input-group-append">
+                <button class="increment-qty btn plus-minus-btn" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+        </div>
       </div>
+
       <input class="btn buy-now-btn" type="submit" value="Add to Bag" />
       <input type="hidden" name="redirect_url" value="{{ request.path }}" />
     </form>
   </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {% include 'products/includes/qty_input_script.html' %}
 {% endblock %}

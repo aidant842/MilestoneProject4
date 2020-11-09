@@ -29,6 +29,7 @@
 
 .quantityLabel {
     display: block;
+    width: 100%;
 }
 
 .modal {
@@ -51,6 +52,34 @@
 
 .size-list {
     list-style: none;
+}
+
+.qty-input {
+    width: calc(100% - 80px) !important;
+    margin: 0 auto;
+}
+
+.input-group-prepend {
+    position: absolute;
+    height: 38px;
+    top: 40px;
+}
+
+.input-group-append {
+    position: absolute;
+    right: 0;
+    height: 38px;
+    top: 40px;
+}
+
+.plus-minus-btn {
+    @extend %button-style;
+    height: 38px !important;
+    min-width: 0 !important;
+}
+
+.plus-minus-btn:hover {
+    @extend %button-hover;
 }
 
 @media only screen and (max-width: 1250px) {

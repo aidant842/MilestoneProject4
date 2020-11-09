@@ -41,7 +41,8 @@
     >
       {% csrf_token %}
       <div class="form-group">
-        <label for="quantity"><b>Quantity:</b></label>
+        <div class="input-group">
+        <!-- <label for="quantity"><b>Quantity:</b></label>
         <input
           type="number"
           name="quantity"
@@ -50,12 +51,38 @@
           max="99"
           data-item_id="{{ item.product.id }}"
           id="id_qty_{{ item.product.id }}"
-        />
+        /> -->
+
+        <p class="quantityLabel" for="id_qty_{{ item.product.id }}"><b>Quantity</b></p>
+
+            <div class="input-group-prepend bag-page">
+                <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="decrement-qty_{{ item.product.id }}">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>  
+
+                <input
+                class="qty-input"
+                type="number"
+                name="quantity"
+                value="{{ item.quantity }}"
+                min="1"
+                max="99"
+                data-item_id="{{ item.product.id }}"
+                id="id_qty_{{ item.product.id }}"
+                />
+
+            <div class="input-group-append bag-page">
+                <button class="increment-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="increment-qty_{{ item.product.id }}">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
 
         <input type="hidden" name="product_size" value="{{ item.size }}" />
         <input type="hidden" name="product_colour" value="{{ item.colour }}" />
         <input type="hidden" name="product_material" value="{{ item.material }}"
         />
+        </div>
       </div>
     </form>
     <a class="update-link">Update</a>
@@ -117,6 +144,9 @@
   </p>
 </div>
 {% endif %} {% endblock %} {% block postloadjs %} {{ block.super }}
+
+{% include 'products/includes/qty_input_script.html' %}
+
 <script type="text/javascript">
   //Update quantity on click
   $(".update-link").click(function (e) {
