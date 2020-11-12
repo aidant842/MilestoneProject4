@@ -52,6 +52,10 @@ h1 {
   /* font-family: $main-font; */
   font-weight: bold;
   font-size: 1.75rem;
+  width: calc(100vw - 90px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0.5rem 2rem;
 }
 
 .heading-underline {
@@ -269,6 +273,10 @@ label:hover:before {
   display: none;
 }
 
+.input-group-append .btn:focus, .input-group-prepend .btn:focus {
+  z-index: 2;
+}
+
 @media only screen and (max-width: 600px) {
   .bg {
     left: 0;
@@ -278,7 +286,8 @@ label:hover:before {
   }
 
   .heading h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    width: revert;
   }
 }
 .bg {
@@ -431,7 +440,7 @@ label:hover:before {
 
 .line2 {
   width: 31.82px;
-  height: 3px;
+  height: 2px;
   background: #6a7fdb;
   margin-top: 7px;
 }
@@ -453,7 +462,7 @@ label:hover:before {
 }
 
 .toggle .line3 {
-  transform: rotate(45deg) translate(-7px, -8px);
+  transform: rotate(45deg) translate(-6px, -8px);
 }
 
 a.user-link, a.bag-link {
@@ -568,11 +577,11 @@ a.user-link, a.bag-link {
   justify-self: center;
 }
 
-@media only screen and (max-width: 650px) {
-  .carousel-item {
-    height: 400px;
-  }
-}
+/* @media only screen and (max-width: 650px) {
+    .carousel-item {
+        height: 400px;
+    }
+} */
 .category-selection {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -777,6 +786,11 @@ a.user-link, a.bag-link {
     margin-left: 2.5%;
   }
 }
+.bag-content-container {
+  height: 73vh;
+  overflow-y: scroll;
+}
+
 .bagContent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -934,11 +948,16 @@ a.user-link, a.bag-link {
     padding-bottom: 15px;
   }
 }
+@media only screen and (max-width: 600px) {
+  .bag-content-container {
+    height: 65vh;
+  }
+}
 .checkout-form {
   display: grid;
   grid-template-columns: 45% 10% 45%;
   /* grid-template-columns: 1fr 1fr; */
-  grid-template-rows: 5% 95%;
+  /* grid-template-rows: 5% 95%; */
   margin: 50px 10% 0 10%;
   grid-row-gap: 30px;
 }
@@ -1106,7 +1125,7 @@ select option:first-child {
   .checkout-form {
     display: grid;
     grid-template-columns: none;
-    /* grid-template-rows: 0.1fr 1fr 1fr; */
+    grid-template-rows: auto;
     margin: 50px 10% 0 10%;
     grid-row-gap: 0px;
   }

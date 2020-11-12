@@ -6,6 +6,8 @@
   <hr class="heading-underline" />
 </div>
 
+
+<div class="bag-content-container">
 {% if bag_items %} 
 {% for item in bag_items %}
 <div class="bagContent">
@@ -129,6 +131,8 @@
 </div>
 <hr class="bag-divider" />
 {% endfor %}
+</div>
+
 <div class="bagTotal">
   <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
   <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>

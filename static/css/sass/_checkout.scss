@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 45% 10% 45%;
     /* grid-template-columns: 1fr 1fr; */
-    grid-template-rows: 5% 95%;
+    /* grid-template-rows: 5% 95%; */
     margin: 50px 10% 0 10%;
     grid-row-gap: 30px;
 }
@@ -179,7 +179,7 @@ select option:first-child {
     .checkout-form {
         display: grid;
         grid-template-columns: none;
-        /* grid-template-rows: 0.1fr 1fr 1fr; */
+        grid-template-rows: auto;
         margin: 50px 10% 0 10%;
         grid-row-gap: 0px;
     }

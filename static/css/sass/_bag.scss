@@ -1,3 +1,8 @@
+.bag-content-container {
+    height: 73vh;
+    overflow-y: scroll;
+}
+
 .bagContent {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -134,7 +139,7 @@
     }
 }
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 500px) {
     .bagContent{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
@@ -164,5 +169,11 @@
     .bagTotal {
         padding-right: 15px;
         padding-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .bag-content-container {
+        height: 65vh;
     }
 }
