@@ -20,14 +20,14 @@
     <ul class="keys">
       <li>Name:</li>
       <li>Size:</li>
-      <li>Material:</li>
       <li>Colour:</li>
+      <li>Material:</li>
     </ul>
     <ul class="values">
       <li>{{ item.product.name }}</li>
       <li>{{ item.size }}</li>
-      <li>{{ item.material }}</li>
       <li>{{ item.colour }}</li>
+      <li>{{ item.material }}</li>
     </ul>
   </div>
   <div class="bagItemQuantity">
@@ -55,7 +55,7 @@
           id="id_qty_{{ item.product.id }}"
         /> -->
 
-        <p class="quantityLabel" for="id_qty_{{ item.product.id }}"><b>Quantity</b></p>
+        <p class="quantityLabel"><b>Quantity</b></p>
 
             <div class="input-group-prepend bag-page">
                 <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="decrement-qty_{{ item.product.id }}">
@@ -87,14 +87,12 @@
         </div>
       </div>
     </form>
-    <a class="update-link">Update</a>
+    <a class="update-link">Update <i class="fas fa-pen"></i></a>
     <a  class="remove-link"
         id="remove_{{ item.item_id }}"
         data-product_size="{{ item.size }}"
         data-product_colour="{{ item.colour }}"
-        data-product_material="{{ item.material }}">
-    Remove
-    </a>
+        data-product_material="{{ item.material }}">Remove <i class="fas fa-trash-alt"></i></a>
 
 
     <!-- Modal, Failsafe for remove from bag option -->
@@ -116,7 +114,7 @@
             <p>Are you sure you want to remove this item from your bag?</p>
           </div>
           <div class="modal-footer">
-            <a href="#!" class="modal-close modal-cancel btn checkoutBtn">Cancel</a>
+            <a href="#!" class="modal-close modal-cancel btn checkoutBtn" data-dismiss="modal">Cancel</a>
             <a class="btn checkoutBtn confirm-remove-link"> Yes </a>
           </div>
         </div>

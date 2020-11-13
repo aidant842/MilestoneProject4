@@ -56,7 +56,7 @@
     grid-column: 1;
     font-weight: bold;
     color: $font-color;
-    height: 5%;
+    /* height: 5%; */
     cursor: pointer;
 }
 
@@ -64,7 +64,7 @@
     grid-column: 3;
     font-weight: bold;
     color: $font-color;
-    height: 5%;
+    /* height: 5%; */
     cursor: pointer;
 }
 
@@ -92,6 +92,12 @@
 
 .keepShoppingBtn:hover, .checkoutBtn:hover {
     @extend %button-hover;
+}
+
+.bag-divider {
+    background-color: rgba($secondary-color, 0.8);
+    width: 75vw;
+    margin: 1rem auto;
 }
 
 /* .input-group-prepend .bag-page {

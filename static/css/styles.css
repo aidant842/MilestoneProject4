@@ -68,10 +68,6 @@ h1 {
   font-weight: bold;
   font-size: 1.75rem;
   margin: 0.5rem auto;
-  /*     width: calc(100vw - 90px);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin: 0.5rem 0; */
 }
 
 .heading-underline {
@@ -184,12 +180,6 @@ input {
   color: #eaeaea;
   background-color: #191716;
   border: none;
-}
-
-.bag-divider {
-  background-color: rgba(106, 127, 219, 0.3);
-  width: 85vw;
-  margin: 1rem auto;
 }
 
 .message-container {
@@ -860,7 +850,7 @@ a.user-link, a.bag-link {
   grid-column: 1;
   font-weight: bold;
   color: #eaeaea;
-  height: 5%;
+  /* height: 5%; */
   cursor: pointer;
 }
 
@@ -868,7 +858,7 @@ a.user-link, a.bag-link {
   grid-column: 3;
   font-weight: bold;
   color: #eaeaea;
-  height: 5%;
+  /* height: 5%; */
   cursor: pointer;
 }
 
@@ -888,6 +878,12 @@ a.user-link, a.bag-link {
 
 .keepShoppingBtn {
   margin-right: 5px;
+}
+
+.bag-divider {
+  background-color: rgba(106, 127, 219, 0.8);
+  width: 75vw;
+  margin: 1rem auto;
 }
 
 /* .input-group-prepend .bag-page {

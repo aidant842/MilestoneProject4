@@ -78,10 +78,6 @@ h1 {
     font-weight: bold;
     font-size: 1.75rem;
     margin: 0.5rem auto;
-/*     width: calc(100vw - 90px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0.5rem 0; */
 }
 
 .heading-underline {
@@ -194,12 +190,6 @@ input {
     color: $font-color;
     background-color: $main-color;
     border: none;
-}
-
-.bag-divider {
-    background-color: rgba($secondary-color, 0.3);
-    width: 85vw;
-    margin: 1rem auto;
 }
 
 .message-container {
