@@ -52,6 +52,21 @@ h1 {
     box-shadow: 0 0 0 .2rem rgba($secondary-color , .25);
 }
 
+.profile-heading {
+    text-align: center;
+    padding-top: 1rem;
+    display: grid;    
+}
+
+.profile-heading h1 {
+    font-weight: bold;
+    font-size: 1.75rem;
+    width: calc(100vw - 90px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0.5rem auto;
+}
+
 .heading {
     text-align: center;
     padding-top: 1rem;
@@ -62,10 +77,11 @@ h1 {
     /* font-family: $main-font; */
     font-weight: bold;
     font-size: 1.75rem;
-    width: calc(100vw - 90px);
+    margin: 0.5rem auto;
+/*     width: calc(100vw - 90px);
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0.5rem 2rem;
+    margin: 0.5rem 0; */
 }
 
 .heading-underline {
