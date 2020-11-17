@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+  <h1>Product Management
+    <span class="logo-colour">.</span><br/>
+    <small class="text-muted">Edit Product</small>
+  </h1>
+  <hr class="heading-underline" />
+</div>
+
+
+<div class="add-product-container">
+    <form method="POST" action="{% url 'edit_product' product.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | crispy }}
+
+        <a  href="{% url 'products' %}" class="btn checkoutBtn">Cancel</a>
+        <button class="btn checkoutBtn" type="submit">Submit</button>
+    </form>
+</div>
+
+ {% endblock %}
+

@@ -177,7 +177,7 @@
     transform: rotate(45deg) translate(-6px, -8px);
 }
 
-a.user-link, a.bag-link {
+a.user-link, a.bag-link, div.tools-link {
     display: none;
     color: $font-color;
     font-size: 1.2rem;
@@ -187,7 +187,7 @@ a.user-link, a.bag-link {
 
     .primary-navigation{
         flex-direction: row;
-        grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+        grid-template-columns: repeat(5, 1fr);
         grid-template-rows: 100%;
         grid-gap: 0;
         height: 64px;
@@ -215,7 +215,7 @@ a.user-link, a.bag-link {
     }
 
     .burger {
-        grid-column: 4;
+        grid-column: 5;
         grid-row: 1;
     }
 
@@ -238,7 +238,14 @@ a.user-link, a.bag-link {
     }
 
     a.bag-link {
+        grid-column: 4;
+        justify-self: center;
+        display: block;
+    }
+
+    div.tools-link {
         grid-column: 3;
+        grid-row: 1;
         justify-self: center;
         display: block;
     }
