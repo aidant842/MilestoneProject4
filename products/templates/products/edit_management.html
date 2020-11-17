@@ -3,7 +3,8 @@
 <div class="heading">
   <h1>
     Product Management
-    <span class="logo-colour">.</span>
+    <span class="logo-colour">.</span><br />
+    <small class="text-muted">Edit</small>
   </h1>
   <hr class="heading-underline" />
 </div>
@@ -21,9 +22,9 @@
   >
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="{% url 'products' %}">All</a>
+    <a class="dropdown-item" href="{% url 'edit_management' %}">All</a>
     {% for cat in categories %}
-    <a class="dropdown-item categories-selection" href="{% url 'products' %}?category={{ cat.name }}"
+    <a class="dropdown-item categories-selection" href="{% url 'edit_management' %}?category={{ cat.name }}"
       >{{ cat.name }}</a
     >
     {% endfor %}

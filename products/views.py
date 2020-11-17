@@ -160,6 +160,44 @@ def edit_management(request):
 
 
 @login_required
+def delete_management(request):
+    """ A view to display products available to delete from the tools link """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    selected_category = request.GET.get('category', None)
+
+    if selected_category:
+        products = Product.objects.filter(category__name=selected_category)
+    else:
+        products = Product.objects.all()
+
+    categories = Category.objects.all()
+    paginator = Paginator(products, 6)
+    page = request.GET.get('page')
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    template = 'products/delete_management.html'
+
+    context = {
+        'products': products,
+        'categories': categories,
+        'selected_category': selected_category,
+        'page': page,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
 def delete_product(request, product_id):
     """ Delete a product """
 
@@ -171,4 +209,3 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Success! Product deleted.')
     return redirect(reverse('products'))
-
