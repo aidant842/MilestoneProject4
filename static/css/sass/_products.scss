@@ -42,6 +42,13 @@
     bottom: 0;
 }
 
+.management-section {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 2;
+}
+
 .card:hover {
     transition: 0.3s ease-in-out;
     .card-img-overlay {
