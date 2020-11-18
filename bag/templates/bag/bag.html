@@ -173,11 +173,11 @@
 
     $('#removeModal').modal('show');
 
-    if($(".confirm-remove-link").click(function(){
+    $(".confirm-remove-link").click(function(){
         $.post(url, data).done(function () {
             location.reload();
         });
-    }));
+    });
   });
 </script>
 

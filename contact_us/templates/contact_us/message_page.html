@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+	<h1>
+		Inbox
+		<span class="logo-colour">.</span>
+	</h1>
+	<hr class="heading-underline" />
+</div>
+
+<div class="inbox-message-container">
+        <div class="message-values">
+            <p id="sender">{{ inbox.name }}</p>
+            <p id="date-sent">{{ inbox.date_sent.date }}</p>
+            <hr class="inbox-hr">
+            <p id="message-subject">{{ inbox.subject }}</p>
+            <p id="message-enquiry">{{ inbox.enquiry }}</p>
+            <hr class="inbox-hr">
+            <p id="sender-email">Reply to: <a href="mailto:{{inbox.email}}?subject=Reply to your email concerning: {{ inbox.subject }}">{{ inbox.email }}</a></p>
+        </div>
+</div>
+{% endblock %}

@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 from .models import Inbox
 from profiles.models import UserProfile
 
@@ -33,3 +35,41 @@ def contact_page(request):
     }
 
     return render(request, 'contact_us/contact_us.html', context)
+
+
+@login_required
+def inbox(request):
+    """ A view to return inbox messages for admin users """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only owners can access this.')
+        return redirect(reverse('home'))
+
+    inbox = Inbox.objects.all()
+
+    template = 'contact_us/inbox.html'
+
+    context = {
+        'inbox': inbox
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def message(request, message_id):
+    """ A view to show the full message """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only owners can access this.')
+        return redirect(reverse('home'))
+
+    template = 'contact_us/message_page.html'
+
+    inbox = get_object_or_404(Inbox, pk=message_id)
+
+    context = {
+        'inbox': inbox,
+    }
+
+    return render(request, template, context)

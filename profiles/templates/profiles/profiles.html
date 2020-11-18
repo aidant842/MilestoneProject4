@@ -16,13 +16,13 @@
 			<span>{{ profile.user.first_name }}</span>
 			<span>{{ profile.user.last_name }}</span>
 			<span>{{ profile.user.email }}</span>
-			<span>{{ profile.default_phone_number }}</span>
-			<span>{{ profile.default_street_address1 }}</span>
-			<span>{{ profile.default_street_address2 }}</span>
-			<span>{{ profile.default_town_or_city }}</span>
-			<span>{{ profile.default_county }}</span>
-			<span>{{ profile.default_postcode }}</span>
-			<span>{{ profile.default_country.name }}</span>
+			<span>{{ profile.default_phone_number | default_if_none:"-" }}</span>
+			<span>{{ profile.default_street_address1 | default_if_none:"-" }}</span>
+			<span>{{ profile.default_street_address2 | default_if_none:"-" }}</span>
+			<span>{{ profile.default_town_or_city | default_if_none:"-" }}</span>
+			<span>{{ profile.default_county | default_if_none:"-" }}</span>
+			<span>{{ profile.default_postcode | default_if_none:"-" }}</span>
+			<span>{{ profile.default_country.name | default_if_none:"-" }}</span>
 		</div>
 		<a href="{% url 'update_profile' %}" class="btn profile-edit-button" id="submit-button">Update Information <i class="fas fa-user-edit"></i></a>
 	</div>

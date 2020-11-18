@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+	<h1>
+		Inbox
+		<span class="logo-colour">.</span>
+	</h1>
+	<hr class="heading-underline" />
+</div>
+
+<div class="inbox-container">
+{% for message in inbox %}
+    <a href="{% url 'message' message.id %}" class="message-link">
+        <div class="inbox-values">
+            <p id="sender">{{ message.name }}</p>
+            <p id="date-sent">{{ message.date_sent.date }}</p>
+            <p id="message-subject">{{ message.subject }}</p>
+            <p id="message-enquiry">{{ message.enquiry | truncatewords:10 }}</p>
+        </div>
+    </a>
+    <hr class="checkout-hr">
+{% endfor %}
+</div>
+{% endblock %}

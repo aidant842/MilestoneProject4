@@ -118,30 +118,31 @@
                     </li>
                     {% if request.user.is_superuser %}
                     <li class="tools-link nav-item dropright">
-                        <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle" href="#" id="dropright-tools" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-tools"></i>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu" aria-labelledby="dropright-tools">
                             <a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a>
                             <a class="dropdown-item" href="{% url 'edit_management' %}">Edit Product</a>
                             <a class="dropdown-item" href="{% url 'delete_management' %}">Delete Product</a>
+                            <a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a>
                         </div>
                     </li>
                     {% endif %}
-
                 </ul>
 
                 <a href="{% url 'profile' %}" class="user-link"><i class="far fa-user"></i></a>
                 <a href="{% url 'view_bag' %}" class="bag-link"><i class="fas fa-shopping-bag"></i></a>
                 {% if request.user.is_superuser %}
                 <div class="nav-item dropup tools-link">
-                    <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-toggle" href="#" id="dropup-tools" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-tools"></i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-menu" aria-labelledby="dropup-tools">
                         <a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a>
                         <a class="dropdown-item" href="{% url 'edit_management' %}">Edit Product</a>
                         <a class="dropdown-item" href="{% url 'delete_management' %}">Delete Product</a>
+                        <a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a>
                     </div>
                 </div>
                 {% endif %}

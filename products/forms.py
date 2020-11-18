@@ -6,6 +6,9 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+        labels = {
+            "price": "Price (As an integer i.e instead of 99.99, 9999)"
+        }
 
 
 def __init__(self, *args, **kwargs):

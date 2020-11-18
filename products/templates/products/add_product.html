@@ -8,7 +8,7 @@
 </div>
 
 
-<div class="add-product-container">
+<div class="product-management-container">
     <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | crispy }}
