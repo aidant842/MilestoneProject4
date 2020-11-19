@@ -1607,6 +1607,13 @@ textarea {
   text-align: center;
 }
 
+.redirect404 {
+  position: absolute;
+  top: calc((100% / 2) + 125px);
+  justify-self: center;
+  text-align: center;
+}
+
 @media only screen and (max-width: 600px) {
   .background-404 {
     width: 100vw;
