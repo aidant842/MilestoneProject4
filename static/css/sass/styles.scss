@@ -276,6 +276,8 @@ label:hover:before {
   transition: all .2s;
 }
 
+/* --------------------------------------------------------- */
+
 .tooltip-inner {
     background-color: rgba($secondary-color , .85) !important;
     min-width: 100px;
@@ -328,3 +330,5 @@ label:hover:before {
 @import 'contact';
 
 @import 'product-management';
+
+@import '404';

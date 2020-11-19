@@ -14,3 +14,11 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def error_404_view(request, exception):
+    """ A view to return custom 404 page """
+
+    template = 'home/404.html'
+
+    return render(request, template)
