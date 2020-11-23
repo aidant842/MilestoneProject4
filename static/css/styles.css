@@ -1591,9 +1591,12 @@ textarea {
 }
 
 .gif404 {
+  background-image: url("/media/404-gif.gif");
   position: absolute;
   top: calc((100% - 213px)/2);
   left: calc(((100% - 90px)/2) - 60px);
+  height: 213px;
+  width: 220px;
 }
 
 .text404-container {
@@ -1609,7 +1612,7 @@ textarea {
 
 .redirect404 {
   position: absolute;
-  top: calc((100% / 2) + 125px);
+  top: calc((100% / 2) + 145px);
   justify-self: center;
   text-align: center;
 }
