@@ -21,4 +21,12 @@ def error_404_view(request, exception):
 
     template = 'home/404.html'
 
-    return render(request, template)
+    return render(request, template, status=404)
+
+
+def error_500_view(request):
+    """ A view to return custom 500 page """
+
+    template = 'home/500.html'
+
+    return render(request, template, status=500)

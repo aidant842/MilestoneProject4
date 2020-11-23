@@ -1599,7 +1599,17 @@ textarea {
   width: 220px;
 }
 
-.text404-container {
+.gif500 {
+  background-image: url("/media/500-gif.gif");
+  position: absolute;
+  top: calc((100% - 213px)/2);
+  left: calc(((100% - 90px)/2) - 60px);
+  height: 250px;
+  width: 250px;
+  background-position: center;
+}
+
+.text404-container, .text500-container {
   display: grid;
 }
 
@@ -1608,6 +1618,14 @@ textarea {
   top: calc((100% / 2) + 110px);
   justify-self: center;
   text-align: center;
+}
+
+.text500 {
+  position: absolute;
+  top: calc((100% / 2) + 150px);
+  justify-self: center;
+  text-align: center;
+  width: 85%;
 }
 
 .redirect404 {
