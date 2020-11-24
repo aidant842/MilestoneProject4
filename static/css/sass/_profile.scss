@@ -53,6 +53,10 @@
     height: max-content;
 }
 
+.profile-edit-button i {
+    padding-left: 0.5rem;
+}
+
 .profile-edit-button:hover {
     @extend %button-hover;
 }

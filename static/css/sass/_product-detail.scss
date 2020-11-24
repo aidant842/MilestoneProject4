@@ -82,6 +82,19 @@
     @extend %button-hover;
 }
 
+.add-to-bag-btn {
+    @extend %button-style;
+    width: 100%;
+}
+
+.add-to-bag-btn:hover {
+    @extend %button-hover;
+}
+
+.add-to-bag-btn i {
+    padding-left: 1rem;
+}
+
 @media only screen and (max-width: 1250px) {
 
     .productContent {

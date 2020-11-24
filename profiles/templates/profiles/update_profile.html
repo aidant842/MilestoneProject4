@@ -13,8 +13,8 @@
     {% csrf_token %}
     {{ user_edit_form | crispy }}
     {{ user_profile_form | crispy }}
-    <a href="{% url 'profile' %}" class="btn profile-edit-button">Cancel</a>
-    <button class="btn profile-edit-button" id="submit-button">Save</button>
+    <a href="{% url 'profile' %}" class="btn profile-edit-button">Cancel <i class="far fa-window-close"></i></a>
+    <button class="btn profile-edit-button" id="submit-button">Save <i class="far fa-save"></i></button>
     </form>
 </div>
 </div>

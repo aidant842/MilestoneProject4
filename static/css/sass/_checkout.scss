@@ -165,6 +165,7 @@ select option:first-child {
 .success-order-details {
     display: grid;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .success-order-details h5 {
@@ -241,5 +242,9 @@ select option:first-child {
 
     .headings {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .checkout-success-container {
+        text-align: center;
     }
 }

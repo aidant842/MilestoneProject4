@@ -23,7 +23,7 @@
           <p>{{ product.description }}</p>
           <div class="buy-section">
             <p class="price">€{{ product.price | display_price }}</p>
-            <a class="btn buy-now-btn" href="{% url 'product_detail' product.id %}">Buy Now</a>
+            <a class="btn buy-now-btn" href="{% url 'product_detail' product.id %}">Buy Now <i class="fas fa-shopping-bag"></i></a>
             
           </div>
         </div>

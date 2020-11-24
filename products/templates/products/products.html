@@ -52,7 +52,7 @@
         </p>
         <div class="buy-section">
           <p class="price">€{{ product.price | display_price }}</p>
-          <a class="btn buy-now-btn" href="{% url 'product_detail' product.id %}">Buy Now</a>
+          <a class="btn buy-now-btn" href="{% url 'product_detail' product.id %}">Buy Now <i class="fas fa-shopping-bag"></i></a>
         </div>
       </div>
     </div>
@@ -77,8 +77,8 @@
                 <p>Are you sure you want to delete this product from the database?</p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close modal-cancel btn checkoutBtn" data-dismiss="modal">Cancel</a>
-                <a class="btn checkoutBtn confirm-delete">Delete</a>
+                <a href="#!" class="modal-close modal-cancel btn checkoutBtn" data-dismiss="modal">Cancel <i class="far fa-window-close"></i></a>
+                <a class="btn checkoutBtn confirm-delete">Delete <i class="fas fa-trash-alt"></i></a>
             </div>
         </div>
     </div>

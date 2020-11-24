@@ -134,8 +134,8 @@
 <div class="bagTotal">
   <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
   <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
-  <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping</a>
-  <a href="{% url 'checkout' %}" class="btn checkoutBtn">Checkout</a>
+  <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping <i class="fas fa-store"></i></a>
+  <a href="{% url 'checkout' %}" class="btn checkoutBtn">Checkout <i class="fas fa-shopping-bag"></i></a>
 </div>
 
 {% else %}

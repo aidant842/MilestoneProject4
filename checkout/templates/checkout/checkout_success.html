@@ -7,19 +7,23 @@
 </div>
 
 <div class="checkout-success-container">
-<span>Your order has been recieved.<br> A confirmation email will be sent to: <strong>{{ order.email }}</strong></span>
+    <span>Your order has been recieved.<br> A confirmation email will be sent to: <strong>{{ order.email }}</strong></span>
 
-<div class="success-order-details">
-<h5>Order Details:</h5>
-    {% for item in order.lineitems.all %}
-        <span>Product: {{ item.product.name }}</span>
-        <span>Size: {{ item.product_size }}</span>
-        <span>Material: {{ item.product_material }}</span>
-        <span>Colour: {{ item.product_colour }}</span>
-        <span>Quantity: {{ item.quantity }}</span>
-        <span>Total: €{{ item.lineitem_total| display_price }}</span>
-    {% endfor %}
+    <div class="success-order-details">
+        <h5>Order Details:</h5>
+            {% for item in order.lineitems.all %}
+                <span>Product: {{ item.product.name }}</span>
+                <span>Size: {{ item.product_size }}</span>
+                <span>Material: {{ item.product_material }}</span>
+                <span>Colour: {{ item.product_colour }}</span>
+                <span>Quantity: {{ item.quantity }}</span>
+                <span>Total: €{{ item.lineitem_total| display_price }}</span>
+            {% endfor %}
+    </div>
+    {% if 'from_profile' %}
+        <a href="{% url 'profile' %}" class="btn checkoutBtn">Return to profile <i class="far fa-user"></i></a>
+    {% else %}
+        <a href="{% url 'products' %}" class="btn checkoutBtn">Store <i class="fas fa-store"></i></a>
+    {% endif %}
 </div>
-</div>
-
  {% endblock %}

@@ -40,6 +40,10 @@
     justify-self: center;
 }
 
+.shop-now-btn i, .buy-now-btn i {
+    padding-left: 0.5rem;
+}
+
 .buy-now-btn {
     @extend %button-style;
 }

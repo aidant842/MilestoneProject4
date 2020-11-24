@@ -86,6 +86,10 @@
     @extend %button-style;
 }
 
+.checkoutBtn i, .keepShoppingBtn i {
+    padding-left: 0.5rem;
+}
+
 .keepShoppingBtn {
     margin-right: 5px;
 }
