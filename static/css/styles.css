@@ -571,6 +571,39 @@ a.user-link, a.bag-link, div.tools-link {
 /* .carousel img {
     height: 550px;
 } */
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  background-image: none;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  color: #eaeaea;
+  opacity: 1;
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover {
+  opacity: 1;
+}
+
+.carousel-control-next-icon::after {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-size: 2rem;
+  font-family: "Font Awesome 5 Free";
+  content: "";
+}
+
+.carousel-control-prev-icon::after {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  font-size: 2rem;
+  font-family: "Font Awesome 5 Free";
+  content: "";
+}
+
 .carousel-inner {
   box-shadow: 0px 0px 15px 5px rgba(25, 23, 22, 0.9);
 }
@@ -1340,6 +1373,10 @@ select option:first-child {
 .login-or {
   color: #6a7fdb;
   font-weight: bold;
+}
+
+.auth-error-container {
+  text-align: center;
 }
 
 #id_default_country option:not(:first-child) {

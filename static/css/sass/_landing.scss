@@ -6,6 +6,39 @@
     height: 550px;
 } */
 
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-image: none;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    color: $font-color;
+    opacity: 1;
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover {
+    opacity: 1;
+}
+
+.carousel-control-next-icon::after {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    font-size: 2rem;
+    font-family: 'Font Awesome 5 Free';
+    content: '\f35a';
+}
+
+.carousel-control-prev-icon::after {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    font-size: 2rem;
+    font-family: 'Font Awesome 5 Free';
+    content: '\f359';
+}
+
 .carousel-inner {
     box-shadow:  0px 0px 15px 5px rgba($main-color, 0.9);
 }

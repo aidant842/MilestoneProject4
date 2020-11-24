@@ -2,10 +2,22 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Social Network Login Failure" %}{% endblock %}
+{% block header %}
+<div class="heading">
+  <h1>Error
+    <span class="logo-colour">.</span>
+  </h1>
+  <hr class="heading-underline" />
+</div>
+{% endblock %}
+<div class="auth-error-container">
+    {% block head_title %}{% trans "Social Network Login Failure" %}{% endblock %}
 
-{% block content %}
-<h1>{% trans "Social Network Login Failure" %}</h1>
+    {% block content %}
+    <h1>{% trans "Social Network Login Failure" %}</h1>
 
-<p>{% trans "An error occurred while attempting to login via your social network account." %}</p>
+    <p>{% trans "An error occurred while attempting to login via your social network account." %}<br />
+        Please make sure you are accessing the site using a secure connection, to do so, follow this link <a href="https://www.pg-photography.herokuapp.com/accounts/login"><strong>Secure Site</strong></a>
+    </p>
+</div>
 {% endblock %}

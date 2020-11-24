@@ -20,10 +20,10 @@
                 <span>Total: €{{ item.lineitem_total| display_price }}</span>
             {% endfor %}
     </div>
-    {% if 'from_profile' %}
-        <a href="{% url 'profile' %}" class="btn checkoutBtn">Return to profile <i class="far fa-user"></i></a>
-    {% else %}
+    {% if not from_profile %}
         <a href="{% url 'products' %}" class="btn checkoutBtn">Store <i class="fas fa-store"></i></a>
+    {% else %}
+        <a href="{% url 'profile' %}" class="btn checkoutBtn">Return to profile <i class="far fa-user"></i></a>
     {% endif %}
 </div>
  {% endblock %}
