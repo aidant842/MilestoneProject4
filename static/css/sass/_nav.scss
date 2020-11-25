@@ -35,14 +35,13 @@
 .nav-links {
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 105%;
     background: $main-color;
     display: grid;
     /* justify-content: center; */
     /* align-content: space-evenly; */
     margin: 0;
     transform: translateX(-100%);
-    /* transition: transform 2s ease-in; */
     /* display: none; */
     justify-items: center;
 }
@@ -50,6 +49,7 @@
 .nav-links li.link a {
     color: $font-color !important;
     border: none;
+    margin-left: 10px;
 }
 
 .nav-links li {
@@ -264,10 +264,16 @@ a.user-link, a.bag-link, div.tools-link {
     }
 
     .nav-links {
-       transform: translateX(0%) translateY(100%);
+       transform: translateX(0%) translateY(95%);
         grid-template-columns: repeat(4, 1fr);
         font-size: 0.9rem;
         justify-items: center;
+        width: 100%;
+        height: 105%;
+    }
+
+    .nav-links li.link a {
+        margin-left: 0;
     }
 
 }

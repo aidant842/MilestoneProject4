@@ -42,7 +42,7 @@ const navSlide = () => {
         burger.classList.toggle('toggle');
     });
 
-    burger.addEventListener('mouseenter', () => {
+    /* burger.addEventListener('mouseenter', () => {
         //Toggle Nav
         navLinks.classList.toggle('nav-link-active');
         nav.classList.toggle('nav-active');
@@ -58,7 +58,7 @@ const navSlide = () => {
         });
         //Burger animation
         burger.classList.toggle('toggle');
-    });
+    }); */
     
     bg.addEventListener('click', () => {
 
