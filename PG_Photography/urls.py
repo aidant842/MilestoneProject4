@@ -29,5 +29,6 @@ urlpatterns = [
     path('contact_us/', include('contact_us.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# Custom error handling
 handler404 = 'home.views.error_404_view'
 handler500 = 'home.views.error_500_view'

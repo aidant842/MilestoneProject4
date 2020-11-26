@@ -12,47 +12,48 @@
 
 
 <div class="dropdown">
-  <button
+    <button
     class="btn dropdown-toggle category-button"
     type="button"
     id="dropdownMenuButton"
     data-toggle="dropdown"
     aria-haspopup="true"
     aria-expanded="false"
-  >
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="{% url 'delete_management' %}">All</a>
-    {% for cat in categories %}
-    <a class="dropdown-item categories-selection" href="{% url 'delete_management' %}?category={{ cat.name }}"
-      >{{ cat.name }}</a
     >
-    {% endfor %}
-  </div>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'delete_management' %}">All</a>
+        {% for cat in categories %}
+            <a class="dropdown-item categories-selection" 
+            href="{% url 'delete_management' %}?category={{ cat.name }}">
+            {{ cat.name }}
+            </a>
+        {% endfor %}
+    </div>
 </div>
 
 <div class="gallery-content">
-  {% for product in products %}
-  <div class="card">
-    <img
-      src="{{ product.image.url }}"
-      class="card-img"
-      alt="{{ product.name }}"
-    />
-    <div class="card-img-overlay">
-      <div class="image-text">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">
-          {{ product.description|truncatewords:30 }}
-        </p>
-        <div class="buy-section">
-          <p class="price">€{{ product.price | display_price }}</p>
-          <a class="btn buy-now-btn delete-link" id="delete_{{ product.id }}" data-toggle="modal" data-target="#deleteModal">Delete <i class="fas fa-trash-alt"></i></a>
+    {% for product in products %}
+    <div class="card">
+        <img
+        src="{{ product.image.url }}"
+        class="card-img"
+        alt="{{ product.name }}"
+        />
+        <div class="card-img-overlay">
+            <div class="image-text">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">
+                {{ product.description|truncatewords:30 }}
+                </p>
+                <div class="buy-section">
+                    <p class="price">€{{ product.price | display_price }}</p>
+                    <a class="btn buy-now-btn delete-link" id="delete_{{ product.id }}" data-toggle="modal" data-target="#deleteModal">Delete <i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  {% endfor %}
+    {% endfor %}
 </div>
 <!-- Confirm Delete Modal -->
 <div class="modal" tabindex="-1" id="deleteModal">
@@ -60,11 +61,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                    >
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -81,14 +81,14 @@
 {% include 'pagination.html' with page=products %} {% endblock %}
 {% block postloadjs %}
 {{ block.super }}
-    <script>
-        $('.delete-link').click(function(){
-            var itemId = $(this).attr("id").split("delete_")[1];
-            var url = `/products/delete/${itemId}`;
-            
-            $(".confirm-delete").click(function(){
-                window.location.replace(url);
-            });
+<script>
+    $('.delete-link').click(function(){
+        var itemId = $(this).attr("id").split("delete_")[1];
+        var url = `/products/delete/${itemId}`;
+        
+        $(".confirm-delete").click(function(){
+            window.location.replace(url);
         });
-    </script>
+    });
+</script>
 {% endblock %}

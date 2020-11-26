@@ -5,35 +5,34 @@
     </h1>
 	<hr class="heading-underline" />
 </div>
-<div class="profile-container">
 
+<div class="profile-container">
 	<div class="user-details-heading">
 		<h5>Delivery Details</h5>
 		<hr class="checkout-hr">
 	</div>
 	<div class="user-delivery-info">
 		<div class="profile-values">
-			<span>{{ profile.user.first_name }}</span>
-			<span>{{ profile.user.last_name }}</span>
-			<span>{{ profile.user.email }}</span>
-			<span>{{ profile.default_phone_number | default_if_none:"-" }}</span>
-			<span>{{ profile.default_street_address1 | default_if_none:"-" }}</span>
-			<span>{{ profile.default_street_address2 | default_if_none:"-" }}</span>
-			<span>{{ profile.default_town_or_city | default_if_none:"-" }}</span>
-			<span>{{ profile.default_county | default_if_none:"-" }}</span>
-			<span>{{ profile.default_postcode | default_if_none:"-" }}</span>
-			<span>{{ profile.default_country.name | default_if_none:"-" }}</span>
+            <span>{{ profile.user.first_name }}</span>
+            <span>{{ profile.user.last_name }}</span>
+            <span>{{ profile.user.email }}</span>
+            <span>{{ profile.default_phone_number | default_if_none:"-" }}</span>
+            <span>{{ profile.default_street_address1 | default_if_none:"-" }}</span>
+            <span>{{ profile.default_street_address2 | default_if_none:"-" }}</span>
+            <span>{{ profile.default_town_or_city | default_if_none:"-" }}</span>
+            <span>{{ profile.default_county | default_if_none:"-" }}</span>
+            <span>{{ profile.default_postcode | default_if_none:"-" }}</span>
+            <span>{{ profile.default_country.name | default_if_none:"-" }}</span>
 		</div>
 		<a href="{% url 'update_profile' %}" class="btn profile-edit-button" id="submit-button">Update Information <i class="fas fa-user-edit"></i></a>
 	</div>
-
     <div class="account-services-heading">
         <h5>Account services</h5>
         <hr class="checkout-hr">
     </div>
     <div class="account-services">
         {% if user.is_superuser %}
-        <a href="{% url 'admin:index' %}" class="btn profile-edit-button">Admin Panel <i class="fas fa-tools"></i></a>
+            <a href="{% url 'admin:index' %}" class="btn profile-edit-button">Admin Panel <i class="fas fa-tools"></i></a>
         {% endif %}
         <a href="{% url 'account_change_password' %}" class="btn profile-edit-button">Change Password <i class="fas fa-key"></i></a>
         <a href="{% url 'account_logout' %}" class="btn profile-edit-button">Logout <i class="fas fa-sign-out-alt"></i></a>
@@ -46,28 +45,28 @@
 	</div>
 	<div class="order-history-container">
 		{% for order in orders %}
-		<div class="order-history">
-			{% for item in order.lineitems.all %}
-			<div class="order-keys">
-				<span>Product:</span>
-				<span>Quantity:</span>
-				<span>Total:</span>
-				<span>Order Date:</span>
-				<span>Order Number:</span>
-			</div>
+            <div class="order-history">
+                {% for item in order.lineitems.all %}
+                    <div class="order-keys">
+                        <span>Product:</span>
+                        <span>Quantity:</span>
+                        <span>Total:</span>
+                        <span>Order Date:</span>
+                        <span>Order Number:</span>
+                    </div>
 
-			<div class="order-values">
-				<span>{{ item.product.name }}</span>
-				<span>{{ item.quantity }}</span>
-				<span>€{{ item.lineitem_total| display_price }}</span>
-				{% endfor %}
-				<span>{{ order.date.date }}</span>
-				<a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number}}"><i class="fas fa-link"></i>
-					{{ order.order_number|truncatechars:10 }}<br>
-            </a>
-			</div>
-		</div>
-		<hr class="checkout-hr">
+                    <div class="order-values">
+                        <span>{{ item.product.name }}</span>
+                        <span>{{ item.quantity }}</span>
+                        <span>€{{ item.lineitem_total| display_price }}</span>
+                        <span>{{ order.date.date }}</span>
+                        <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number}}"><i class="fas fa-link"></i>
+                            {{ order.order_number|truncatechars:10 }}<br>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr class="checkout-hr">
 		{% endfor %}
 	</div>
 </div>

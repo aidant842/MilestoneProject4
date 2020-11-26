@@ -1,59 +1,54 @@
 {% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
-<div class="contact-page-container">
-
-<div class="contact-container">
-
 <div class="heading">
 	<h1>
 		Contact
 		<span class="logo-colour">.</span>
 	</h1>
-	<hr class="checkout-hr" />
+	<hr class="heading-underline" />
 </div>
 
-	<form class="contact-form" method="POST">
-		{% csrf_token %}
-		<fieldset>
-			<label for="name">Name</label>
-			<input id="name" name="name" type="name" value="{{ profile.user.get_full_name }}" required />
-			<label for="email">Email</label>
-			<input id="email" name="email" type="email" value="{{ profile.user.email }}" required />
-			<!-- <label for="enquiry">Enquiry</label>
-            <input id="enquiry" type="text" required /> -->
-			<label for="subject">Subject</label>
-			<input type="text" id="subject" name="subject" required />
-			<label for="enquiry" class="textarea-label">Enquiry</label>
-			<textarea id="enquiry" name="enquiry" required></textarea>
-			<button class="btn checkoutBtn" type="submit">Send Message <i class="far fa-paper-plane"></i></button>
-		</fieldset>
-	</form>
+<div class="contact-page-container">
+    <div class="contact-container">
+        <form class="contact-form" method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="name" value="{{ profile.user.get_full_name }}" required />
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" value="{{ profile.user.email }}" required />
+                <!-- <label for="enquiry">Enquiry</label>
+                <input id="enquiry" type="text" required /> -->
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required />
+                <label for="enquiry" class="textarea-label">Enquiry</label>
+                <textarea id="enquiry" name="enquiry" required></textarea>
+                <button class="btn checkoutBtn" type="submit">Send Message <i class="far fa-paper-plane"></i></button>
+            </fieldset>
+        </form>
 
-	<p>OR</p>
+	    <p>OR</p>
 
-	Send an Email to: <a href="mailto:pg-photography-email@gmail.com">pg-photography-email@gmail.com</a>
+	    Send an Email to: <a href="mailto:pg-photography-email@gmail.com">pg-photography-email@gmail.com</a>
+    </div>
 
-</div>
 
+    <section class="about-section">
+        <div class="heading">
+            <h1>
+                About
+                <span class="logo-colour">.</span>
+            </h1>
+            <hr class="checkout-hr" />
+        </div>
+        <p>
+            Pg photography is a practice focused on the personal touch. Our photographers along with myself, Patrick Gilroy,
+            will always ensure to make even the most camera shy comfortable in front of the lens and capture the beauty in
+            every moment. Based in County Mayo, our services are available all over the country. weddings to birthdays and
+            everything in between, if there is a special moment you want to cherish forever, Pg photography will capture it.
 
-<section class="about-section">
-
-<div class="heading">
-	<h1>
-        About
-		<span class="logo-colour">.</span>
-	</h1>
-	<hr class="checkout-hr" />
-</div>
-
-	<p>
-		Pg photography is a practice focused on the personal touch. Our photographers along with myself, Patrick Gilroy,
-		will always ensure to make even the most camera shy comfortable in front of the lens and capture the beauty in
-		every moment. Based in County Mayo, our services are available all over the country. weddings to birthdays and
-		everything in between, if there is a special moment you want to cherish forever, Pg photography will capture it.
-
-		We also offer a variety of photos. Man made and natural alike, our photos reveal their hidden depths and
-		brilliance to your discerning eye.
-	</p>
-</section>
+            We also offer a variety of photos. Man made and natural alike, our photos reveal their hidden depths and
+            brilliance to your discerning eye.
+        </p>
+    </section>
 </div>
 {% endblock %}

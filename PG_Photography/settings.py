@@ -25,7 +25,6 @@ if 'DEVELOPEMENT' in os.environ:
     DEBUG = True
 else:
     DEBUG = False
-#DEBUG = True
 
 ALLOWED_HOSTS = ['pg-photography.herokuapp.com', 'localhost']
 

@@ -14,7 +14,6 @@ def contact_page(request):
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
 
-
     if request.method == 'POST':
         contact = Inbox()
         name = request.POST.get('name')

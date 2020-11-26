@@ -30,8 +30,8 @@ def add_to_bag(request, item_id):
             item["quantity"] += quantity
             item["total"] = product.price * item["quantity"]
             new_item = False
-            messages.success(request, f'Updated the quantity\
-                             of {product.name} in you\'re bag')
+            messages.success(request, "Updated the quantity"
+                             f"of {product.name} in you're bag")
             break
 
     if new_item:
@@ -43,8 +43,8 @@ def add_to_bag(request, item_id):
             "quantity": quantity,
             "total": product.price * quantity
         })
-        messages.success(request, f'Added { quantity }\
-                         of { product.name } to the bag')
+        messages.success(request, f'Added { quantity }'
+                         f'of { product.name } to the bag')
 
     request.session['bag'] = bag
     return redirect(redirect_url)
@@ -70,13 +70,13 @@ def adjust_bag(request, item_id):
                 product['quantity'] = quantity
                 product["total"] = bag_item.price * quantity
                 messages.success(
-                    request, f'Quantity of { bag_item.name }\
-                    updated to { item["quantity"] }')
+                    request, f'Quantity of { bag_item.name }'
+                    f'updated to { item["quantity"] }')
 
             else:
                 bag.remove(product)
                 messages.success(
-                    request, f'{ bag_item.name } was removed from you\'re bag')
+                    request, f"{ bag_item.name } was removed from you're bag")
 
     request.session['bag'] = bag
 
@@ -101,7 +101,7 @@ def remove_from_bag(request, item_id):
 
                 bag.remove(product)
                 messages.success(
-                    request, f'{ bag_item.name } was removed from you\'re bag')
+                    request, f"{ bag_item.name } was removed from you're bag")
 
         request.session['bag'] = bag
         return HttpResponse(status=200)

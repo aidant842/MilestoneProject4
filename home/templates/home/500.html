@@ -1,3 +1,10 @@
+{% extends "base.html" %} {% load static %}
+
+{% block extra_meta %}
+    <meta http-equiv="refresh" content="10;url=https://pg-photography.herokuapp.com/">
+{% endblock %}
+
+{% block content %}
 <div class="background-404"></div>
 <div class="gif500"></div>
 <div class="text500-container">
@@ -5,3 +12,4 @@
         <small>You will automatically be brought back to safety.....</small>
     </h4>
 </div>
+{% endblock %}

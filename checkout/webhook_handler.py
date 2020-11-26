@@ -73,8 +73,10 @@ class StripeWH_Handler:
                 profile.default_country = shipping_details.address.country
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_town_or_city = shipping_details.address.city
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_street_address1 = (shipping_details
+                                                   .address.line1)
+                profile.default_street_address2 = (shipping_details
+                                                   .address.line2)
                 profile.default_county = shipping_details.address.state
                 profile.save()
 
@@ -104,7 +106,8 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook recieved. {event["type"]} | SUCCESS: Verified order already exists',
+                content=f'Webhook recieved. {event["type"]} |'
+                ' SUCCESS: Verified order already exists',
                 status=200
                 )
         else:
@@ -127,7 +130,8 @@ class StripeWH_Handler:
                 for item in json.loads(bag).items:
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
-                    material = Material.objects.get(value=item['item_material'])
+                    material = (Material.objects.get
+                                (value=item['item_material']))
                     colour = Colour.objects.get(name=item['item_colour'])
                     order_line_item = OrderLineItem(
                         order=order,
@@ -141,11 +145,13 @@ class StripeWH_Handler:
             except Exception as e:
                 if order:
                     order.delete()
-                    return HttpResponse(content=f'Webhooked recieved: {event["type"]} | ERROR: {e}',
+                    return HttpResponse(content='Webhooked recieved: '
+                                                f'{event["type"]}| ERROR: {e}',
                                         status=500)
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=f'Webhook recieved. {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook recieved. {event["type"]}'
+            ' | SUCCESS: Created order in webhook',
             status=200
         )
 

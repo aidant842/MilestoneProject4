@@ -7,109 +7,115 @@
 
 <a class="store-link" href="{% url 'products' %}"><small><i class="store-link-arrow fas fa-angle-left"></i>Back to store</small></a>
 <div class="productContent">
-  <div class="product-info">
-    <!-- <p class="product-name">{{ product.name }}</p> -->
-    <p>{{ product.description }}</p>
-  </div>
-  <div class="productImage">
-    <a href="#imageModal" data-toggle="modal"
-      ><img src="{{ product.image.url }}" alt="{{ product.name }}"
-    /></a>
-  </div>
+    <div class="product-info">
+        <p>{{ product.description }}</p>
+    </div>
+    <div class="productImage">
+        <a href="#imageModal" data-toggle="modal">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}"/>
+        </a>
+    </div>
 
-  <!-- Modal for image -->
-  <div
+    <!-- Modal for image -->
+    <div
     class="modal fade"
     id="imageModal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body" style="background-image:url('{{ product.image.url }}');">
-          <!-- <img class="modal-image" src="{{ product.image.url }}" alt="{{ product.name }}" /> -->
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" style="background-image:url('{{ product.image.url }}');"></div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="productSelects">
-    <form method="POST" action="{% url 'add_to_bag' product.id %}">
-      {% csrf_token %}
-      <p><small>Price</small>: <b style="color: #6a7fdb">€{{ product.price | display_price }}</b></p>
-      <div class="form-group">
-        <label for="size">Size <a class="tooltips" data-toggle="tooltip" data-placement="right" data-html="true" title="
-                                                                                                                        <h6>Size(in)</h6>
-                                                                                                                        <ul class='size-list'>
-                                                                                                                            <li>XS: 8x6</li>
-                                                                                                                            <li>S: 10x8</li>
-                                                                                                                            <li>M: 12x8</li>
-                                                                                                                            <li>L: 12x10</li>
-                                                                                                                            <li>XL: 15x10</li>
-                                                                                                                        </ul>">
-                                                                    <i class="fas fa-info-circle"></i></a></label>
-        <select class="form-control" id="size" name="size" required>
-          <option value="" disabled selected></option>
-          {% for size in sizes %}
-          <option value="{{ size.value }}">{{ size.value }}</option>
-          {% endfor %}
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="colour">Colour</label>
-        <select class="form-control" id="colour" name="colour" required>
-        <option value="" disabled selected></option>
-          {% for colour in colours %}
-          <option value="{{ colour.name }}">{{ colour.name }}</option>
-          {% endfor %}
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="material">Material</label>
-        <select class="form-control" id="material" name="material" required>
-        <option value="" disabled selected></option>
-          {% for material in materials %}
-          <option value="{{ material.value }}">{{ material.value }}</option>
-          {% endfor %}
-        </select>
-      </div>
+    <!-- ------------------------------------------------ -->
 
-      <div class="form-group">
-        <div class="input-group">
-            <p class="quantityLabel" for="id_qty_{{ product.id }}">Quantity</p><br/>
-
-            <div class="input-group-prepend">
-                <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>  
-
-                <input
-                class="qty-input"
-                type="number"
-                name="quantity"
-                value="1"
-                min="1"
-                max="99"
-                data-item_id="{{ product.id }}"
-                id="id_qty_{{ product.id }}"
-                />
-
-            <div class="input-group-append">
-                <button class="increment-qty btn plus-minus-btn" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
-                    <i class="fas fa-plus"></i>
-                </button>
+    <div class="productSelects">
+        <form method="POST" action="{% url 'add_to_bag' product.id %}">
+            {% csrf_token %}
+            <p>
+                <small>Price</small>: 
+                <strong
+                class="product-price">€{{ product.price | display_price }}
+                </strong>
+            </p>
+            <div class="form-group">
+                <label for="size">Size 
+                    <a class="tooltips" 
+                        data-toggle="tooltip" 
+                        data-placement="right" 
+                        data-html="true" 
+                        title="
+                        <h6>Size(in)</h6>
+                        <ul class='size-list'>
+                        <li>XS: 8x6</li>
+                        <li>S: 10x8</li>
+                        <li>M: 12x8</li>
+                        <li>L: 12x10</li>
+                        <li>XL: 15x10</li>
+                        </ul>">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </label>
+                <select class="form-control" id="size" name="size" required>
+                    <option value="" disabled selected></option>
+                    {% for size in sizes %}
+                        <option value="{{ size.value }}">{{ size.value }}</option>
+                    {% endfor %}
+                </select>
             </div>
 
-        </div>
-      </div>
+            <div class="form-group">
+                <label for="colour">Colour</label>
+                <select class="form-control" id="colour" name="colour" required>
+                    <option value="" disabled selected></option>
+                    {% for colour in colours %}
+                        <option value="{{ colour.name }}">{{ colour.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-      <button class="btn add-to-bag-btn" type="submit">Add to Bag<i class="fas fa-shopping-bag"></i></button>
-      <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-    </form>
-  </div>
+            <div class="form-group">
+                <label for="material">Material</label>
+                <select class="form-control" id="material" name="material" required>
+                    <option value="" disabled selected></option>
+                    {% for material in materials %}
+                        <option value="{{ material.value }}">{{ material.value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <p class="quantityLabel" for="id_qty_{{ product.id }}">Quantity</p><br/>
+                    <div class="input-group-prepend">
+                        <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>  
+                    <input
+                    class="qty-input"
+                    type="number"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                    max="99"
+                    data-item_id="{{ product.id }}"
+                    id="id_qty_{{ product.id }}"
+                    />
+                    <div class="input-group-append">
+                        <button class="increment-qty btn plus-minus-btn" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn add-to-bag-btn" type="submit">Add to Bag<i class="fas fa-shopping-bag"></i></button>
+            <input type="hidden" name="redirect_url" value="{{ request.path }}" />
+        </form>
+    </div>
 </div>
 {% endblock %}
 

@@ -8,142 +8,133 @@
 
 
 <div class="bag-content-container">
-{% if bag_items %} 
-{% for item in bag_items %}
-<div class="bagContent">
-  <div class="bagImg">
-    <a href="{% url 'product_detail' item.product.id %}">
-      <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
-    </a>
-  </div>
-  <div class="bagInfo">
-    <ul class="keys">
-      <li>Name:</li>
-      <li>Size:</li>
-      <li>Colour:</li>
-      <li>Material:</li>
-    </ul>
-    <ul class="values">
-      <li>{{ item.product.name }}</li>
-      <li>{{ item.size }}</li>
-      <li>{{ item.colour }}</li>
-      <li>{{ item.material }}</li>
-    </ul>
-  </div>
-  <div class="bagItemQuantity">
-    <ul class="bagItemPrice">
-      <li><b>Price:</b></li>
-      <li>€{{ item.product.price | display_price }}</li>
-    </ul>
-
-    <form
-      class="update-form"
-      method="POST"
-      action="{% url 'adjust_bag' item.item_id %}"
-    >
-      {% csrf_token %}
-      <div class="form-group">
-        <div class="input-group">
-        <!-- <label for="quantity"><b>Quantity:</b></label>
-        <input
-          type="number"
-          name="quantity"
-          value="{{ item.quantity }}"
-          min="1"
-          max="99"
-          data-item_id="{{ item.product.id }}"
-          id="id_qty_{{ item.product.id }}"
-        /> -->
-
-        <p class="quantityLabel"><b>Quantity</b></p>
-
-            <div class="input-group-prepend bag-page">
-                <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="decrement-qty_{{ item.product.id }}">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>  
-
-                <input
-                class="qty-input"
-                type="number"
-                name="quantity"
-                value="{{ item.quantity }}"
-                min="1"
-                max="99"
-                data-item_id="{{ item.product.id }}"
-                id="id_qty_{{ item.product.id }}"
-                />
-
-            <div class="input-group-append bag-page">
-                <button class="increment-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="increment-qty_{{ item.product.id }}">
-                    <i class="fas fa-plus"></i>
-                </button>
-            </div>
-
-        <input type="hidden" name="product_size" value="{{ item.size }}" />
-        <input type="hidden" name="product_colour" value="{{ item.colour }}" />
-        <input type="hidden" name="product_material" value="{{ item.material }}"
-        />
+    {% if bag_items %} 
+    {% for item in bag_items %}
+    <div class="bagContent">
+        <div class="bagImg">
+            <a href="{% url 'product_detail' item.product.id %}">
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
+            </a>
         </div>
-      </div>
-    </form>
-    <a class="update-link">Update <i class="fas fa-pen"></i></a>
-    <a  class="remove-link"
-        id="remove_{{ item.item_id }}"
-        data-product_size="{{ item.size }}"
-        data-product_colour="{{ item.colour }}"
-        data-product_material="{{ item.material }}">Remove <i class="fas fa-trash-alt"></i></a>
+        <div class="bagInfo">
+            <ul class="keys">
+                <li>Name:</li>
+                <li>Size:</li>
+                <li>Colour:</li>
+                <li>Material:</li>
+            </ul>
+            <ul class="values">
+                <li>{{ item.product.name }}</li>
+                <li>{{ item.size }}</li>
+                <li>{{ item.colour }}</li>
+                <li>{{ item.material }}</li>
+            </ul>
+        </div>
+        <div class="bagItemQuantity">
+            <ul class="bagItemPrice">
+                <li><b>Price:</b></li>
+                <li>€{{ item.product.price | display_price }}</li>
+            </ul>
 
-
-    <!-- Modal, Failsafe for remove from bag option -->
-
-    <div class="modal" tabindex="-1" id="removeModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
+            <form
+            class="update-form"
+            method="POST"
+            action="{% url 'adjust_bag' item.item_id %}"
             >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Are you sure you want to remove this item from your bag?</p>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-close modal-cancel btn checkoutBtn" data-dismiss="modal">Cancel</a>
-            <a class="btn checkoutBtn confirm-remove-link"> Yes </a>
-          </div>
-        </div>
-      </div>
-    </div>
+            {% csrf_token %}
+                <div class="form-group">
+                    <div class="input-group">
 
-    <ul class="bagItemTotal">
-      <li><b>Total:</b></li>
-      <li>€{{ item.total | display_price }}</li>
-    </ul>
-  </div>
-</div>
-<hr class="bag-divider" />
+                        <p class="quantityLabel"><b>Quantity</b></p>
+
+                        <div class="input-group-prepend bag-page">
+                            <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="decrement-qty_{{ item.product.id }}">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>  
+
+                            <input
+                            class="qty-input"
+                            type="number"
+                            name="quantity"
+                            value="{{ item.quantity }}"
+                            min="1"
+                            max="99"
+                            data-item_id="{{ item.product.id }}"
+                            id="id_qty_{{ item.product.id }}"
+                            />
+
+                        <div class="input-group-append bag-page">
+                            <button class="increment-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="increment-qty_{{ item.product.id }}">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+
+                        <input type="hidden" name="product_size" value="{{ item.size }}" />
+                        <input type="hidden" name="product_colour" value="{{ item.colour }}" />
+                        <input type="hidden" name="product_material" value="{{ item.material }}"/>
+                    </div>
+                </div>
+            </form>
+            <a class="update-link">Update <i class="fas fa-pen"></i></a>
+            <a  class="remove-link"
+                id="remove_{{ item.item_id }}"
+                data-product_size="{{ item.size }}"
+                data-product_colour="{{ item.colour }}"
+                data-product_material="{{ item.material }}">Remove <i class="fas fa-trash-alt"></i></a>
+
+
+            <!-- Modal, Failsafe for remove from bag option -->
+
+            <div class="modal" tabindex="-1" id="removeModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to remove this item from your bag?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close modal-cancel btn checkoutBtn" data-dismiss="modal">Cancel</a>
+                            <a class="btn checkoutBtn confirm-remove-link"> Yes </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- --------------------------------------------------------- -->
+
+            <ul class="bagItemTotal">
+                <li><b>Total:</b></li>
+                <li>€{{ item.total | display_price }}</li>
+            </ul>
+        </div>
+    </div>
+    <hr class="bag-divider" />
 {% endfor %}
 </div>
 
 <div class="bagTotal">
-  <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
-  <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
-  <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping <i class="fas fa-store"></i></a>
-  <a href="{% url 'checkout' %}" class="btn checkoutBtn">Checkout <i class="fas fa-shopping-bag"></i></a>
+    <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
+    <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
+    <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping <i class="fas fa-store"></i></a>
+    <a href="{% url 'checkout' %}" class="btn checkoutBtn">Checkout <i class="fas fa-shopping-bag"></i></a>
 </div>
 
 {% else %}
+<!-- Display this if bag is empty -->
 <div class="bag-empty-text">
-  <p>
+    <p>
     Your bag is empty.<br /><br />
     <a href="{% url 'products' %}" class="btn shop-now-btn bag-empty-link">Shop Now <i class="fas fa-store"></i></a>
-  </p>
+    </p>
 </div>
 {% endif %} {% endblock %} {% block postloadjs %} {{ block.super }}
 

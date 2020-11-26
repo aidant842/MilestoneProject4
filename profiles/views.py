@@ -41,7 +41,8 @@ def update_profile(request):
             messages.success(request, 'Profile updated successfully.')
             return redirect('profile')
         else:
-            messages.error(request, 'Updated failed, please ensure the form is valid.')
+            messages.error(request,
+                           'Update failed, please ensure the form is valid.')
 
     user_profile_form = UserProfileForm(instance=profile)
     user_edit_form = UserEditForm(instance=user)
@@ -60,7 +61,7 @@ def order_history(request, order_number):
 
     messages.info(request, (
         f'This is a post confirmation for order number {order_number}.'
-        'A confirmation email was on the order date.'
+        'A confirmation email was sent on the order date.'
         ))
 
     template = 'checkout/checkout_success.html'
