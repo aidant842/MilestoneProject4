@@ -35,13 +35,11 @@
     {{ block.super }}
     <script type="text/javascript">
     let countrySelected = $('#id_default_country').val();
-    console.log(Boolean(countrySelected));
     if (!countrySelected) {
         $('#id_default_country').css('color', '#6c757d');
     }
     $('#id_default_country').change(function(){
         countrySelected = $(this).val();
-        console.log(Boolean(countrySelected));
         if(!countrySelected){
             $(this).css('color', '#6c757d');
         } else {

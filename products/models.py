@@ -21,8 +21,8 @@ class Product(models.Model):
     description = models.TextField()
     price = models.IntegerField()
     sku = models.CharField(max_length=254, null=True, blank=True)
-    image = models.ImageField(default='https://image.flatico\
-                              n.com/icons/svg/38/38645.svg')
+    image = models.ImageField(default='https://image.flatico'
+                                      'n.com/icons/svg/38/38645.svg')
 
     def __str__(self):
         return self.name

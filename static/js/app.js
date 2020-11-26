@@ -117,7 +117,6 @@ const displayCategory = () => {
     if (pathname.includes("category")){
         var splitUrl = pathname.split("category");
         var selectedCategory = splitUrl[1].slice(1);
-        console.log(selectedCategory);
         $('.category-button').html("Category: " + selectedCategory);
     }
     else {
