@@ -63,7 +63,7 @@ h1 {
   display: grid;
 }
 
-.heading h1 {
+.heading h1, .heading h4 {
   /* font-family: $main-font; */
   font-weight: bold;
   font-size: 1.75rem;
@@ -491,6 +491,16 @@ a.user-link, a.bag-link, div.tools-link {
   background-color: revert;
 }
 
+.dropright .dropdown-menu {
+  top: -40px !important;
+  left: 30px !important;
+}
+
+.dropup .dropdown-menu {
+  left: -150% !important;
+  top: -65% !important;
+}
+
 @media only screen and (max-width: 600px) {
   .primary-navigation {
     flex-direction: row;
@@ -753,6 +763,7 @@ a.user-link, a.bag-link, div.tools-link {
 .productContent img {
   width: 90%;
   height: auto;
+  max-height: 581px;
 }
 
 .product-info {
@@ -972,6 +983,10 @@ a.user-link, a.bag-link, div.tools-link {
   background-color: rgba(106, 127, 219, 0.8);
   width: 75vw;
   margin: 1rem auto;
+}
+
+.qty-input.bag-page {
+  margin-top: 0;
 }
 
 /* .input-group-prepend .bag-page {
@@ -1369,6 +1384,7 @@ select option:first-child {
 .block-inner-content {
   margin: 0 auto;
   width: 50%;
+  padding-bottom: 2rem;
 }
 
 .block-inner-content button {

@@ -110,6 +110,19 @@
                 </ul>
 
                 <ul class="misc-links">
+                    {% if request.user.is_superuser %}
+                        <li class="tools-link nav-item dropright">
+                            <a class="dropdown-toggle" href="#" id="dropright-tools" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-tools"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropright-tools">
+                                <a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a>
+                                <a class="dropdown-item" href="{% url 'edit_management' %}">Edit Product</a>
+                                <a class="dropdown-item" href="{% url 'delete_management' %}">Delete Product</a>
+                                <a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a>
+                            </div>
+                        </li>
+                    {% endif %}
                     <li class="user-link">
                         <a href="{% url 'profile' %}"><i class="far fa-user"></i></a>
                     </li>
@@ -117,19 +130,6 @@
                     <li class="bag-link">
                         <a href="{% url 'view_bag' %}"><i class="fas fa-shopping-bag"></i></a>
                     </li>
-                    {% if request.user.is_superuser %}
-                    <li class="tools-link nav-item dropright">
-                        <a class="dropdown-toggle" href="#" id="dropright-tools" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-tools"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropright-tools">
-                            <a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a>
-                            <a class="dropdown-item" href="{% url 'edit_management' %}">Edit Product</a>
-                            <a class="dropdown-item" href="{% url 'delete_management' %}">Delete Product</a>
-                            <a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a>
-                        </div>
-                    </li>
-                    {% endif %}
                 </ul>
 
                 <a href="{% url 'profile' %}" class="user-link"><i class="far fa-user"></i></a>
@@ -164,7 +164,11 @@
         
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
-        })   
+        });
+
+        $("body").on("contextmenu", "img", function(e) {
+            return false;
+        });
     </script>
   {% endblock %}
   </body>
