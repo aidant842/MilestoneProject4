@@ -11,10 +11,10 @@
     {% for message in inbox %}
         <a href="{% url 'message' message.id %}" class="message-link">
             <div class="inbox-values">
-                <p id="sender">{{ message.name }}</p>
-                <p id="date-sent">{{ message.date_sent.date }}</p>
-                <p id="message-subject">{{ message.subject }}</p>
-                <p id="message-enquiry">{{ message.enquiry | truncatewords:10 }}</p>
+                <p class="sender">{{ message.name }}</p>
+                <p class="date-sent">{{ message.date_sent.date }}</p>
+                <p class="message-subject">{{ message.subject }}</p>
+                <p class="message-enquiry">{{ message.enquiry | truncatewords:10 }}</p>
             </div>
         </a>
         <hr class="checkout-hr">

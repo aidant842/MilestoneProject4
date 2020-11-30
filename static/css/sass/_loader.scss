@@ -56,6 +56,10 @@
   animation-delay: -0.32s;
 }
 
+.loading-spinner {
+    font-size: 36px;
+}
+
 @keyframes sk-bouncedelay {
   0%, 80%, 100% { 
     transform: scale(0);

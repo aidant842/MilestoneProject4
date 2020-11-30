@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 
     //Disable +/- button outside range of 1-99
     function handleEnableDisable(itemId) {
@@ -41,5 +41,31 @@
         $(closestInput).val(currentValue - 1);
         var itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
+    });
+</script> -->
+
+<script>
+    $('.decrement-qty').click(function(e) {
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.qty-input')[0];
+        var currentValue = parseInt($(closestInput).val());
+        if (currentValue <= 1){
+            $(closestInput).val(1);
+        }
+        else{
+            $(closestInput).val(currentValue - 1);
+        }
+    });
+
+    $('.increment-qty').click(function(e){
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.qty-input')[0];
+        var currentValue = parseInt($(closestInput).val());
+        if (currentValue >= 99) {
+            $(closestInput).val(99);
+        }
+        else {
+            $(closestInput).val(currentValue + 1);
+        }
     });
 </script>

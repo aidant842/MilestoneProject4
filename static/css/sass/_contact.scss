@@ -49,22 +49,22 @@ textarea {
     grid-template-columns: 1fr 1fr;
 }
 
-#sender {
+.sender {
     font-weight: bolder;
 }
 
-#date-sent {
+.date-sent {
     font-size: small;
     font-weight: bolder;
     justify-self: end;
 }
 
-#message-subject {
+.message-subject {
     grid-column: 1/3;
     font-weight: bolder;
 }
 
-#message-enquiry {
+.message-enquiry {
     grid-column: 1/3;
 }
 

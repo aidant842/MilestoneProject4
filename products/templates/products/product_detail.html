@@ -21,7 +21,7 @@
     class="modal fade"
     id="imageModal"
     tabindex="-1"
-    aria-labelledby="exampleModalLabel"
+    aria-labelledby="imageModal"
     aria-hidden="true"
     >
         <div class="modal-dialog">
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <!-- ------------------------------------------------ -->
+    <!-- END OF MODAL -->
 
     <div class="productSelects">
         <form method="POST" action="{% url 'add_to_bag' product.id %}">
@@ -60,7 +60,7 @@
                     </a>
                 </label>
                 <select class="form-control" id="size" name="size" required>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>-</option>
                     {% for size in sizes %}
                         <option value="{{ size.value }}">{{ size.value }}</option>
                     {% endfor %}
@@ -70,7 +70,7 @@
             <div class="form-group">
                 <label for="colour">Colour</label>
                 <select class="form-control" id="colour" name="colour" required>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>-</option>
                     {% for colour in colours %}
                         <option value="{{ colour.name }}">{{ colour.name }}</option>
                     {% endfor %}
@@ -80,7 +80,7 @@
             <div class="form-group">
                 <label for="material">Material</label>
                 <select class="form-control" id="material" name="material" required>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>-</option>
                     {% for material in materials %}
                         <option value="{{ material.value }}">{{ material.value }}</option>
                     {% endfor %}
@@ -89,7 +89,7 @@
 
             <div class="form-group">
                 <div class="input-group">
-                    <p class="quantityLabel" for="id_qty_{{ product.id }}">Quantity</p><br/>
+                    <label class="quantityLabel" for="id_qty_{{ product.id }}">Quantity</label><br/>
                     <div class="input-group-prepend">
                         <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
                             <i class="fas fa-minus"></i>

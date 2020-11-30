@@ -6,9 +6,8 @@
   <hr class="heading-underline" />
 </div>
 
-
+{% if bag_items %}
 <div class="bag-content-container">
-    {% if bag_items %} 
     {% for item in bag_items %}
     <div class="bagContent">
         <div class="bagImg">
@@ -32,7 +31,7 @@
         </div>
         <div class="bagItemQuantity">
             <ul class="bagItemPrice">
-                <li><b>Price:</b></li>
+                <li><strong>Price:</strong></li>
                 <li>€{{ item.product.price | display_price }}</li>
             </ul>
 
@@ -45,10 +44,10 @@
                 <div class="form-group">
                     <div class="input-group">
 
-                        <p class="quantityLabel"><b>Quantity</b></p>
+                        <p class="quantityLabel"><strong>Quantity</strong></p>
 
                         <div class="input-group-prepend bag-page">
-                            <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="decrement-qty_{{ item.product.id }}">
+                            <button class="decrement-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}">
                                 <i class="fas fa-minus"></i>
                             </button>
                         </div>  
@@ -61,11 +60,11 @@
                             min="1"
                             max="99"
                             data-item_id="{{ item.product.id }}"
-                            id="id_qty_{{ item.product.id }}"
+                            required
                             />
 
                         <div class="input-group-append bag-page">
-                            <button class="increment-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}" id="increment-qty_{{ item.product.id }}">
+                            <button class="increment-qty btn plus-minus-btn" data-item_id="{{ item.product.id }}">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -78,11 +77,37 @@
             </form>
             <a class="update-link">Update <i class="fas fa-pen"></i></a>
             <a  class="remove-link"
-                id="remove_{{ item.item_id }}"
+                data-remove_product="remove_{{ item.item_id }}"
                 data-product_size="{{ item.size }}"
                 data-product_colour="{{ item.colour }}"
                 data-product_material="{{ item.material }}">Remove <i class="fas fa-trash-alt"></i></a>
 
+            <ul class="bagItemTotal">
+                <li><strong>Total:</strong></li>
+                <li>€{{ item.total | display_price }}</li>
+            </ul>
+        </div>
+    </div>
+    <hr class="bag-divider" />
+{% endfor %}
+</div>
+
+<div class="bagTotal">
+    <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
+    <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
+    <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping <i class="fas fa-store"></i></a>
+    <a href="{% url 'checkout' %}" class="btn checkoutBtn">Checkout <i class="fas fa-shopping-bag"></i></a>
+</div>
+
+{% else %}
+<!-- Display this if bag is empty -->
+<div class="bag-empty-text">
+    <p>
+        Your bag is empty.<br /><br />
+        <a href="{% url 'products' %}" class="btn shop-now-btn bag-empty-link">Shop Now <i class="fas fa-store"></i></a>
+    </p>
+</div>
+{% endif %} 
 
             <!-- Modal, Failsafe for remove from bag option -->
 
@@ -109,48 +134,42 @@
                     </div>
                 </div>
             </div>
-            <!-- --------------------------------------------------------- -->
+            <!-- END OF MODAL -->
 
-            <ul class="bagItemTotal">
-                <li><b>Total:</b></li>
-                <li>€{{ item.total | display_price }}</li>
-            </ul>
-        </div>
-    </div>
-    <hr class="bag-divider" />
-{% endfor %}
-</div>
-
-<div class="bagTotal">
-    <p><strong>Delivery:</strong> €{{ delivery | display_price }}</p>
-    <p><strong>Grand Total:</strong> €{{ grand_total | display_price }}</p>
-    <a href="{% url 'products' %}" class="btn keepShoppingBtn">Keep Shopping <i class="fas fa-store"></i></a>
-    <a href="{% url 'checkout' %}" class="btn checkoutBtn">Checkout <i class="fas fa-shopping-bag"></i></a>
-</div>
-
-{% else %}
-<!-- Display this if bag is empty -->
-<div class="bag-empty-text">
-    <p>
-    Your bag is empty.<br /><br />
-    <a href="{% url 'products' %}" class="btn shop-now-btn bag-empty-link">Shop Now <i class="fas fa-store"></i></a>
-    </p>
-</div>
-{% endif %} {% endblock %} {% block postloadjs %} {{ block.super }}
+{% endblock %} {% block postloadjs %} {{ block.super }}
 
 {% include 'products/includes/qty_input_script.html' %}
 
-<script type="text/javascript">
+<script>
   //Update quantity on click
   $(".update-link").click(function (e) {
     var form = $(this).prev(".update-form");
-    form.submit();
+    form.validate({
+        rules: {
+            quantity: {
+                required: true,
+                min: 1,
+                max: 99,
+            }
+        },
+        messages: {
+            quantity: {
+                required: 'Please fill in this field',
+                min: 'Please enter a value more than or equal to 1',
+                max: 'Please enter a value less than or equal to 99'
+            }
+        }
+    });
+    if(form.valid()) {
+        form.submit();
+    }
   });
 
   //Remove item and reload on click
   $(".remove-link").click(function (e) {
     var csrfToken = "{{ csrf_token }}";
-    var itemId = $(this).attr("id").split("remove_")[1];
+    var itemId = $(this).attr("data-remove_product").split("remove_")[1];
+    console.log(itemId);
     var size = $(this).data("product_size");
     var colour = $(this).data("product_colour");
     var material = $(this).data("product_material");

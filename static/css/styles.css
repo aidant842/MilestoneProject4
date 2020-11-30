@@ -793,6 +793,7 @@ a.user-link, a.bag-link, div.tools-link {
 .qty-input {
   width: calc(100% - 80px) !important;
   margin: 0 auto;
+  margin-top: 0.5rem;
 }
 
 .input-group-prepend {
@@ -1348,6 +1349,10 @@ select option:first-child {
   animation-delay: -0.32s;
 }
 
+.loading-spinner {
+  font-size: 36px;
+}
+
 @keyframes sk-bouncedelay {
   0%, 80%, 100% {
     transform: scale(0);
@@ -1598,22 +1603,22 @@ textarea {
   grid-template-columns: 1fr 1fr;
 }
 
-#sender {
+.sender {
   font-weight: bolder;
 }
 
-#date-sent {
+.date-sent {
   font-size: small;
   font-weight: bolder;
   justify-self: end;
 }
 
-#message-subject {
+.message-subject {
   grid-column: 1/3;
   font-weight: bolder;
 }
 
-#message-enquiry {
+.message-enquiry {
   grid-column: 1/3;
 }
 

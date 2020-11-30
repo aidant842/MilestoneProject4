@@ -71,7 +71,7 @@ def adjust_bag(request, item_id):
                 product["total"] = bag_item.price * quantity
                 messages.success(
                     request, f'Quantity of { bag_item.name }'
-                    f'updated to { item["quantity"] }')
+                    f' updated to { item["quantity"] }')
 
             else:
                 bag.remove(product)
