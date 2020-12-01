@@ -1,0 +1,50 @@
+<script>
+  //Update quantity on click, ensuring validity using jquery validation plugin
+  $(".update-link").click(function (e) {
+    var form = $(this).prev(".update-form");
+    form.validate({
+        rules: {
+            quantity: {
+                required: true,
+                min: 1,
+                max: 99,
+            }
+        },
+        messages: {
+            quantity: {
+                required: 'Please fill in this field',
+                min: 'Please enter a value more than or equal to 1',
+                max: 'Please enter a value less than or equal to 99'
+            }
+        }
+    });
+    if(form.valid()) {
+        form.submit();
+    }
+  });
+
+  //Remove item and reload on click
+  $(".remove-link").click(function (e) {
+    var csrfToken = "{{ csrf_token }}";
+    var itemId = $(this).attr("data-remove_product").split("remove_")[1];
+    console.log(itemId);
+    var size = $(this).data("product_size");
+    var colour = $(this).data("product_colour");
+    var material = $(this).data("product_material");
+    var url = `/bag/remove/${itemId}/`;
+    var data = {
+      'csrfmiddlewaretoken': csrfToken,
+      'size': size,
+      'colour': colour,
+      'material': material,
+    };
+
+    $('#removeModal').modal('show');
+
+    $(".confirm-remove-link").click(function(){
+        $.post(url, data).done(function () {
+            location.reload();
+        });
+    });
+  });
+</script>
