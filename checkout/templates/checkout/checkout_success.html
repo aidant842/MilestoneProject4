@@ -18,7 +18,6 @@
                 <span>Colour: {{ item.product_colour }}</span>
                 <span>Quantity: {{ item.quantity }}</span>
                 <span>Total: €{{ item.order.grand_total| display_price }}</span>
-                {{ order_items.product }}
             {% endfor %}
             
     </div>

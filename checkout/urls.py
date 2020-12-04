@@ -10,6 +10,6 @@ urlpatterns = [
          views.cache_checkout_data, name='cache_checkout_data'),
     path('wh/', webhook, name='webhook'),
     path('order_admin/', views.order_admin, name='order_admin'),
-    path('order_admin/<int:item_id>',
+    path('order_admin/<order_id>',
          views.order_detail, name="order_detail"),
 ]

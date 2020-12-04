@@ -4,7 +4,7 @@
         "model": "products.product",
         "fields": {
             "category": 2,
-            "name": "Sligo Caves",
+            "name": "Plato's Cave",
             "description": "Tread carefully as this piece guides your iminagtion into depths unknown.",
             "price": "9999",
             "sku": "",
@@ -16,7 +16,7 @@
         "model": "products.product",
         "fields": {
             "category": 1,
-            "name": "Lushus Grass",
+            "name": "Lushes Grass",
             "description": "This lushus piece offers a subtle enmeshing of the big in the small, as the focal point is almost lost to the horizon.",
             "price": "9999",
             "sku": "",
@@ -28,7 +28,7 @@
         "model": "products.product",
         "fields": {
             "category": 2,
-            "name": "Cave Exit",
+            "name": "Summer Noon From The Caves",
             "description": "From the darkness, emerge into vast potential.",
             "price": "9999",
             "sku": "",
@@ -41,7 +41,7 @@
         "model": "products.product",
         "fields": {
             "category": 2,
-            "name": "Nephin",
+            "name": "Hues Of Nephin",
             "description": "Nephin shadowed from the dawn.",
             "price": "9999",
             "sku": "",
@@ -54,7 +54,7 @@
         "model": "products.product",
         "fields": {
             "category": 2,
-            "name": "Nephin Light",
+            "name": "View From The Field",
             "description": "Rushes draw your eye in the new born sunrise as Nephin looks on.",
             "price": "9999",
             "sku": "",
@@ -66,7 +66,7 @@
         "model": "products.product",
         "fields": {
             "category": 2,
-            "name": "Fence",
+            "name": "Standing Strong",
             "description": "Decay encroaches on a long gone farmers efforts.",
             "price": "9999",
             "sku": "",
@@ -78,7 +78,7 @@
         "model": "products.product",
         "fields": {
             "category": 1,
-            "name": "Thistle",
+            "name": "Delicate Thorns",
             "description": "Crisp details stands strong.",
             "price": "9999",
             "sku": "",
@@ -90,7 +90,7 @@
         "model": "products.product",
         "fields": {
             "category": 1,
-            "name": "Thistle Grey",
+            "name": "The Thistle & The Moon",
             "description": "Shades of grey never said so much.",
             "price": "9999",
             "sku": "",
@@ -102,7 +102,7 @@
         "model": "products.product",
         "fields": {
             "category": 1,
-            "name": "Thistle Colour",
+            "name": "Sunlight Thorn",
             "description": "Thistle.",
             "price": "9999",
             "sku": "",
@@ -114,7 +114,7 @@
         "model": "products.product",
         "fields": {
             "category": 1,
-            "name": "Thistle Cool",
+            "name": "Thistle Before The Night Sky",
             "description": "Sunrise on lonely heights.",
             "price": "9999",
             "sku": "",
@@ -126,7 +126,7 @@
         "model": "products.product",
         "fields": {
             "category": 1,
-            "name": "Heathers",
+            "name": "Shadow & Sunlight",
             "description": "Heathers depths painted by setting sun.",
             "price": "9999",
             "sku": "",
@@ -138,7 +138,7 @@
         "model": "products.product",
         "fields": {
             "category": 1,
-            "name": "Flowers",
+            "name": "Phototropism",
             "description": "Remembrance.",
             "price": "9999",
             "sku": "",
@@ -150,7 +150,7 @@
         "model": "products.product",
         "fields": {
             "category": 2,
-            "name": "Branch Exit",
+            "name": "From The Cave To The Forest",
             "description": "Nature overgrowing a cave exit",
             "price": "9999",
             "sku": "",

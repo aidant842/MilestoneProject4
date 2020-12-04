@@ -7,30 +7,30 @@
 </div>
 
 <div class="order-admin-container">
-    <form action="" method="" id="" class="">
-            {% csrf_token %}
-            <h3>Order Details</h3>
-            <hr class="checkout-hr">
-            {{ order_details.product | as_crispy_field }}
-            {{ order_details.product_size | as_crispy_field }}
-            {{ order_details.product_material | as_crispy_field }}
-            {{ order_details.product_colour | as_crispy_field }}
-            {{ order_details.quantity | as_crispy_field }}
-            <hr class="checkout-hr">
-            <h3>Order Delivery Details</h3>
-            <hr class="checkout-hr">
-            {{ order_delivery.full_name | as_crispy_field }}
-            {{ order_delivery.phone_number | as_crispy_field }}
-            {{ order_delivery.street_address1 | as_crispy_field }}
-            {{ order_delivery.street_address2 | as_crispy_field }}
-            {{ order_delivery.town_or_city | as_crispy_field }}
-            {{ order_delivery.county | as_crispy_field }}
-            {{ order_delivery.postcode | as_crispy_field }}
-            <hr class="checkout-hr">
-            <h3>Order Contact Details</h3>
-            {{ order_delivery.email | as_crispy_field}}
-            {{ order_delivery.phone_number | as_crispy_field }}
-        </form>
+    {{ order.order_number }}
+    <h3>Order Details</h3>
+    <hr class="checkout-hr">
+    <form action="" method="POST" id="" class="">
+        {% csrf_token %}
+        {{ line_items.as_p }}
+        <a><input type="submit" value="Save Products"></a>
+    </form>
+    <hr class="checkout-hr">
+    <h3>Order Delivery Details</h3>
+    <hr class="checkout-hr">
+    <form method="POST">
+    {% csrf_token %}
+        {{ order_delivery.full_name | as_crispy_field }}
+        {{ order_delivery.phone_number | as_crispy_field }}
+        {{ order_delivery.street_address1 | as_crispy_field }}
+        {{ order_delivery.street_address2 | as_crispy_field }}
+        {{ order_delivery.town_or_city | as_crispy_field }}
+        {{ order_delivery.county | as_crispy_field }}
+        {{ order_delivery.postcode | as_crispy_field }}
+        {{ order_delivery.email | as_crispy_field}}
+        {{ order_delivery.phone_number | as_crispy_field }}
+        <a><input type="submit" value="Save Address"></a>
+    </form>
     <hr class="checkout-hr">
 </div>
  {% endblock %}

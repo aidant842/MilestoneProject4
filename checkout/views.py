@@ -4,6 +4,7 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.forms import inlineformset_factory
 
 from .forms import OrderForm, OrderDetailForm
 from .models import Order, OrderLineItem
@@ -190,28 +191,43 @@ def order_admin(request):
         return redirect(reverse('home'))
 
     order_items = OrderLineItem.objects.all()
+    orders = Order.objects.all()
 
     template = 'checkout/order_admin.html'
 
     context = {
         'order_items': order_items,
+        'orders': orders,
     }
     return render(request, template, context)
 
 
 @login_required
-def order_detail(request, item_id):
+def order_detail(request, order_id):
     """ A view to see order details """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only owners can access this.')
         return redirect(reverse('home'))
 
-    order_item = get_object_or_404(OrderLineItem, pk=item_id)
-    order_id = order_item.order.id
     order = get_object_or_404(Order, pk=order_id)
+    items_formset = inlineformset_factory(Order,
+                                          OrderLineItem, extra=0,
+                                          fields=('product',
+                                                  'product_size',
+                                                  'product_material',
+                                                  'product_colour',
+                                                  'quantity',))
 
-    order_details = OrderDetailForm(instance=order_item)
+    if request.method == 'POST':
+        formset = items_formset(request.POST, instance=order)
+        if formset.is_valid():
+            formset.save()
+
+    formset = items_formset(instance=order)
+
+    """ order_item = get_object_or_404(OrderLineItem, pk=item_id) """
+    """ order_details = OrderDetailForm(instance=order_item) """
 
     order_detail_delivery_form = OrderForm(initial={
         'full_name': order.full_name,
@@ -229,7 +245,8 @@ def order_detail(request, item_id):
 
     context = {
         'order_delivery': order_detail_delivery_form,
-        'order_details': order_details,
+        'order': order,
+        'line_items': formset,
     }
 
     return render(request, template, context)

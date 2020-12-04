@@ -1,18 +1,19 @@
 {% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
 <div class="heading">
 	<h1>
-		Inbox
+		Message Contents
 		<span class="logo-colour">.</span>
 	</h1>
 	<hr class="heading-underline" />
 </div>
-
+<a href="{% url 'inbox' %}" class="inbox-link"><i class="store-link-arrow fas fa-angle-left"></i>Inbox</a>
 <div class="inbox-message-container">
     <div class="message-values">
-        <p id="sender">{{ message.name }}</p>
+        <p id="sender"><strong>{{ message.name }}</strong></p>
         <p id="date-sent">{{ message.date_sent.date }}</p>
         <hr class="inbox-hr">
-        <p id="message-subject">{{ message.subject }}</p>
+        <p id="message-subject"><strong>{{ message.subject }}</strong></p>
+        <hr class="inbox-hr">
         <p id="message-enquiry">{{ message.enquiry }}</p>
         <hr class="inbox-hr">
         <form action="{% url 'message' message.id %}" method="POST" id="" class="mar-form">
