@@ -17,8 +17,10 @@
                 <span>Material: {{ item.product_material }}</span>
                 <span>Colour: {{ item.product_colour }}</span>
                 <span>Quantity: {{ item.quantity }}</span>
-                <span>Total: €{{ item.lineitem_total| display_price }}</span>
+                <span>Total: €{{ item.order.grand_total| display_price }}</span>
+                {{ order_items.product }}
             {% endfor %}
+            
     </div>
     {% if not from_profile %}
         <a href="{% url 'products' %}" class="btn checkoutBtn">Store <i class="fas fa-store"></i></a>

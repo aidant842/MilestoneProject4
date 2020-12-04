@@ -3,8 +3,9 @@ from django.shortcuts import (render, redirect,
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
-from .forms import OrderForm
+from .forms import OrderForm, OrderDetailForm
 from .models import Order, OrderLineItem
 from bag.contexts import bag_contents
 from products.models import Product, Material, Colour, Size
@@ -24,7 +25,7 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', [])),
             'save_info': request.POST.get('save_info'),
-            'username': request.user
+            'username': request.user,
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -68,9 +69,9 @@ def checkout(request):
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        product_size=Size(size.id),
-                        product_material=Material(material.id),
-                        product_colour=Colour(colour.id),
+                        product_size=size,
+                        product_material=material,
+                        product_colour=colour,
                         quantity=item["quantity"],
                     )
                     order_line_item.save()
@@ -130,7 +131,7 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret
+        'client_secret': intent.client_secret,
     }
 
     return render(request, template, context)
@@ -141,6 +142,8 @@ def checkout_success(request, order_number):
 
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+    order_id = order.id
+    order_items = get_object_or_404(OrderLineItem, order_id=order_id)
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -172,6 +175,61 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'order_items': order_items,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def order_admin(request):
+    """ A view to see all orders, for admin use """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only owners can access this.')
+        return redirect(reverse('home'))
+
+    order_items = OrderLineItem.objects.all()
+
+    template = 'checkout/order_admin.html'
+
+    context = {
+        'order_items': order_items,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def order_detail(request, item_id):
+    """ A view to see order details """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only owners can access this.')
+        return redirect(reverse('home'))
+
+    order_item = get_object_or_404(OrderLineItem, pk=item_id)
+    order_id = order_item.order.id
+    order = get_object_or_404(Order, pk=order_id)
+
+    order_details = OrderDetailForm(instance=order_item)
+
+    order_detail_delivery_form = OrderForm(initial={
+        'full_name': order.full_name,
+        'email': order.email,
+        'phone_number': order.phone_number,
+        'country': order.country,
+        'postcode': order.postcode,
+        'town_or_city': order.town_or_city,
+        'street_address1': order.street_address1,
+        'street_address2': order.street_address2,
+        'county': order.county,
+    })
+
+    template = 'checkout/order_detail.html'
+
+    context = {
+        'order_delivery': order_detail_delivery_form,
+        'order_details': order_details,
     }
 
     return render(request, template, context)

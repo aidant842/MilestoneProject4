@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+  <h1>Order detail
+    <span class="logo-colour">.</span>
+  </h1>
+  <hr class="heading-underline" />
+</div>
+
+<div class="order-admin-container">
+    <form action="" method="" id="" class="">
+            {% csrf_token %}
+            <h3>Order Details</h3>
+            <hr class="checkout-hr">
+            {{ order_details.product | as_crispy_field }}
+            {{ order_details.product_size | as_crispy_field }}
+            {{ order_details.product_material | as_crispy_field }}
+            {{ order_details.product_colour | as_crispy_field }}
+            {{ order_details.quantity | as_crispy_field }}
+            <hr class="checkout-hr">
+            <h3>Order Delivery Details</h3>
+            <hr class="checkout-hr">
+            {{ order_delivery.full_name | as_crispy_field }}
+            {{ order_delivery.phone_number | as_crispy_field }}
+            {{ order_delivery.street_address1 | as_crispy_field }}
+            {{ order_delivery.street_address2 | as_crispy_field }}
+            {{ order_delivery.town_or_city | as_crispy_field }}
+            {{ order_delivery.county | as_crispy_field }}
+            {{ order_delivery.postcode | as_crispy_field }}
+            <hr class="checkout-hr">
+            <h3>Order Contact Details</h3>
+            {{ order_delivery.email | as_crispy_field}}
+            {{ order_delivery.phone_number | as_crispy_field }}
+        </form>
+    <hr class="checkout-hr">
+</div>
+ {% endblock %}

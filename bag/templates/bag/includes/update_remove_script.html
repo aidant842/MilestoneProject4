@@ -27,7 +27,6 @@
   $(".remove-link").click(function (e) {
     var csrfToken = "{{ csrf_token }}";
     var itemId = $(this).attr("data-remove_product").split("remove_")[1];
-    console.log(itemId);
     var size = $(this).data("product_size");
     var colour = $(this).data("product_colour");
     var material = $(this).data("product_material");

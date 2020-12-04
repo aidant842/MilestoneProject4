@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Inbox
+from .forms import MarkAsReadForm
 from profiles.models import UserProfile
 
 
@@ -49,7 +50,7 @@ def inbox(request):
     template = 'contact_us/inbox.html'
 
     context = {
-        'inbox': inbox
+        'inbox': inbox,
     }
 
     return render(request, template, context)
@@ -63,12 +64,36 @@ def message(request, message_id):
         messages.error(request, 'Sorry, only owners can access this.')
         return redirect(reverse('home'))
 
+    message = get_object_or_404(Inbox, pk=message_id)
+    mar_form = MarkAsReadForm(instance=message)
+
+    if request.method == 'POST':
+        mar_form = MarkAsReadForm(request.POST, instance=message)
+        if mar_form.is_valid():
+            mar_form.save()
+            messages.success(request, 'Message marked as read!')
+            return redirect(reverse('inbox'))
+
     template = 'contact_us/message_page.html'
 
-    inbox = get_object_or_404(Inbox, pk=message_id)
-
     context = {
-        'inbox': inbox,
+        'message': message,
+        'mar_form': mar_form,
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_message(request, message_id):
+    """ A view to delete a message """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only owners can access this.')
+        return redirect(reverse('home'))
+
+    message = get_object_or_404(Inbox, pk=message_id)
+    message.delete()
+    messages.success(request, 'Message deleted successfully!')
+
+    return redirect(reverse('inbox'))

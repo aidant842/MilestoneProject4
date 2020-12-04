@@ -11,6 +11,7 @@ class Inbox(models.Model):
                                null=False, default="subject")
     enquiry = models.TextField(max_length=1024, blank=False, null=False)
     date_sent = models.DateTimeField(auto_now_add=True)
+    mark_as_read = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

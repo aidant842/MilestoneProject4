@@ -9,13 +9,29 @@
 
 <div class="inbox-message-container">
     <div class="message-values">
-        <p id="sender">{{ inbox.name }}</p>
-        <p id="date-sent">{{ inbox.date_sent.date }}</p>
+        <p id="sender">{{ message.name }}</p>
+        <p id="date-sent">{{ message.date_sent.date }}</p>
         <hr class="inbox-hr">
-        <p id="message-subject">{{ inbox.subject }}</p>
-        <p id="message-enquiry">{{ inbox.enquiry }}</p>
+        <p id="message-subject">{{ message.subject }}</p>
+        <p id="message-enquiry">{{ message.enquiry }}</p>
         <hr class="inbox-hr">
-        <p id="sender-email">Reply to: <a href="mailto:{{inbox.email}}?subject=Reply%20to%20your%20email%20concerning:%20{{ inbox.subject }}">{{ inbox.email }}</a></p>
+        <form action="{% url 'message' message.id %}" method="POST" id="" class="mar-form">
+            {% csrf_token %}
+            {{ mar_form.mark_as_read | as_crispy_field }}
+        </form>
+        <a class="btn checkoutBtn mar-link">Mark as read</a>
+        <p id="sender-email">Reply to: <a href="mailto:{{inbox.email}}?subject=Reply%20to%20your%20email%20concerning:%20{{ message.subject }}">{{ message.email }}</a></p>
     </div>
 </div>
+{% endblock %}
+{% block postloadjs %} 
+{{ block.super }}
+    <script>
+        $(".mar-link").click(function (e) {
+            var form = $(this).prev(".mar-form");
+            if(form.valid()) {
+                form.submit();
+            }
+        });
+    </script>
 {% endblock %}

@@ -31,7 +31,7 @@ def add_to_bag(request, item_id):
             item["total"] = product.price * item["quantity"]
             new_item = False
             messages.success(request, "Updated the quantity"
-                             f"of {product.name} in you're bag")
+                             f" of {product.name} in you're bag")
             break
 
     if new_item:

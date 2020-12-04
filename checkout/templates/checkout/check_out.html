@@ -27,7 +27,7 @@
             {{ order_form.postcode | as_crispy_field }}
             {{ order_form.country | as_crispy_field }}
         </fieldset>
-        {% if user.is_authenticated %}
+        {% if request.user.is_authenticated %}
             <input type="checkbox" id="id-save-info" name="save-info" checked="checked">
             <label for="id-save-info">Save Info</label>
         {% else %}
@@ -89,7 +89,6 @@
     <hr class="checkout-hr">
     {% endfor %}
 </div>
-
 </div>
 
 <!-- Loader -->

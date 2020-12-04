@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} {% load tools %} {% block content %}
+<div class="heading">
+  <h1>Orders
+    <span class="logo-colour">.</span>
+  </h1>
+  <hr class="heading-underline" />
+</div>
+
+<div class="order-admin-container">
+    {% for item in order_items %}
+        <a href="{% url 'order_detail' item.id %}" class="">
+            <div class="order-values">
+                <p class="order-number">{{ item.order.order_number }}</p>
+                <p class="order-grand-total">€{{ item.order.grand_total | display_price}}</p>
+                <p class="order-date">{{ item.order.date }}</p>
+            </div>
+        </a>
+        <hr class="checkout-hr">
+    {% endfor %}
+</div>
+{% endblock %}

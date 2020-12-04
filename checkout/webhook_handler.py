@@ -59,7 +59,7 @@ class StripeWH_Handler:
         shipping_details = intent.shipping
         grand_total = intent.charges.data[0].amount
 
-        for field, value in shipping_details.items():
+        for field, value in shipping_details.address.items():
             if value == "":
                 shipping_details.address[field] = None
 
@@ -116,18 +116,18 @@ class StripeWH_Handler:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
                     user_profile=profile,
-                    email=shipping_details.email,
+                    email=billing_details.email,
                     phone_number=shipping_details.phone,
-                    country=shipping_details.country,
-                    postcode=shipping_details.postal_code,
-                    town_or_city=shipping_details.city,
-                    street_address1=shipping_details.line1,
-                    street_address2=shipping_details.line2,
-                    county=shipping_details.state,
+                    country=shipping_details.address.country,
+                    postcode=shipping_details.address.postal_code,
+                    town_or_city=shipping_details.address.city,
+                    street_address1=shipping_details.address.line1,
+                    street_address2=shipping_details.address.line2,
+                    county=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                for item in json.loads(bag).items:
+                for item in json.loads(bag):
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
                     material = (Material.objects.get
@@ -136,9 +136,9 @@ class StripeWH_Handler:
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        product_size=Size(size.id),
-                        product_material=Material(material.id),
-                        product_colour=Colour(colour.id),
+                        product_size=size,
+                        product_material=material,
+                        product_colour=colour,
                         quantity=item["quantity"],
                     )
                     order_line_item.save()

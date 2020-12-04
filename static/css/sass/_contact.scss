@@ -79,6 +79,16 @@ textarea {
     background-color: rgba($secondary-color, 0.5);
 }
 
+.marked-as-read {
+    opacity: 0.5;
+}
+
+.message-read {
+    grid-column: 2;
+    grid-row: 4;
+    justify-self: end;
+}
+
 @media only screen and (max-width: 1000px) {
     .contact-page-container {
         grid-template-columns: none;

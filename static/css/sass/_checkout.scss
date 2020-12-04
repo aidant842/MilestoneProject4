@@ -154,6 +154,17 @@ select option:first-child {
     background-color: $secondary-color;
 }
 
+.order-admin-container {
+    width: 85%;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+.order-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
 
 /***********  Checkout Success Page  ************/
 

@@ -113,7 +113,7 @@ form.addEventListener('submit', function(ev) {
         }
     });
     }).fail(function(){
-        // Reload to page to show the error message
+        // Reload the page to show the error message
        location.reload() 
     })
 
