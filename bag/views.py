@@ -23,7 +23,6 @@ def add_to_bag(request, item_id):
     new_item = True
 
     for item in bag:
-
         if (item["item_id"] == item_id and item["item_size"] == size
             and item["item_material"] == material
                 and item["item_colour"] == colour):

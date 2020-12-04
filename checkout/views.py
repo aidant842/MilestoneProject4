@@ -6,7 +6,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 
-from .forms import OrderForm, OrderDetailForm
+from .forms import OrderForm
 from .models import Order, OrderLineItem
 from bag.contexts import bag_contents
 from products.models import Product, Material, Colour, Size
@@ -60,20 +60,30 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
+            print(f'First item in the bag: {bag[0]}')
+            print(f'Second item in the bag: {bag[1]}')
             for item in bag:
+                print(f'Length of the bag: {len(bag)}')
+                print('This is the bag ')
+                print(bag)
+                print('The type of the bag is: ')
+                print(type(bag))
+                print('This is each item in the bag ')
+                print(item)
                 try:
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
                     material = (Material.objects.get
                                 (value=item['item_material']))
                     colour = Colour.objects.get(name=item['item_colour'])
+                    quantity = item["quantity"]
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
                         product_size=size,
                         product_material=material,
                         product_colour=colour,
-                        quantity=item["quantity"],
+                        quantity=quantity,
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
@@ -84,13 +94,13 @@ def checkout(request):
                                    )
                     order.delete()
                     return redirect(reverse('view_bag'))
-                request.session['save_info'] = 'save-info' in request.POST
-                return redirect(reverse('checkout_success',
-                                        args=[order.order_number]))
-            else:
-                messages.error(request, 'There was an error with your form.'
-                                        'Please double check'
-                                        ' your information.')
+            request.session['save_info'] = 'save-info' in request.POST
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
+        else:
+            messages.error(request, 'There was an error with your form.'
+                                    'Please double check'
+                                    ' your information.')
     else:
         bag = request.session.get('bag', [])
         if not bag:
@@ -103,7 +113,7 @@ def checkout(request):
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY
+            currency=settings.STRIPE_CURRENCY,
         )
 
         if request.user.is_authenticated:
@@ -118,7 +128,7 @@ def checkout(request):
                     'town_or_city': profile.default_town_or_city,
                     'street_address1': profile.default_street_address1,
                     'street_address2': profile.default_street_address2,
-                    'county': profile.default_county
+                    'county': profile.default_county,
                 })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
@@ -143,8 +153,6 @@ def checkout_success(request, order_number):
 
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    order_id = order.id
-    order_items = get_object_or_404(OrderLineItem, order_id=order_id)
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -176,7 +184,6 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
-        'order_items': order_items,
     }
 
     return render(request, template, context)

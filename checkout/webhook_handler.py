@@ -128,18 +128,21 @@ class StripeWH_Handler:
                     stripe_pid=pid,
                 )
                 for item in json.loads(bag):
+                    print('Each item from the webhook Handler-------->')
+                    print(item)
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
                     material = (Material.objects.get
                                 (value=item['item_material']))
                     colour = Colour.objects.get(name=item['item_colour'])
+                    quantity = item["quantity"]
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
                         product_size=size,
                         product_material=material,
                         product_colour=colour,
-                        quantity=item["quantity"],
+                        quantity=quantity,
                     )
                     order_line_item.save()
             except Exception as e:
