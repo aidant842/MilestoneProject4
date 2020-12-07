@@ -128,8 +128,6 @@ class StripeWH_Handler:
                     stripe_pid=pid,
                 )
                 for item in json.loads(bag):
-                    print('Each item from the webhook Handler-------->')
-                    print(item)
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
                     material = (Material.objects.get

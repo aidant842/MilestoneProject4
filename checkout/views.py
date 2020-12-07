@@ -60,16 +60,7 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
-            print(f'First item in the bag: {bag[0]}')
-            print(f'Second item in the bag: {bag[1]}')
             for item in bag:
-                print(f'Length of the bag: {len(bag)}')
-                print('This is the bag ')
-                print(bag)
-                print('The type of the bag is: ')
-                print(type(bag))
-                print('This is each item in the bag ')
-                print(item)
                 try:
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
