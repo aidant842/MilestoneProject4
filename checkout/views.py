@@ -6,7 +6,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 
-from .forms import OrderForm
+from .forms import OrderForm, DeliveryEditForm
 from .models import Order, OrderLineItem
 from bag.contexts import bag_contents
 from products.models import Product, Material, Colour, Size
@@ -219,15 +219,23 @@ def order_detail(request, order_id):
 
     if request.method == 'POST':
         formset = items_formset(request.POST, instance=order)
+        order_detail_delivery_form = DeliveryEditForm(request.POST,
+                                                      instance=order)
         if formset.is_valid():
             formset.save()
+            messages.success(request, 'Order updated successfully.')
+        else:
+            messages.error(request,
+                           'Update failed, please ensure the'
+                           'product form is valid.')
+
+        if order_detail_delivery_form.is_valid():
+            order_detail_delivery_form.save()
+            messages.success(request, 'Order updated successfully.')
 
     formset = items_formset(instance=order)
 
-    """ order_item = get_object_or_404(OrderLineItem, pk=item_id) """
-    """ order_details = OrderDetailForm(instance=order_item) """
-
-    order_detail_delivery_form = OrderForm(initial={
+    order_detail_delivery_form = DeliveryEditForm(initial={
         'full_name': order.full_name,
         'email': order.email,
         'phone_number': order.phone_number,
@@ -248,3 +256,21 @@ def order_detail(request, order_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def update_delivery(request, order_id):
+    """ A view to update delivery details """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only owners can access this.')
+        return redirect(reverse('home'))
+
+    order = get_object_or_404(Order, pk=order_id)
+
+    if request.method == 'POST':
+        delivery_form = DeliveryEditForm(request.POST, instance=order)
+        if delivery_form.is_valid():
+            delivery_form.save()
+
+    return redirect(reverse('home'))
