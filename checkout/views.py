@@ -238,13 +238,15 @@ def order_detail(request, order_id):
             formset.save()
             order_detail_delivery_form.save()
             messages.success(request, 'Order updated successfully.')
-            if order.dispatched is True:
+            if order.dispatched is True and order.email_sent is False:
                 send_mail(
                     subject,
                     body,
                     settings.DEFAULT_FROM_EMAIL,
                     [cust_email]
                 )
+                order.email_sent = True
+                order_detail_delivery_form.save()
                 messages.success(request, 'Dispatch E-mail sent to user.')
         else:
             messages.error(request,

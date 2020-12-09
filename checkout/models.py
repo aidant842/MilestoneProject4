@@ -31,6 +31,7 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False,
                                   default='')
     dispatched = models.BooleanField(default=False)
+    email_sent = models.BooleanField(default=False)
 
     def _generate_order_number(self):
         """ Generate a random, unique order number using UUID """
