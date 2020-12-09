@@ -226,13 +226,13 @@ input {
   position: absolute;
   left: -9999px;
 }
+
 [type="checkbox"]:not(:checked) + label,
 [type="checkbox"]:checked + label {
   position: relative;
   padding-left: 1.95em;
   cursor: pointer;
 }
-
 
 /* checkbox aspect */
 [type="checkbox"]:not(:checked) + label:before,
