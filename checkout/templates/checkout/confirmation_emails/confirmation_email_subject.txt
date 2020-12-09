@@ -1,1 +1,1 @@
-PG Photography Confirmation for Order Number  {{ order.oder_number }}
+PG Photography Confirmation for Order Number  {{ order.order_number }}

@@ -24,8 +24,10 @@
         {{ order_delivery.town_or_city | as_crispy_field }}
         {{ order_delivery.county | as_crispy_field }}
         {{ order_delivery.postcode | as_crispy_field }}
+        {{ order_delivery.country | as_crispy_field }}
         {{ order_delivery.email | as_crispy_field}}
         {{ order_delivery.phone_number | as_crispy_field }}
+        {{ order_delivery.dispatched | as_crispy_field }}
         <a><input type="submit" value="Save Products"></a>
     </form>
 <!--     

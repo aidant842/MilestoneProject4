@@ -1,0 +1,1 @@
+Your PG Photography order {{ order.order_number }} has been dispatched

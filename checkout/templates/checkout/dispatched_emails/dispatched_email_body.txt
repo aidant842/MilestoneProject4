@@ -1,7 +1,7 @@
 {% load tools %}
 Hello {{ order.full_name }}
 
-This is a confirmation of your order at PG Photography. Your order information is below:
+We thought you'd like to know that we've dispatched your order. Your order information is below:
 
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
@@ -10,13 +10,13 @@ Order Total: €{{ order.order_total | display_price }}
 Delivery: €{{ order.delivery_cost | display_price}}
 Grand Total: €{{ order.grand_total | display_price}}
 
-Your order will be shipped to:
-{{ order.full_name }},
+Your order is being shipped to:
+{{ order.full_name }}, 
 {{ order.street_address1 }}, 
-{{ order.town_or_city }},
+{{ order.town_or_city }}, 
 {{ order.country.name }}
 
-We've got your phone number on file as {{ order.phone_number }}
+We've passed on your phone number to the delivery merchant: {{ order.phone_number }}
 
 If you have any questions, feel free to contact us at {{ contact_email }} or through our on site contact form.
 

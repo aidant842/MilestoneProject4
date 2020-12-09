@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 from .forms import OrderForm, DeliveryEditForm
 from .models import Order, OrderLineItem
@@ -217,21 +219,37 @@ def order_detail(request, order_id):
                                                   'product_colour',
                                                   'quantity',))
 
+    cust_email = order.email
+    subject = render_to_string(
+            'checkout/dispatched_emails/dispatched_email_subject.txt',
+            {'order': order}
+        )
+
+    body = render_to_string(
+            'checkout/dispatched_emails/dispatched_email_body.txt',
+            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
+        )
+
     if request.method == 'POST':
         formset = items_formset(request.POST, instance=order)
         order_detail_delivery_form = DeliveryEditForm(request.POST,
                                                       instance=order)
-        if formset.is_valid():
+        if formset.is_valid() and order_detail_delivery_form.is_valid():
             formset.save()
+            order_detail_delivery_form.save()
             messages.success(request, 'Order updated successfully.')
+            if order.dispatched is True:
+                send_mail(
+                    subject,
+                    body,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [cust_email]
+                )
+                messages.success(request, 'Dispatch E-mail sent to user.')
         else:
             messages.error(request,
                            'Update failed, please ensure the'
                            'product form is valid.')
-
-        if order_detail_delivery_form.is_valid():
-            order_detail_delivery_form.save()
-            messages.success(request, 'Order updated successfully.')
 
     formset = items_formset(instance=order)
 
@@ -245,6 +263,7 @@ def order_detail(request, order_id):
         'street_address1': order.street_address1,
         'street_address2': order.street_address2,
         'county': order.county,
+        'dispatched': order.dispatched,
     })
 
     template = 'checkout/order_detail.html'

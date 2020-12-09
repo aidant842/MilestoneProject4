@@ -73,7 +73,7 @@ class DeliveryEditForm(forms.ModelForm):
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',
-                  'county',)
+                  'county', 'dispatched',)
 
     def __init__(self, *args, **kwargs):
         """ Add placeholders and classes, remove auto-generated labels
@@ -88,15 +88,19 @@ class DeliveryEditForm(forms.ModelForm):
             'town_or_city': 'Town or City',
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
-            'county': 'County'
+            'county': 'County',
+            'country': 'Country',
+            'dispatched': 'Dispatched',
         }
 
         for field in self.fields:
-            if field != 'country':
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            if field != 'dispatched':
+                self.fields[field].label = False
+            else:
+                self.fields[field].label = 'Dispatched'
+            self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'form-style'
-            self.fields[field].label = False
