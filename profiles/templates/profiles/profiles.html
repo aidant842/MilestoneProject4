@@ -52,7 +52,6 @@
                         <span>Quantity:</span>
                         <span>Total:</span>
                         <span>Order Date:</span>
-                        <span>Order Number:</span>
                     </div>
 
                     <div class="order-values">
@@ -60,11 +59,14 @@
                         <span>{{ item.quantity }}</span>
                         <span>€{{ item.lineitem_total| display_price }}</span>
                         <span>{{ order.date.date }}</span>
-                        <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number}}"><i class="fas fa-link"></i>
-                            {{ order.order_number|truncatechars:10 }}<br>
-                        </a>
                     </div>
                 {% endfor %}
+                <span>Grand Total:</span>
+                <span>€{{ order.grand_total | display_price }}</span>
+                <span>Order Number:</span>
+                <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number}}"><i class="fas fa-link"></i>
+                    {{ order.order_number|truncatechars:10 }}<br>
+                </a>
             </div>
             <hr class="checkout-hr">
 		{% endfor %}

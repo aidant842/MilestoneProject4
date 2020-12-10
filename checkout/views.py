@@ -212,7 +212,7 @@ def order_detail(request, order_id):
 
     order = get_object_or_404(Order, pk=order_id)
     items_formset = inlineformset_factory(Order,
-                                          OrderLineItem, extra=0,
+                                          OrderLineItem, extra=1,
                                           fields=('product',
                                                   'product_size',
                                                   'product_material',
@@ -251,7 +251,7 @@ def order_detail(request, order_id):
         else:
             messages.error(request,
                            'Update failed, please ensure the'
-                           'product form is valid.')
+                           ' product form is valid.')
 
     formset = items_formset(instance=order)
 
@@ -277,21 +277,3 @@ def order_detail(request, order_id):
     }
 
     return render(request, template, context)
-
-
-@login_required
-def update_delivery(request, order_id):
-    """ A view to update delivery details """
-
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only owners can access this.')
-        return redirect(reverse('home'))
-
-    order = get_object_or_404(Order, pk=order_id)
-
-    if request.method == 'POST':
-        delivery_form = DeliveryEditForm(request.POST, instance=order)
-        if delivery_form.is_valid():
-            delivery_form.save()
-
-    return redirect(reverse('home'))

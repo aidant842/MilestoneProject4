@@ -1,0 +1,36 @@
+/******* Order Admin Styles ********/
+
+.order-admin-container {
+    width: 85%;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+.order-detail-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    justify-items: center;
+}
+
+.dispatched {
+    opacity: 0.5;
+}
+
+@media only screen and (max-width: 340px) {
+    .orderNumber {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .order-number {
+        font-size: 0.8rem;
+        max-width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/*************** *********************/

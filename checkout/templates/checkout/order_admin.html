@@ -8,13 +8,26 @@
 
 <div class="order-admin-container">
     {% for order in orders %}
-        <a href="{% url 'order_detail' order.id %}" class="">
-            <div class="order-detail-values">
-                <p class="order-number">{{ order.order_number }}</p>
-                <p class="order-grand-total">€{{ order.grand_total | display_price}}</p>
-                <p class="order-date">{{ order.date }}</p>
+        {% if not order.dispatched %}
+            <a href="{% url 'order_detail' order.id %}" class="">
+                <div class="order-detail-values">
+                    <p class="order-number">{{ order.order_number }}</p>
+                    <p class="order-grand-total">€{{ order.grand_total | display_price}}</p>
+                    <p class="order-date">{{ order.date }}</p>
+                </div>
+            </a>
+        {% else %}
+            <div class="dispatched">
+                <a href="{% url 'order_detail' order.id %}" class="">
+                    <div class="order-detail-values">
+                        <p class="order-number">{{ order.order_number }}</p>
+                        <p class="order-grand-total">€{{ order.grand_total | display_price}}</p>
+                        <p class="order-date">{{ order.date }}</p>
+                        <p>Dispatched</p>
+                    </div>
+                </a>
             </div>
-        </a>
+        {% endif %}
         <hr class="checkout-hr">
     {% endfor %}
 </div>

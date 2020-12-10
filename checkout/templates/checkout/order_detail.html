@@ -8,12 +8,13 @@
 
 <a href="{% url 'order_admin' %}" class="inbox-link"><i class="store-link-arrow fas fa-angle-left"></i>Orders</a>
 <div class="order-admin-container">
-    <p>{{ order.order_number }}</p>
+    <p class="orderNumber">{{ order.order_number }}</p>
     <h3>Order Details</h3>
     <hr class="checkout-hr">
     <form action="" method="POST" id="" class="">
         {% csrf_token %}
         {{ line_items | crispy }}
+        <h4>Import Note: If updating an Order and not adding another item, delete this blank form to avoid errors!</h4>
         <hr class="checkout-hr">
         <h3>Order Delivery Details</h3>
         <hr class="checkout-hr">
@@ -28,7 +29,7 @@
         {{ order_delivery.email | as_crispy_field}}
         {{ order_delivery.phone_number | as_crispy_field }}
         {{ order_delivery.dispatched | as_crispy_field }}
-        <a><input type="submit" value="Save Products"></a>
+        <a><input type="submit" value="Save Order" class="save-order"></a>
     </form>
 </div>
  {% endblock %}
