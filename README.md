@@ -324,7 +324,7 @@ Schema table
 
 ### Wireframes
 The Wireframes are my initial idea for the website, the final product is very similar to these wireframes, however there are a few changes, most notably the home page and the colour scheme.
-* <a href="read_me_assets/wireframes.pdf" target="_blank">Wireframes</a>
+* <a href="read_me_assets/wireframes-compressed.pdf" target="_blank">Wireframes</a>
  
  
 ## Features
@@ -450,9 +450,11 @@ Testing conducted
 * Correct data is displayed for each field in edit form. &#9745;
 * Link to admin panel only appears in superuser profiles. &#9745;
  
-No automated testing was conducted. This is because i had realised that the Django automated testing has quite a steap learning curve that would require a significant time investment
-that I couldn't fit into the deadline for the project. For this reason automated testing wasn't fully implemented and i focused mainly on manual testing.
+Very little automated testing was conducted. This is because i had realised that the Django automated testing has quite a steap learning curve that would 
+require a significant time investment that I couldn't fit into the deadline for the project.
+For this reason automated testing wasn't fully implemented and i focused mainly on manual testing.
 In the future i plan to learn more about Django's automated testing.
+There is a few very simple view test in the profiles app under test_views where i had begun automated testing.
 </details>
  
 ### Errors
