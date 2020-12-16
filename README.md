@@ -414,47 +414,79 @@ I had family and friends test the website also.
 Testing conducted
 </summary>
 
-#### Non Superuser Accounts/Non verified
+#### Non Superuser/Non Authenticated Accounts
 
-* Create an account, works as it should, passwords are hashed for security. &#9745;
-* Logging in to the created account, works as it should. &#9745;
-* Change password works. &#9745;
-* Adding a product to bag, works as it should. &#9745;
-* Editing a product in the bag, works as it should &#9745;
-* Removing a product from the bag, works as it should. &#9745;
-* Logout button visible in nav if the user is logged in. &#9745;
-* Login and Signup buttons are only visible if you are not signed in. &#9745;
-* If the username/email already exists in the database, prompts the user that it already exists. &#9745;
-* All links work. &#9745;
-* Flash messages appear when appropriate to ensure completed action to the user, or if errors occur. &#9745;
-* Form validation is used to help prevent any errors that may arrise from incomplete/incorrecy data. &#9745;
-* Custom 404 error page with redirect after 10 seconds. &#9745;
-* Custom 505 error page with redirect after 10 seconds. &#9745;
-* Delete modal failsafe works. &#9745;
-* Checkout works as expected with verification E-mail and form autofill if user logged in and user info stored. &#9745;
-* Checkout and item totals calculate correctly. &#9745;
-* Contact works as expected with form autofil if logged in and user info stored. &#9745;
-* Userprofiles work as expected including updating of user information and order history. &#9745;
-* Pagination works. &#9745;
-* Image carousel works and displays relevant information. &#9745;
+* User/Profiles System
+    - Create an account, works as it should, passwords are hashed for security. &#9745;
+    - Logging in to the created account, works as it should. &#9745;
+    - Change password works. &#9745;
+    - Logout button visible in nav if the user is logged in. &#9745;
+    - Login and Signup buttons are only visible if you are not signed in. &#9745;
+    - If the username/email already exists in the database, prompts the user that it already exists. &#9745;
+    - Userprofiles work as expected including updating of user information and order history. &#9745;
+    - Social account logins/signups work are intended. &#9745;
 
+* Bag System
+    - Adding a product to bag, works as it should. &#9745;
+    - Editing a product in the bag, works as it should &#9745;
+    - Removing a product from the bag, works as it should. &#9745;
+    - Calculation of bag total works as it should. &#9745;
+    - Per item total works as it should. &#9745;
+
+* Checkout
+    - Correctly displays an overview of your items for purchase. &#9745;
+    - Checkout and item totals calculate correctly. &#9745;
+    - Save Info saves delivery details to user account as intended. &#9745;
+    - Checkout works as expected with verification E-mail and form autofill if user logged in and user info stored. &#9745;
+
+* Contact
+    - Contact works as expected with form autofil if logged in and user info stored. &#9745;
+
+* Customtools
+    - The display_price template filter works as intended and displays price nicely to the user. &#9745;
+
+* Home
+    - Image carousel works and displays relevant information. &#9745;
+
+* Store/ Product Detail
+    - Pagination works. &#9745;
+    - On hover card displays products information and a link to it's detail page. &#9745;
+    - Category Filtering works correctly. &#9745;
+    - Information for size works properly. &#9745;
+    - All relevant product information is displayed. &#9745;
+    - Product options work and are selectable. &#9745;
+    - Quantity selector works properly. &#9745;
+    - Clicking on the image displays a large version of the image in a modal. &#9745;
+
+* General Site Wide Testing
+    - All links work. &#9745;
+    - Flash messages appear when appropriate to ensure completed action to the user, or if errors occur. &#9745;
+    - Form validation is used to help prevent any errors that may arrise from incomplete/incorrecy data. &#9745;
+    - Custom 404 error page with redirect after 10 seconds. &#9745;
+    - Custom 505 error page with redirect after 10 seconds. &#9745;
+    - Delete modals failsafe works where implemented. &#9745;
 
 #### Superuser Accounts
 
-* Admin tools visible in nav if logged in. &#9745;
+* Custom Admin Tools
+    - Admin tools visible in nav if logged in. &#9745;
     - Add Product, works as it should. &#9745;
     - Edit Product, works as it should. &#9745;
     - Delete Product, works as it should. &#9745;
     - Inbox, works as it should, with mark as read functionality. &#9745;
     - Order, works as it should, with mark as dispatched functionality. &#9745;
-* Correct data is displayed for each field in edit form. &#9745;
+    - Correct data is displayed for each field in edit form. &#9745;
+    - Edit/Delete on displays on a products card if superuser. &#9745;
+
 * Link to admin panel only appears in superuser profiles. &#9745;
  
 Very little automated testing was conducted. This is because i had realised that the Django automated testing has quite a steap learning curve that would 
 require a significant time investment that I couldn't fit into the deadline for the project.
 For this reason automated testing wasn't fully implemented and i focused mainly on manual testing.
-In the future i plan to learn more about Django's automated testing.
 There is a few very simple view test in the profiles app under test_views where i had begun automated testing.
+Although it isn't the correct practice, i had planned on implementing my automated testing last as i knew i hadn't any experience with Django's automated testing,
+so i had focused mainly on manual testing throughout the build as to not hinder the development process too much.
+In the future i plan to learn more about Django's automated testing and implement it fully in future projects.
 </details>
  
 ### Errors
