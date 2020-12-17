@@ -51,23 +51,5 @@ class DeliveryEditForm(forms.ModelForm):
         and set autofocus on first field """
 
         super().__init__(*args, **kwargs)
-        placeholders = {
-            'full_name': 'Full Name',
-            'email': 'Email Address',
-            'phone_number': 'Phone Number',
-            'postcode': 'Postcode',
-            'town_or_city': 'Town or City',
-            'street_address1': 'Street Address 1',
-            'street_address2': 'Street Address 2',
-            'county': 'County',
-        }
-
         for field in self.fields:
-            if field != 'country':
-                if field != 'dispatched':
-                    if self.fields[field].required:
-                        placeholder = f'{placeholders[field]} *'
-                    else:
-                        placeholder = placeholders[field]
-            self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'form-style'
