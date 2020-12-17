@@ -16,7 +16,7 @@
         <hr class="inbox-hr">
         <p id="message-enquiry">{{ message.enquiry }}</p>
         <hr class="inbox-hr">
-        <form action="{% url 'message' message.id %}" method="POST" id="" class="mar-form">
+        <form action="{% url 'message' message.id %}" method="POST" class="mar-form">
             {% csrf_token %}
             {{ mar_form.mark_as_read | as_crispy_field }}
         </form>

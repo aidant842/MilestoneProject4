@@ -69,9 +69,5 @@ class DeliveryEditForm(forms.ModelForm):
                 placeholder = f'{placeholders[field]} *'
             else:
                 placeholder = placeholders[field]
-            if field != 'dispatched':
-                self.fields[field].label = False
-            else:
-                self.fields[field].label = 'Dispatched'
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'form-style'
