@@ -8,12 +8,20 @@ from profiles.models import UserProfile
 
 
 def contact_page(request):
-    """ A view to return the index page """
+    """ A view to return the contact page """
 
     profile = ''
 
+    """ If user is logged in, grab the profile to autofill fields
+        in the template """
+
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
+
+    """ If accessing the view from POST
+        grab the variables from the POST data
+        and save them into the contact modal
+        creating a message """
 
     if request.method == 'POST':
         contact = Inbox()
@@ -66,6 +74,10 @@ def message(request, message_id):
 
     message = get_object_or_404(Inbox, pk=message_id)
     mar_form = MarkAsReadForm(instance=message)
+
+    """ Create mark as read form from message
+        if valid, save form
+        marking message as read. """
 
     if request.method == 'POST':
         mar_form = MarkAsReadForm(request.POST, instance=message)

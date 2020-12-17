@@ -13,12 +13,16 @@ from .forms import ProductForm
 def all_products(request):
     """ A view to return the products page """
 
+    """ Filter by selected category """
+
     selected_category = request.GET.get('category', None)
 
     if selected_category:
         products = Product.objects.filter(category__name=selected_category)
     else:
         products = Product.objects.all()
+
+    """ setup paginator """
 
     categories = Category.objects.all()
     paginator = Paginator(products, 6)
@@ -76,7 +80,7 @@ def add_product(request):
             return redirect(reverse('add_product'))
         else:
             messages.error(request, 'Failed to add product,'
-                           'please ensure the form is valid')
+                           ' please ensure the form is valid')
     else:
         form = ProductForm()
 
@@ -107,7 +111,7 @@ def edit_product(request, product_id):
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Failed to update product.'
-                           'Please ensure the form is valid.')
+                           ' Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')

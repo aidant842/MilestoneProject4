@@ -29,8 +29,14 @@ def profile(request):
 @login_required
 def update_profile(request):
 
+    """ Declare and initialise variables """
+
     profile = get_object_or_404(UserProfile, user=request.user)
     user = get_object_or_404(User, id=request.user.id)
+
+    """ Create instances of each form using above variables.
+        If both are valid save and send message to the user.
+        Else tell user of an error. """
 
     if request.method == 'POST':
         user_profile_form = UserProfileForm(request.POST, instance=profile)
@@ -61,7 +67,7 @@ def order_history(request, order_number):
 
     messages.info(request, (
         f'This is a post confirmation for order number {order_number}.'
-        'A confirmation email was sent on the order date.'
+        ' A confirmation email was sent on the order date.'
         ))
 
     template = 'checkout/checkout_success.html'

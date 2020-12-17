@@ -26,7 +26,11 @@
     >
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body" style="background-image:url('{{ product.image.url }}');"></div>
+                <div class="modal-body" style="background-image:url('{{ product.image.url }}');">
+                    <button type="button" class="close image-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

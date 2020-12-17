@@ -793,6 +793,16 @@ a.user-link, a.bag-link, div.tools-link {
   background-size: cover;
 }
 
+.image-close {
+  color: #6a7fdb;
+  font-size: 2.5rem;
+  opacity: 0.7;
+}
+
+.image-close:hover {
+  color: #eaeaea;
+}
+
 .product-price {
   color: #6a7fdb;
 }

@@ -3,6 +3,8 @@ from products.models import Product
 
 
 def bag_contents(request):
+    """ a context processor to allow for these values
+        to be easily accessible throghout the site """
 
     bag_items = []
     total = 0

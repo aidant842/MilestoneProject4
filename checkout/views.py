@@ -21,7 +21,12 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
-    """  """
+    """ cache checkout data  """
+
+    """ Grab the payment ID, assign the stripe.api_key
+        to the secret key from the settings
+        cache values in the stripe payment intent.
+        otherwise return an error """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -33,13 +38,18 @@ def cache_checkout_data(request):
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry your payment cannot be'
-                                'processed right now. Please try again later')
+                                ' processed right now.'
+                                ' Please try again later.')
         return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+    """ if submitting the checkout form,
+        grab the form data and assign it to form_data
+        and create an instance of the OrderForm using form_data."""
 
     if request.method == 'POST':
         bag = request.session.get('bag', [])
@@ -56,12 +66,20 @@ def checkout(request):
             'county': request.POST['county'],
         }
         order_form = OrderForm(form_data)
+
+        """ Check if the form is valid, if so, save the order. """
+
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
+
+            """ From there create an OrderLineItem with the
+                product details and save it.
+                Handle Errors """
+
             for item in bag:
                 try:
                     product = Product.objects.get(id=item['item_id'])
@@ -92,9 +110,12 @@ def checkout(request):
                                     args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form.'
-                                    'Please double check'
+                                    ' Please double check'
                                     ' your information.')
+
     else:
+        """ if not working from POST Data render checkout page
+            and handle possible errors """
         bag = request.session.get('bag', [])
         if not bag:
             messages.error(request,
@@ -144,13 +165,23 @@ def checkout(request):
 def checkout_success(request, order_number):
     """ A view to handle successful checkout """
 
+    """ assign variables """
+
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+
+    """ if the user is logged in, save the order to the profile
+        so as the user has access to order history """
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
+
+        """ if the user requested to save info from checkout
+            save the info to the profile so as the form
+            is automatically filled out for the next order
+            if the user is logged in """
 
         if save_info:
             profile_data = {
@@ -210,6 +241,8 @@ def order_detail(request, order_id):
         messages.error(request, 'Sorry, only owners can access this.')
         return redirect(reverse('home'))
 
+    """ Declare Variables """
+
     order = get_object_or_404(Order, pk=order_id)
     items_formset = inlineformset_factory(Order,
                                           OrderLineItem, extra=1,
@@ -230,6 +263,10 @@ def order_detail(request, order_id):
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
         )
 
+    """ If working with POST create an instance of items_formset
+        and deliveryEditForm with the order.
+        If both forms are valid save and flash message to the user. """
+
     if request.method == 'POST':
         formset = items_formset(request.POST, instance=order)
         order_detail_delivery_form = DeliveryEditForm(request.POST,
@@ -238,6 +275,11 @@ def order_detail(request, order_id):
             formset.save()
             order_detail_delivery_form.save()
             messages.success(request, 'Order updated successfully.')
+
+            """ If the user marks the order as dispatched and the
+                confirmation email hasn't previously been sent
+                send a confirmation email to the shopper. """
+
             if order.dispatched is True and order.email_sent is False:
                 send_mail(
                     subject,

@@ -80,6 +80,10 @@ class StripeWH_Handler:
                 profile.default_county = shipping_details.address.state
                 profile.save()
 
+        """ Check if the order exists from the view,
+        if not, try again upto 5 times.
+        if the order exists send the confirmation email """
+
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -111,6 +115,8 @@ class StripeWH_Handler:
                 status=200
                 )
         else:
+            """ Try and create the order and OrderLineItem here in the webhook handler
+                and send the confirmation email """
             order = None
             try:
                 order = Order.objects.create(
