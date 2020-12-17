@@ -18,7 +18,7 @@
                     <p class="message-enquiry">{{ message.enquiry | truncatewords:10 }}</p>
                 </div>
             </a>
-            <a class="message-delete btn checkoutBtn" data-delete_id="delete_{{ product.id }}" data-toggle="modal" data-target="#deleteModal">Delete <i class="fas fa-trash-alt"></i></a>
+            <a class="message-delete btn checkoutBtn" data-delete_id="delete_{{ message.id }}" data-toggle="modal" data-target="#deleteModal">Delete <i class="fas fa-trash-alt"></i></a>
             <hr class="checkout-hr">
         {% else %}
             <div class="marked-as-read">
@@ -70,8 +70,8 @@
 <script>
     $('.message-delete').click(function(){
         var messageId = $(this).attr("data-delete_id").split("delete_")[1];
-        var url = `/contact_us/delete/${messageId}`;
-        
+        var url = `/contact_us/delete/${messageId}/`;
+                
         $(".confirm-delete").click(function(){
             window.location.replace(url);
         });
