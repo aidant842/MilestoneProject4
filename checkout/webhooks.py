@@ -34,8 +34,7 @@ def webhook(request):
     except Exception as e:
         return HttpResponse(content=e, status=400)
 
-        # setup webhook handler
-
+    # setup webhook handler
     handler = StripeWH_Handler(request)
 
     # Map webhook events to relevent handler functions
@@ -54,5 +53,5 @@ def webhook(request):
     event_handler = event_map.get(event_type, handler.handle_event)
 
     # Call the event handler with the event
-    response = event_handler(event, request)
+    response = event_handler(event)
     return response
