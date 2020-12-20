@@ -2,10 +2,6 @@
     display: grid;
 }
 
-/* .carousel img {
-    height: 550px;
-} */
-
 .carousel-control-next-icon, .carousel-control-prev-icon {
     background-image: none;
 }
@@ -48,7 +44,6 @@
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
-    /* height: 550px; */
     height: calc(100vh - 205px);
     box-shadow: inset 0px 0px 38px 12px rgba($main-color, 0.7);
 }
@@ -84,9 +79,3 @@
 .buy-now-btn:hover, .shop-now-btn:hover {
     @extend %button-hover;
 }
-
-/* @media only screen and (max-width: 650px) {
-    .carousel-item {
-        height: 400px;
-    }
-} */

@@ -13,7 +13,6 @@
     height: 100vh;
     width: 90px;
     background: $main-color;
-    /* border-right: 1px solid $secondary-color; */
     box-shadow: 2px 0px 10px 0px $secondary-color;
     transition: transform 0.5s ease-in;
     z-index: 3;
@@ -22,7 +21,6 @@
 .misc-links {
     grid-row: 3;
     list-style: none;
-    /* color: $font-color; */
     font-size: 1.3rem;
     line-height: 50px;
     justify-self: center;
@@ -38,11 +36,8 @@
     width: 105%;
     background: $main-color;
     display: grid;
-    /* justify-content: center; */
-    /* align-content: space-evenly; */
     margin: 0;
     transform: translateX(-100%);
-    /* display: none; */
     justify-items: center;
 }
 
@@ -132,11 +127,8 @@
 }
 
 .burger {
-    /* width: 35px; */
-    /* height: 25px; */
     grid-row: 2;
     justify-self: center;
-    /* cursor: pointer; */
 }
 
 .burger div {
@@ -186,6 +178,7 @@ a.user-link, a.bag-link, div.tools-link {
 .dropdown-menu {
     background-color: $background-color;
     border: 1px solid $secondary-color;
+    z-index: 4;
 }
 
 .dropdown-item {

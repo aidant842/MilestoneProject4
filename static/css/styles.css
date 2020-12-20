@@ -20,7 +20,7 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: thin;
-  /* cursor: none !important; */
+  cursor: none !important;
 }
 
 body {
@@ -64,7 +64,6 @@ h1 {
 }
 
 .heading h1, .heading h4 {
-  /* font-family: $main-font; */
   font-weight: bold;
   font-size: 1.75rem;
   margin: 0.5rem auto;
@@ -127,7 +126,7 @@ a:hover {
   transition-property: background, transform;
   transform-origin: 100% 100%;
   overflow: hidden;
-  z-index: 4;
+  z-index: 5;
 }
 
 .link-grow {
@@ -295,6 +294,11 @@ label:hover:before {
   .heading h1 {
     font-size: 1.5rem;
     width: revert;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .cursor {
+    display: none;
   }
 }
 .bg {
@@ -481,6 +485,7 @@ a.user-link, a.bag-link, div.tools-link {
 .dropdown-menu {
   background-color: rgba(25, 23, 22, 0.9);
   border: 1px solid #6a7fdb;
+  z-index: 4;
 }
 
 .dropdown-item {

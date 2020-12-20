@@ -495,29 +495,29 @@ In the future i plan to learn more about Django's automated testing and implemen
 Current errors:
 </summary>
  
-1. ~~ ***NOT YET FIXED*** Forgot to add spaces to messages after conforming to pep8 styling ~~ &#9745;
-2. ~~ ***NOT YET FIXED*** No link to go back to inbox from message page. ~~ &#9745;
-3.  ~~ ***NOT YET FIXED*** Wrong total being displayed on checkout success page. ~~ &#9745;
-4. ~~ ***NOT YET FIXED*** Orders not working correctly, only processing first item in the bag. ~~ &#9745;
-5. ~~ ***NOT YET FIXED*** Update/Remove links not working on bag page. ~~ &#9745;
-6.  ~~ ***NOT YET FIXED*** Fix positioning of admintools on page. ~~ &#9745;
-7. ~~ ***NOT YET FIXED*** Checkout Success not displaying all items bought. ~~ RELATED TO ORDERS FIX &#9745;
-8. ~~ ***NOT YET FIXED*** Back link on product detail page returns to store no matter where it'c accessed from. ~~&#9745;
-9. ~~ ***NOT YET FIXED*** Add margin to bottom of login page. ~~ &#9745;
-10. ~~ ***NOT YET FIXED*** Images need compressing causing slow load times. ~~ &#9745;
-11. ~~ ***NOT YET FIXED*** Fix quantity inputs on bag page allowing out of intended range values. ~~&#9745;
-12. ~~ ***NOT YET FIXED*** +/- buttons not working correctly if multiple of the same item are in the bag due to duplicated item ID's. ~~&#9745;
-13. ~~ ***NOT YET FIXED*** Disable right click context menu for images to try prevent saving images. ~~&#9745;
-14. ~~ ***NOT YET FIXED*** Social logins not working, issue with callback urls coming from non secure origin. ~~&#9745;
-15. ~~ ***NOT YET FIXED*** Move content in product cards up for mobile. ~~&#9745;
-16. ~~ ***NOT YET FIXED*** +/- buttons appearing over nav on mobile due to ::focus attribute increasing z-index. ~~&#9745;
-17. ~~ ***NOT YET FIXED*** If username is too long, will push heading off the page on userprofile page. ~~&#9745;
+1. ~~***NOT YET FIXED*** Forgot to add spaces to messages after conforming to pep8 styling.~~ &#9745;
+2. ~~***NOT YET FIXED*** No link to go back to inbox from message page.~~ &#9745;
+3. ~~***NOT YET FIXED*** Wrong total being displayed on checkout success page.~~ &#9745;
+4. ~~***NOT YET FIXED*** Orders not working correctly, only processing first item in the bag.~~ &#9745;
+5. ~~***NOT YET FIXED*** Update/Remove links not working on bag page.~~ &#9745;
+6.  ~~***NOT YET FIXED*** Fix positioning of admintools on page.~~ &#9745;
+7. ~~***NOT YET FIXED*** Checkout Success not displaying all items bought.~~ RELATED TO ORDERS FIX &#9745;
+8. ~~***NOT YET FIXED*** Back link on product detail page returns to store no matter where it'c accessed from.~~ &#9745;
+9. ~~***NOT YET FIXED*** Add margin to bottom of login page.~~ &#9745;
+10. ~~***NOT YET FIXED*** Images need compressing causing slow load times.~~ &#9745;
+11. ~~***NOT YET FIXED*** Fix quantity inputs on bag page allowing out of intended range values.~~ &#9745;
+12. ~~***NOT YET FIXED*** +/- buttons not working correctly if multiple of the same item are in the bag due to duplicated item ID's.~~ &#9745;
+13. ~~***NOT YET FIXED*** Disable right click context menu for images to try prevent saving images.~~ &#9745;
+14. ~~***NOT YET FIXED*** Social logins not working, issue with callback urls coming from non secure origin.~~ &#9745;
+15. ~~***NOT YET FIXED*** Move content in product cards up for mobile.~~ &#9745;
+16. ~~***NOT YET FIXED*** +/- buttons appearing over nav on mobile due to ::focus attribute increasing z-index.~~ &#9745;
+17. ~~***NOT YET FIXED*** If username is too long, will push heading off the page on userprofile page.~~ &#9745;
 18. ***NOT YET FIXED*** Menu goes white on firefox browser on mobile. Issue with toolbar hiding, issue goes away when turned off in browser settings.
-19. ~~ ***NOT YET FIXED*** Gap on userprofile page between orders and account services on mobile. gap narrowed ~~ &#9745;
-20. ~~ ***NOT YET FIXED*** Server error when checking out on live site. ~~ &#9745; Forgotten about print statements
-21. ~~ ***NOT YET FIXED*** Issue with nav links appearing when background is clicked, caused by out of place js. ~~&#9745;
-22. ~~ ***NOT YET FIXED*** Clicking cancel on delete modal doesn't close the modal. ~~&#9745;
-23. ~~ ***NOT YET FIXED*** If delivery info isn't set None displaying on profile. ~~&#9745;
+19. ~~***NOT YET FIXED*** Gap on userprofile page between orders and account services on mobile. gap narrowed~~ &#9745;
+20. ~~***NOT YET FIXED*** Server error when checking out on live site.~~ &#9745; Forgotten print statements using old variables.
+21. ~~***NOT YET FIXED*** Issue with nav links appearing when background is clicked, caused by out of place js.~~ &#9745;
+22. ~~***NOT YET FIXED*** Clicking cancel on delete modal doesn't close the modal.~~ &#9745;
+23. ~~***NOT YET FIXED*** If delivery info isn't set None displaying on profile.~~ &#9745;
 24. ***NOT YET FIXED*** Not able to checkout more than 4 items at a time, a restriction with stripe only allowing 500 characters in the metadata.
 </details>
 

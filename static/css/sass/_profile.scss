@@ -12,7 +12,6 @@
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 0.5fr 1fr;
-    /* grid-template-rows: 2rem 1fr; */
     grid-column-gap: 4rem;
 }
 
@@ -35,12 +34,6 @@
     grid-row: 1;
     grid-column: 1;
 }
-
-/* .user-details-heading h5,
-.order-history-heading h5 {
-    color: $secondary-color;
-    font-weight: bold;
-} */
 
 .profile-values {
     text-transform: capitalize;
@@ -115,7 +108,6 @@
 @media only screen and (max-width: 675px) {
     .profile-container {
         grid-template-columns: 1fr;
-        /* grid-template-rows: 2rem 1fr 2rem 1fr; */
         grid-column-gap: 0;
         grid-row-gap: 1rem;
     }

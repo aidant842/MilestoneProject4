@@ -6,7 +6,6 @@
 .bagContent {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* grid-template-columns: 1fr 0.5fr 0.5fr 0.25fr 0.5fr 0.25fr; */
     width: 90%;
     margin: auto;
     padding-top: 2rem;
@@ -56,7 +55,6 @@
     grid-column: 1;
     font-weight: bold;
     color: $font-color;
-    /* height: 5%; */
     cursor: pointer;
 }
 
@@ -64,7 +62,6 @@
     grid-column: 3;
     font-weight: bold;
     color: $font-color;
-    /* height: 5%; */
     cursor: pointer;
 }
 
@@ -107,13 +104,6 @@
 .qty-input.bag-page {
     margin-top: 0;
 }
-
-/* .input-group-prepend .bag-page {
-    position: relative;
-    height: 38px;
-    top: 38px;
-    left: -40px;
-} */
 
 @media only screen and (max-width: 1000px) {
     

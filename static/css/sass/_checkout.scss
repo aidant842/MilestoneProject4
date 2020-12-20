@@ -1,8 +1,6 @@
 .checkout-form {
     display: grid;
     grid-template-columns: 45% 10% 45%;
-    /* grid-template-columns: 1fr 1fr; */
-    /* grid-template-rows: 5% 95%; */
     margin: 50px 10% 0 10%;
     grid-row-gap: 30px;
 }
@@ -19,10 +17,8 @@
 
 .checkout-products {
     display: grid;
-    /* grid-column: 3; */
     grid-row: 2;
     grid-template-columns: 1fr 2fr 1fr;
-    /* grid-template-rows: 0.1fr auto; */
     height: max-content;
 }
 
@@ -198,11 +194,8 @@ select option:first-child {
 
     .checkout-products {
         display: grid;
-        /* grid-column: 3; */
         grid-row: 2;
         grid-template-columns: 1fr 2fr 1fr;
-        /* grid-template-rows: 0.1fr auto; */
-        /* height: max-content; */
     }
 
     .divider {
