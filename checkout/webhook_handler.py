@@ -134,7 +134,7 @@ class StripeWH_Handler:
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                for item in bag:
+                for item in json.loads(bag):
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
                     material = (Material.objects.get
