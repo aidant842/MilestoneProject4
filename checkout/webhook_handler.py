@@ -8,6 +8,7 @@ from django.conf import settings
 from .models import Order, OrderLineItem
 from products.models import Product, Material, Colour, Size
 from profiles.models import UserProfile
+from bag.contexts import bag_contents
 
 import json
 import time
@@ -52,7 +53,7 @@ class StripeWH_Handler:
         """ Hande the payment_intent_succeeded webhook from Stripe """
         intent = event.data.object
         pid = intent.id
-        bag = intent.metadata.bag
+        bag = bag_contents.bag_items
         save_info = intent.metadata.save_info
 
         billing_details = intent.charges.data[0].billing_details
@@ -133,7 +134,7 @@ class StripeWH_Handler:
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                for item in json.loads(bag):
+                for item in bag:
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
                     material = (Material.objects.get
