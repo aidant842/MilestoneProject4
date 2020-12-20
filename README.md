@@ -358,6 +358,7 @@ The Wireframes are my initial idea for the website, the final product is very si
 -  **User Reviews** Ability to add reviews from multiple users to a product.
 -  **Real Payments** Ability to process real payments.
 -  **Social Links** Addition of social links to the about section once the owner has launched his business.
+- **Payment Error** Fix issue with trying to purchase more than four items at a time.
  
 ## Technologies used
 
@@ -700,10 +701,12 @@ If you want to run this project locally, you will need to follow these steps.
 </summary>
 
 Requirements:
-    1. A Developement Environment with the following installed:
-        python3 and pip
-    2. Have a Gmail Account with 2F authentication enabled
-    3. Have a free stripe account.
+* A Developement Environment with the following installed:
+    - python3
+    - pip
+    - sass
+* Have a Gmail Account with 2F authentication enabled
+* Have a free stripe account.
 
 1. Clone or download this repository.
 

@@ -12,13 +12,14 @@
     <div class="success-order-details">
         <h5>Order Details:</h5>
             {% for item in order.lineitems.all %}
-                <span>Product: {{ item.product.name }}</span>
-                <span>Size: {{ item.product_size }}</span>
-                <span>Material: {{ item.product_material }}</span>
-                <span>Colour: {{ item.product_colour }}</span>
-                <span>Quantity: {{ item.quantity }}</span>
+                <span><strong>Product:</strong> {{ item.product.name }}</span>
+                <span><strong>Size:</strong> {{ item.product_size }}</span>
+                <span><strong>Material:</strong> {{ item.product_material }}</span>
+                <span><strong>Colour:</strong> {{ item.product_colour }}</span>
+                <span><strong>Quantity:</strong> {{ item.quantity }}</span>
+                <hr class="checkout-hr"> 
             {% endfor %}
-            <span>Total: €{{ order.grand_total| display_price }}</span>
+            <span><strong>Total:</strong> €{{ order.grand_total| display_price }}</span>
             
     </div>
     {% if not from_profile %}

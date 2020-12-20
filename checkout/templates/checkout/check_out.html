@@ -10,7 +10,6 @@
 <small class="fill-form">Please fill out the form to complete your order.</small>
     <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="payment-form">
         {% csrf_token %}
-
         <fieldset>
             <legend class="fieldset-label small">Details</legend>
             {{ order_form.full_name | as_crispy_field }}
