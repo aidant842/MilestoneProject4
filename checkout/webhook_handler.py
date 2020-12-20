@@ -53,7 +53,7 @@ class StripeWH_Handler:
         """ Hande the payment_intent_succeeded webhook from Stripe """
         intent = event.data.object
         pid = intent.id
-        bag = bag_contents.bag_items
+        bag = intent.metadata.bag
         save_info = intent.metadata.save_info
 
         billing_details = intent.charges.data[0].billing_details
