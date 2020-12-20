@@ -8,7 +8,6 @@ from django.conf import settings
 from .models import Order, OrderLineItem
 from products.models import Product, Material, Colour, Size
 from profiles.models import UserProfile
-from bag.contexts import bag_contents
 
 import json
 import time
