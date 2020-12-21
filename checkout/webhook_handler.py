@@ -52,8 +52,12 @@ class StripeWH_Handler():
         """ Hande the payment_intent_succeeded webhook from Stripe """
         intent = event.data.object
         pid = intent.id
-        bag = intent.metadata.bag
-        save_info = intent.metadata.save_info
+        bag_dict = intent.metadata
+        save_info = bag_dict['save_info']
+        username = bag_dict['username']
+        bag_dict.pop('save_info')
+        bag_dict.pop('username')
+        bag = bag_dict.items()
 
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
@@ -65,7 +69,6 @@ class StripeWH_Handler():
 
         # Update profile information if save_info was checked
         profile = None
-        username = intent.metadata.username
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
@@ -133,7 +136,8 @@ class StripeWH_Handler():
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                for item in json.loads(bag):
+                for identifier, item in bag:
+                    item = json.loads(item)
                     product = Product.objects.get(id=item['item_id'])
                     size = Size.objects.get(value=item['item_size'])
                     material = (Material.objects.get

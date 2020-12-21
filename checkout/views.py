@@ -28,13 +28,18 @@ def cache_checkout_data(request):
         cache values in the stripe payment intent.
         otherwise return an error """
     try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'bag': json.dumps(request.session.get('bag', [])),
+        bag = request.session.get('bag', [])
+        data = {
             'save_info': request.POST.get('save_info'),
             'username': request.user,
-        })
+        }
+        counter = 0
+        for item in bag:
+            data[f'item_{counter}'] = json.dumps(item)
+            counter += 1
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata=data)
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry your payment cannot be'
@@ -74,7 +79,7 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
-            """ order.save() """
+            order.save()
 
             """ From there create an OrderLineItem with the
                 product details and save it.
