@@ -74,7 +74,7 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
-            order.save()
+            """ order.save() """
 
             """ From there create an OrderLineItem with the
                 product details and save it.
