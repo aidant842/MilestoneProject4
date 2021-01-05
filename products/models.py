@@ -21,7 +21,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.IntegerField()
     sku = models.CharField(max_length=254, null=True, blank=True)
-    image = models.ImageField()
+    image = models.ImageField(default='default_image.jpg')
 
     def __str__(self):
         return self.name

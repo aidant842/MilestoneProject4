@@ -251,11 +251,11 @@ def order_detail(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     items_formset = inlineformset_factory(Order,
                                           OrderLineItem, extra=1,
-                                          fields=('product',
+                                          fields=['product',
                                                   'product_size',
                                                   'product_material',
                                                   'product_colour',
-                                                  'quantity',))
+                                                  'quantity'])
 
     cust_email = order.email
     subject = render_to_string(

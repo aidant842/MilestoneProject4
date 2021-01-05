@@ -50,16 +50,17 @@ def update_profile(request):
             messages.error(request,
                            'Update failed, please ensure the form is valid.')
 
-    user_profile_form = UserProfileForm(instance=profile)
-    user_edit_form = UserEditForm(instance=user)
+    else:
+        user_profile_form = UserProfileForm(instance=profile)
+        user_edit_form = UserEditForm(instance=user)
 
-    template = 'profiles/update_profile.html'
-    context = {
-        'user_profile_form': user_profile_form,
-        'user_edit_form': user_edit_form
-    }
+        template = 'profiles/update_profile.html'
+        context = {
+            'user_profile_form': user_profile_form,
+            'user_edit_form': user_edit_form
+        }
 
-    return render(request, template, context)
+        return render(request, template, context)
 
 
 def order_history(request, order_number):

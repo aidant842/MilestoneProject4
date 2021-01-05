@@ -6,13 +6,13 @@ from django.contrib.auth.models import User
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('default_phone_number',
+        fields = ['default_phone_number',
                   'default_postcode',
                   'default_town_or_city',
                   'default_street_address1',
                   'default_street_address2',
                   'default_county',
-                  'default_country')
+                  'default_country']
 
     def __init__(self, *args, **kwargs):
         """ Add placeholders and classes, remove auto-generated labels
@@ -43,6 +43,6 @@ class UserProfileForm(forms.ModelForm):
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name',
+        fields = ['first_name',
                   'last_name',
-                  'email',)
+                  'email']
