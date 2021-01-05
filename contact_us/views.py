@@ -20,7 +20,7 @@ def contact_page(request):
 
     """ If accessing the view from POST
         grab the variables from the POST data
-        and save them into the contact modal
+        and save them into the contact model
         creating a message """
 
     if request.method == 'POST':
@@ -35,7 +35,7 @@ def contact_page(request):
         contact.enquiry = enquiry
 
         contact.save()
-        messages.success(request, 'Thank you, messaged recieved')
+        messages.success(request, 'Sorry, only owners can access this.')
         return redirect('contact')
 
     context = {
