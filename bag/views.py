@@ -27,7 +27,6 @@ def add_to_bag(request, item_id):
     """ Loop through each item in the bag and compare variables to determine
         if the item is already in the bag,
         if so just update the quantity of that item and the total. """
-
     for item in bag:
         if (item["item_id"] == item_id and item["item_size"] == size
             and item["item_material"] == material
@@ -52,7 +51,6 @@ def add_to_bag(request, item_id):
         })
         messages.success(request, f'Added { quantity }'
                          f' of { product.name } to the bag')
-
     request.session['bag'] = bag
     return redirect(redirect_url)
 
