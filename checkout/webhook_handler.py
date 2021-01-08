@@ -89,7 +89,7 @@ class StripeWH_Handler():
 
         order_exists = False
         attempt = 1
-        while attempt <= 5:
+        while attempt <= 15:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -102,7 +102,6 @@ class StripeWH_Handler():
                     street_address2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
                     grand_total=grand_total,
-                    original_bag=bag,
                     stripe_pid=pid,
                 )
                 order_exists = True
