@@ -35,7 +35,7 @@ def contact_page(request):
         contact.enquiry = enquiry
 
         contact.save()
-        messages.success(request, 'Sorry, only owners can access this.')
+        messages.success(request, 'Thank you, your message was sent.')
         return redirect('contact')
 
     context = {

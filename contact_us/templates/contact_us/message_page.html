@@ -20,7 +20,7 @@
             {% csrf_token %}
             {{ mar_form.mark_as_read | as_crispy_field }}
         </form>
-        <a class="btn checkoutBtn mar-link">Mark as read</a>
+        <a class="btn checkoutBtn mar-link">Save <i class="fas fa-save"></i></a>
         <p id="sender-email">Reply to: <a href="mailto:{{inbox.email}}?subject=Reply%20to%20your%20email%20concerning:%20{{ message.subject }}">{{ message.email }}</a></p>
     </div>
 </div>

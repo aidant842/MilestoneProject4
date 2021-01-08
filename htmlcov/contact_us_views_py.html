@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for contact_us/views.py: 76%</title>
+    <title>Coverage for contact_us/views.py: 97%</title>
     <link rel="icon" sizes="32x32" href="favicon_32.png">
     <link rel="stylesheet" href="style.css" type="text/css">
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -18,13 +18,13 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>contact_us/views.py</b> :
-            <span class="pc_cov">76%</span>
+            <span class="pc_cov">97%</span>
         </h1>
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
         <h2 class="stats">
             59 statements &nbsp;
-            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">45 run</button>
-            <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">14 missing</button>
+            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">57 run</button>
+            <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">2 missing</button>
             <button type="button" class="exc show_exc shortkey_x button_toggle_exc" title="Toggle lines excluded">0 excluded</button>
         </h2>
     </div>
@@ -78,19 +78,19 @@
     <p id="t24" class="pln"><span class="n"><a href="#t24">24</a></span><span class="t"><span class="str">        creating a message """</span>&nbsp;</span><span class="r"></span></p>
     <p id="t25" class="pln"><span class="n"><a href="#t25">25</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p id="t26" class="run"><span class="n"><a href="#t26">26</a></span><span class="t">    <span class="key">if</span> <span class="nam">request</span><span class="op">.</span><span class="nam">method</span> <span class="op">==</span> <span class="str">'POST'</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t27" class="mis show_mis"><span class="n"><a href="#t27">27</a></span><span class="t">        <span class="nam">contact</span> <span class="op">=</span> <span class="nam">Inbox</span><span class="op">(</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t28" class="mis show_mis"><span class="n"><a href="#t28">28</a></span><span class="t">        <span class="nam">name</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'name'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t29" class="mis show_mis"><span class="n"><a href="#t29">29</a></span><span class="t">        <span class="nam">email</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'email'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t30" class="mis show_mis"><span class="n"><a href="#t30">30</a></span><span class="t">        <span class="nam">subject</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'subject'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t31" class="mis show_mis"><span class="n"><a href="#t31">31</a></span><span class="t">        <span class="nam">enquiry</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'enquiry'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t32" class="mis show_mis"><span class="n"><a href="#t32">32</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">name</span> <span class="op">=</span> <span class="nam">name</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t33" class="mis show_mis"><span class="n"><a href="#t33">33</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">email</span> <span class="op">=</span> <span class="nam">email</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t34" class="mis show_mis"><span class="n"><a href="#t34">34</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">subject</span> <span class="op">=</span> <span class="nam">subject</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t35" class="mis show_mis"><span class="n"><a href="#t35">35</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">enquiry</span> <span class="op">=</span> <span class="nam">enquiry</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t27" class="run"><span class="n"><a href="#t27">27</a></span><span class="t">        <span class="nam">contact</span> <span class="op">=</span> <span class="nam">Inbox</span><span class="op">(</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t28" class="run"><span class="n"><a href="#t28">28</a></span><span class="t">        <span class="nam">name</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'name'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t29" class="run"><span class="n"><a href="#t29">29</a></span><span class="t">        <span class="nam">email</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'email'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t30" class="run"><span class="n"><a href="#t30">30</a></span><span class="t">        <span class="nam">subject</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'subject'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t31" class="run"><span class="n"><a href="#t31">31</a></span><span class="t">        <span class="nam">enquiry</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'enquiry'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t32" class="run"><span class="n"><a href="#t32">32</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">name</span> <span class="op">=</span> <span class="nam">name</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t33" class="run"><span class="n"><a href="#t33">33</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">email</span> <span class="op">=</span> <span class="nam">email</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t34" class="run"><span class="n"><a href="#t34">34</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">subject</span> <span class="op">=</span> <span class="nam">subject</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t35" class="run"><span class="n"><a href="#t35">35</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">enquiry</span> <span class="op">=</span> <span class="nam">enquiry</span>&nbsp;</span><span class="r"></span></p>
     <p id="t36" class="pln"><span class="n"><a href="#t36">36</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p id="t37" class="mis show_mis"><span class="n"><a href="#t37">37</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">save</span><span class="op">(</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t38" class="mis show_mis"><span class="n"><a href="#t38">38</a></span><span class="t">        <span class="nam">messages</span><span class="op">.</span><span class="nam">success</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">'Sorry, only owners can access this.'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t39" class="mis show_mis"><span class="n"><a href="#t39">39</a></span><span class="t">        <span class="key">return</span> <span class="nam">redirect</span><span class="op">(</span><span class="str">'contact'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t37" class="run"><span class="n"><a href="#t37">37</a></span><span class="t">        <span class="nam">contact</span><span class="op">.</span><span class="nam">save</span><span class="op">(</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t38" class="run"><span class="n"><a href="#t38">38</a></span><span class="t">        <span class="nam">messages</span><span class="op">.</span><span class="nam">success</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">'Thank you, your message was sent.'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t39" class="run"><span class="n"><a href="#t39">39</a></span><span class="t">        <span class="key">return</span> <span class="nam">redirect</span><span class="op">(</span><span class="str">'contact'</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p id="t40" class="pln"><span class="n"><a href="#t40">40</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p id="t41" class="run"><span class="n"><a href="#t41">41</a></span><span class="t">    <span class="nam">context</span> <span class="op">=</span> <span class="op">{</span>&nbsp;</span><span class="r"></span></p>
     <p id="t42" class="pln"><span class="n"><a href="#t42">42</a></span><span class="t">        <span class="str">'profile'</span><span class="op">:</span> <span class="nam">profile</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
@@ -168,7 +168,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.3.1</a>,
-            created at 2021-01-05 16:30 +0000
+            created at 2021-01-08 17:28 +0000
         </p>
     </div>
 </div>

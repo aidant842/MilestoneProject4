@@ -52,27 +52,33 @@ class TestViews(TestCase):
         self.assertTrue(user, self.testUser)
 
     def test_get_inbox_view(self):
+        # Test successful request if superuser
         self.client.force_login(self.adminUser)
         response = self.client.get('/contact_us/inbox/')
         self.assertEqual(response.status_code, 200)
         self.client.logout()
 
+        # Test redirect if not logged in
         response = self.client.get('/contact_us/inbox/')
         self.assertEqual(response.status_code, 302)
 
+        # Test redirect if logged in but not superuser
         self.client.force_login(self.testUser)
         response = self.client.get('/contact_us/inbox/')
         self.assertEqual(response.status_code, 302)
 
     def test_get_message_view(self):
+        # Test successful request if superuser
         self.client.force_login(self.adminUser)
         response = self.client.get(f'/contact_us/inbox/{self.contact.id}/')
         self.assertEqual(response.status_code, 200)
         self.client.logout()
 
+        # Test if not logged in get redirected
         response = self.client.get(f'/contact_us/inbox/{self.contact.id}/')
         self.assertEqual(response.status_code, 302)
 
+        # Test redirect if logged in but not superuser
         self.client.force_login(self.testUser)
         response = self.client.get(f'/contact_us/inbox/{self.contact.id}/')
         self.assertEqual(response.status_code, 302)
@@ -100,3 +106,32 @@ class TestViews(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]),
                          'Message deleted successfully!')
+
+    def delete_message_redirect_if_not_superuser(self):
+        self.client.force_login(self.testUser)
+        message = self.contact
+        response = self.client.post(f'/contact_us/delete/{message.id}/')
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(str(messages[0]),
+                         'Sorry, only owners can access this.')
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_contact_us(self):
+        name = self.adminUser.username
+        email = self.adminUser.email
+        subject = 'Test Subject'
+        enquiry = 'Test Enquiry'
+
+        data = {
+            'name': name,
+            'email': email,
+            'subject': subject,
+            'enquiry': enquiry
+        }
+
+        response = self.client.post('/contact_us/', data)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(str(messages[0]), 'Thank you, your message was sent.')
+

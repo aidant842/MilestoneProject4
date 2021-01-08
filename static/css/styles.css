@@ -126,7 +126,7 @@ a:hover {
   transition-property: background, transform;
   transform-origin: 100% 100%;
   overflow: hidden;
-  z-index: 5;
+  z-index: 5000;
 }
 
 .link-grow {
