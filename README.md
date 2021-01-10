@@ -334,7 +334,7 @@ The Wireframes are my initial idea for the website, the final product is very si
 * Ability to add items to bag.
 * Ability to edit items in the bag.
 * Ability to delete items in the bag.
-* Ability to purchase items in the bag.(Currently only with test payments, details [here](https://stripe.com/docs/testing))
+* Ability to purchase items in the bag, which sends an email to the user.(Currently only with test payments, details [here](https://stripe.com/docs/testing))
 * A loading page.
 * Customised 404 and 500 error pages with automatic redirect.
 * The project contains a few security features, such as:
@@ -481,13 +481,11 @@ Testing conducted
 
 * Link to admin panel only appears in superuser profiles. &#9745;
  
-Very little automated testing was conducted. This is because i had realised that the Django automated testing has quite a steap learning curve that would 
-require a significant time investment that I couldn't fit into the deadline for the project.
-For this reason automated testing wasn't fully implemented and i focused mainly on manual testing.
-There is a few very simple view test in the profiles app under test_views where i had begun automated testing.
-Although it isn't the correct practice, i had planned on implementing my automated testing last as i knew i hadn't any experience with Django's automated testing,
-so i had focused mainly on manual testing throughout the build as to not hinder the development process too much.
-In the future i plan to learn more about Django's automated testing and implement it fully in future projects.
+### Automated testing
+I completed automated testing for most of the apps in the project.
+The testing conducted was only applied after I felt the project was completed, i did this because i wans't sure on how long the project would take,
+and with a limited time frame i wanted to ensure I would be able to complete the project.
+I appreciate this isn't the best practice, however given my time constraints and lack of knowledge with testing I felt this was a good course of action.
 </details>
  
 ### Errors
