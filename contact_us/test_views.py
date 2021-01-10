@@ -134,4 +134,3 @@ class TestViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), 'Thank you, your message was sent.')
-
