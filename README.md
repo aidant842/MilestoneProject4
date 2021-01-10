@@ -480,13 +480,13 @@ Testing conducted
     - Edit/Delete on displays on a products card if superuser. &#9745;
 
 * Link to admin panel only appears in superuser profiles. &#9745;
- 
+</details>
+
 ### Automated testing
 I completed automated testing for most of the apps in the project.
 The testing conducted was only applied after I felt the project was completed, i did this because i wans't sure on how long the project would take,
 and with a limited time frame i wanted to ensure I would be able to complete the project.
 I appreciate this isn't the best practice, however given my time constraints and lack of knowledge with testing I felt this was a good course of action.
-</details>
  
 ### Errors
 <details>
@@ -517,7 +517,7 @@ Current errors:
 21. ~~***NOT YET FIXED*** Issue with nav links appearing when background is clicked, caused by out of place js.~~ &#9745;
 22. ~~***NOT YET FIXED*** Clicking cancel on delete modal doesn't close the modal.~~ &#9745;
 23. ~~***NOT YET FIXED*** If delivery info isn't set None displaying on profile.~~ &#9745;
-24. ***NOT YET FIXED*** Not able to checkout more than 4 items at a time, a restriction with stripe only allowing 500 characters in the metadata.
+24. ~~***NOT YET FIXED*** Not able to checkout more than 4 items at a time, a restriction with stripe only allowing 500 characters per value in the metadata.~~ Split into key, value pairs before sending.
 </details>
 
 ## Code Notes
