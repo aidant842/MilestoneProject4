@@ -300,6 +300,10 @@ label:hover:before {
   .cursor {
     display: none;
   }
+
+  * {
+    cursor: auto !important;
+  }
 }
 .bg {
   transition: transform 0.5s ease-in;

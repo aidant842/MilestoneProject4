@@ -310,6 +310,10 @@ label:hover:before {
     .cursor {
         display: none;
     }
+
+    * {
+        cursor: auto !important;
+    }
 }
 
 @import 'nav';
