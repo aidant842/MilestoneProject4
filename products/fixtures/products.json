@@ -5,7 +5,7 @@
         "fields": {
             "category": 2,
             "name": "Plato's Cave",
-            "description": "Tread carefully as this piece guides your iminagtion into depths unknown.",
+            "description": "Tread carefully as this piece guides your imagination into depths unknown.",
             "price": "9999",
             "sku": "",
             "image": "1.jpg"
@@ -17,7 +17,7 @@
         "fields": {
             "category": 1,
             "name": "Lushes Grass",
-            "description": "This lushus piece offers a subtle enmeshing of the big in the small, as the focal point is almost lost to the horizon.",
+            "description": "This lushes piece offers a subtle enmeshing of the big in the small, as the focal point is almost lost to the horizon.",
             "price": "9999",
             "sku": "",
             "image": "12.jpg"
@@ -55,7 +55,7 @@
         "fields": {
             "category": 2,
             "name": "View From The Field",
-            "description": "Rushes draw your eye in the new born sunrise as Nephin looks on.",
+            "description": "Rushes draw your eye in the newborn sunrise as Nephin looks on.",
             "price": "9999",
             "sku": "",
             "image": "4.jpg"
@@ -67,7 +67,7 @@
         "fields": {
             "category": 2,
             "name": "Standing Strong",
-            "description": "Decay encroaches on a long gone farmers efforts.",
+            "description": "Decay encroaches on a long-gone farmers efforts.",
             "price": "9999",
             "sku": "",
             "image": "5.jpg"
@@ -127,7 +127,7 @@
         "fields": {
             "category": 1,
             "name": "Shadow & Sunlight",
-            "description": "Heathers depths painted by setting sun.",
+            "description": "Heather's depths painted by setting sun.",
             "price": "9999",
             "sku": "",
             "image": "10.jpg"
@@ -151,7 +151,7 @@
         "fields": {
             "category": 2,
             "name": "From The Cave To The Forest",
-            "description": "Nature overgrowing a cave exit",
+            "description": "Nature overgrowing a cave exit.",
             "price": "9999",
             "sku": "",
             "image": "13.jpg"
