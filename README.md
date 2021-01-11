@@ -513,7 +513,7 @@ Current errors:
 15. ~~***NOT YET FIXED*** Move content in product cards up for mobile.~~ &#9745;
 16. ~~***NOT YET FIXED*** +/- buttons appearing over nav on mobile due to ::focus attribute increasing z-index.~~ &#9745;
 17. ~~***NOT YET FIXED*** If username is too long, will push heading off the page on user profile page.~~ &#9745;
-18. <span style="color:red"> ***NOT YET FIXED*** Menu goes white on firefox browser on mobile. Issue with toolbar hiding, issue goes away when turned off in browser settings.</span>
+18. ***NOT YET FIXED*** Menu goes white on firefox browser on mobile. Issue with toolbar hiding, issue goes away when turned off in browser settings. &#x274C;
 19. ~~***NOT YET FIXED*** Gap on user profile page between orders and account services on mobile. gap narrowed~~ &#9745;
 20. ~~***NOT YET FIXED*** Server error when checking out on live site.~~ &#9745; Forgotten print statements using old variables.
 21. ~~***NOT YET FIXED*** Issue with nav links appearing when background is clicked, caused by out of place js.~~ &#9745;
