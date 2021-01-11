@@ -525,6 +525,7 @@ Current errors:
 ## Code Notes
 
  - Some warnings/errors occurring with linter which I can't stop from being flagged.
+ - I will include a test account with administrative access, and test email account if the examiner wishes to use it.
 
 ## Deployment
 
